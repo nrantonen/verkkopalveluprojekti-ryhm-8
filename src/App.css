@@ -1,3 +1,7 @@
+section {
+  padding: 20px;
+}
+
 /* Rekisteröitymis/kirjautumispainikkeet */
 #kirjautuminen {
   color: black !important;
