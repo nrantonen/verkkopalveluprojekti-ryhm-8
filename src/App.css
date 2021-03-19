@@ -1,6 +1,29 @@
-.kirjautuminen {
-  display: inline-block !important;
+/* Rekisteröitymis/kirjautumispainikkeet */
+#kirjautuminen {
+  color: black !important;
+  font-weight: bold !important;
+  text-decoration: none;
 }
+#kirjautuminen:hover {
+  text-decoration: underline;
+}
+
+/* Ostoskoripainike */
+.fa-shopping-cart {
+  color: red;
+}
+.fa-shopping-cart:hover {
+  color: darkred;
+}
+
+/* Haku */
+#haku {
+  max-width: 300px;
+  margin-left: 20px;
+  margin-right: 20px;
+  float: center;
+}
+
 
 /* Etusivun tuotepalkille reunaviivat */
 #tuotepalkki {

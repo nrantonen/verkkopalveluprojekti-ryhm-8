@@ -13,35 +13,51 @@ function App() {
               Verkkokauppa
           </a>
         </nav>
-   
-        {/* Kategoriat */}
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-          <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="justify-content-center collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Toimistotarvikkeet</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Huonekalut</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Elektroniikka</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
       
-            <p className="kirjautuminen">
-              <a className="nav-link" href="#">Kirjaudu sisään</a>
-              <a className="nav-link" href="#">Rekisteröidy</a>
-              <a className="nav-link" href="#"><i class="fa fa-shopping-cart" alt="ostoskori" aria-hidden="true"></i></a>
-            </p>
+      {/* Kirjautuminen, rekisteröityminen, ostoskori */}
+      <div class="d-flex flex-row-reverse row p-2 bg-light">
+        <div class="pt-2 col-12 col-xl-4">
+          <a id="kirjautuminen" href="#">Kirjaudu sisään</a>&nbsp;/&nbsp;<a id="kirjautuminen" href="#">Rekisteröidy</a>
+          <a href="#"><i class="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
+        </div>
+         
+   {/* Hakupalkki */}
+      <div class="input-group rounded col-12 col-xl-4 col-md px-4 py-2 mx-auto" id="haku">
+        <input type="search" class="form-control rounded" placeholder="Hae tuotteita..."
+          aria-describedby="search-addon" />
+        <span class="input-group-text border-0" id="tuotehaku">
+          <i class="fa fa-search"></i>
+        </span>
+      </div>
+
+      {/* Kategoriat */}
+        <nav class="navbar navbar-expand-sm navbar-light bg-light col-12 col-xl-4 col-md">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">TOIMISTOTARVIKKEET</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">HUONEKALUT</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">ELEKTRONIIKKA</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+     
       </header>
+        
+      
+
 
     {/* Sisältö */}
     <section>
