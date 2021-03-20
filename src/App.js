@@ -15,37 +15,37 @@ function App() {
         </nav>
       
       {/* Kirjautuminen, rekisteröityminen, ostoskori */}
-      <div class="d-flex flex-row-reverse row p-2 bg-light">
-        <div class="pt-2 col-12 col-xl-4">
+      <div className="d-flex flex-row-reverse row p-2 bg-light">
+        <div className="pt-2 col-12 col-xl-4">
           <a id="kirjautuminen" href="#">Kirjaudu sisään</a>&nbsp;/&nbsp;<a id="kirjautuminen" href="#">Rekisteröidy</a>
-          <a href="#"><i class="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
+          <a href="#"><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
         </div>
          
    {/* Hakupalkki */}
-      <div class="input-group rounded col-12 col-xl-4 col-md px-4 py-2 mx-auto" id="haku">
-        <input type="search" class="form-control rounded" placeholder="Hae tuotteita..."
+      <div className="input-group rounded col-12 col-xl-4 col-md px-4 py-2 mx-auto" id="haku">
+        <input type="search" className="form-control rounded" placeholder="Hae tuotteita..."
           aria-describedby="search-addon" />
-        <span class="input-group-text border-0" id="tuotehaku">
-          <i class="fa fa-search"></i>
+        <span className="input-group-text border-0" id="tuotehaku">
+          <i className="fa fa-search"></i>
         </span>
       </div>
 
       {/* Kategoriat */}
-        <nav class="navbar navbar-expand-sm navbar-light bg-light col-12 col-xl-4 col-md">
-            <div class="container-fluid">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-sm navbar-light bg-light col-12 col-xl-4 col-md">
+            <div className="container-fluid">
+              <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">TOIMISTOTARVIKKEET</a>
+              <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav">
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">TOIMISTOTARVIKKEET</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">HUONEKALUT</a>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">HUONEKALUT</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">ELEKTRONIIKKA</a>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">ELEKTRONIIKKA</a>
                   </li>
                 </ul>
               </div>
@@ -72,25 +72,25 @@ function App() {
 
 function Kuvapalkki() {
   return (
-    <div id="tuotepalkki" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="/Nitoja.png" class="d-block" width="200" alt="..."/>
+    <div id="tuotepalkki" className="carousel slide" data-bs-ride="carousel">
+      <div className="carousel-inner">
+        <div className="carousel-item active">
+          <img src="/Nitoja.png" className="d-block" width="200" alt="..."/>
         </div>
-        <div class="carousel-item">
-          <img src="..." class="d-block" width="200" alt="..."/>
+        <div className="carousel-item">
+          <img src="..." className="d-block" width="200" alt="..."/>
         </div>
-        <div class="carousel-item">
-          <img src="..." class="d-block" width="200" alt="..."/>
+        <div className="carousel-item">
+          <img src="..." className="d-block" width="200" alt="..."/>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#tuotepalkki" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Edellinen</span>
+      <button className="carousel-control-prev" type="button" data-bs-target="#tuotepalkki" data-bs-slide="prev">
+        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span className="visually-hidden">Edellinen</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#tuotepalkki" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Seuraava</span>
+      <button className="carousel-control-next" type="button" data-bs-target="#tuotepalkki" data-bs-slide="next">
+        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+        <span className="visually-hidden">Seuraava</span>
       </button>
     </div>
   );
