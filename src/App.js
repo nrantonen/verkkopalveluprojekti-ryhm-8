@@ -75,7 +75,7 @@ function App() {
     <footer>
       <h3>Tekijät:</h3>
         <div id="tekijat">
-            <li>Enni Dahsltröm</li>
+            <li>Enni Dahlström</li>
             <li>Mikael Niemi</li>
             <li>Alina Zinchenko</li>
             <li>Niko Rantonen</li>
