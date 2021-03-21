@@ -100,11 +100,11 @@ function Kuvapalkki() {
         </div>
       </div>
       <button className="carousel-control-prev" type="button" data-bs-target="#tuotepalkki" data-bs-slide="prev">
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span className="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
         <span className="visually-hidden">Edellinen</span>
       </button>
       <button className="carousel-control-next" type="button" data-bs-target="#tuotepalkki" data-bs-slide="next">
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+        <span className="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
         <span className="visually-hidden">Seuraava</span>
       </button>
     </div>
