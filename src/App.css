@@ -33,3 +33,12 @@ section {
 #tuotepalkki {
   border: 1px solid black;
 }
+
+/* Footer */
+footer {
+  background-color: gray !important;
+}
+
+div#tekijat > li {
+  list-style: none;
+}
