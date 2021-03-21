@@ -60,6 +60,7 @@ function App() {
 
 
     {/* Sisältö */}
+    <article>
     <Kuvapalkki />
 
     <section id="kuvaus">
@@ -69,11 +70,12 @@ function App() {
           löydätte tarvitsemanne.
         </p>
     </section>
+    </article>
 
     <footer>
       <h3>Tekijät:</h3>
         <div id="tekijat">
-            <li>Enni Dahsltröm</li>
+            <li>Enni Dahlström</li>
             <li>Mikael Niemi</li>
             <li>Alina Zinchenko</li>
             <li>Niko Rantonen</li>
