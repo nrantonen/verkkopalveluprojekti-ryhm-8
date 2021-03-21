@@ -78,10 +78,10 @@ function Kuvapalkki() {
           <img src="/Nitoja.png" className="d-block" width="200" alt="..."/>
         </div>
         <div className="carousel-item">
-          <img src="public/pöytälamppu.png" className="d-block" width="200" alt="..."/>
+          <img src="/pöytälamppu.png" className="d-block" width="200" alt="..."/>
         </div>
         <div className="carousel-item">
-          <img src="public/lehtikotelo.png" className="d-block" width="200" alt="..."/>
+          <img src="/lehtikotelo.png" className="d-block" width="200" alt="..."/>
         </div>
       </div>
       <button className="carousel-control-prev" type="button" data-bs-target="#tuotepalkki" data-bs-slide="prev">
