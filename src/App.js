@@ -60,10 +60,14 @@ function App() {
 
 
     {/* Sisältö */}
-    <section>
     <Kuvapalkki />
-    <p>Sisältö alkaa tästä</p>
 
+    <section id="kuvaus">
+      <h3>Asiaa meistä</h3>
+        <p>Verkkokauppamme tarjoaa suuren valikoiman erilaisia toimistotarvikkeita
+          tarpeisiinne. Ostosten tekeminen on helppoa ja nopeaa sekä vaivatonta. Toivomme, että
+          löydätte tarvitsemanne.
+        </p>
     </section>
 
     <footer>
