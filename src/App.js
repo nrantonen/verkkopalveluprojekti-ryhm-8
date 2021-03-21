@@ -90,13 +90,13 @@ function Kuvapalkki() {
     <div id="tuotepalkki" className="carousel slide" data-bs-ride="carousel">
       <div className="carousel-inner">
         <div className="carousel-item active">
-          <img src="/Nitoja.png" className="d-block" width="200" alt="..."/>
+          <img src="/Nitoja.png" className="d-block mx-auto" width="200" alt="..."/>
         </div>
         <div className="carousel-item">
-          <img src="/pöytälamppu.png" className="d-block" width="200" alt="..."/>
+          <img src="/pöytälamppu.png" className="d-block mx-auto" width="200" alt="..."/>
         </div>
         <div className="carousel-item">
-          <img src="/lehtikotelo.png" className="d-block" width="200" alt="..."/>
+          <img src="/lehtikotelo.png" className="d-block mx-auto" width="200" alt="..."/>
         </div>
       </div>
       <button className="carousel-control-prev" type="button" data-bs-target="#tuotepalkki" data-bs-slide="prev">
