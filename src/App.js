@@ -60,6 +60,7 @@ function App() {
 
 
     {/* Sisältö */}
+    <article>
     <Kuvapalkki />
 
     <section id="kuvaus">
@@ -69,6 +70,7 @@ function App() {
           löydätte tarvitsemanne.
         </p>
     </section>
+    </article>
 
     <footer>
       <h3>Tekijät:</h3>
