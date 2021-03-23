@@ -1,5 +1,6 @@
 import './App.css';
 import logo from "./toimistologo.png";
+import Tuotesivu from './tuotesivu';
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
           löydätte tarvitsemanne.
         </p>
     </section>
+    <Tuotesivu nimi="Nitoja" kuvaus="Tää on nitoja." />
     </article>
 
     <footer className="bg-dark">
