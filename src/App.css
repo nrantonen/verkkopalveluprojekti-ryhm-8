@@ -40,11 +40,13 @@ article {
   border: 1px solid black;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding: 10px;
 }
 
 /* Footer */
 footer {
-  background-color: gray !important;
+  color: white;
+  padding: 10px;
 }
 
 div#tekijat > li {
