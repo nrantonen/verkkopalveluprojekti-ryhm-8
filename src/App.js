@@ -72,7 +72,7 @@ function App() {
     </section>
     </article>
 
-    <footer>
+    <footer className="bg-dark">
       <h3>Tekijät:</h3>
         <div id="tekijat">
             <li>Enni Dahlström</li>
