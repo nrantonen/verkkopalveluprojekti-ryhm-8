@@ -35,6 +35,12 @@ article {
   border: 1px solid black;
 }
 
+/* Tuotekuvaus */
+#tuotekuvaus {
+  border: 1px solid black;
+  width: 50%;
+}
+
 /* Kuvaus */
 #kuvaus {
   border: 1px solid black;
