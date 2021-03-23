@@ -1,6 +1,6 @@
 import './App.css';
 import logo from "./toimistologo.png";
-import Tuotesivu from './tuotesivu';
+import Tuotesivu from './tuotesivu.js';
 
 function App() {
   return (
@@ -46,7 +46,7 @@ function Kuvapalkki() {
         <span className="visually-hidden">Edellinen</span>
       </button>
       <button className="carousel-control-next" type="button" data-bs-target="#tuotepalkki" data-bs-slide="next">
-        <span className="carousel-control-next-icons" aria-hidden="true"></span>
+        <span className="carousel-control-next-icon" aria-hidden="true"></span>
         <span className="visually-hidden">Seuraava</span>
       </button>
     </div>
