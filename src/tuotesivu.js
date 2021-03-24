@@ -18,6 +18,9 @@ function Tuotesivu(props) {
         <p className="col" id="tuotekuvaus">{props.kuvaus}</p>
         <p className="col">Tekniset tiedot?</p>
       </div>
+      <div className="row">
+        <b>Tuotteen arvostelut:</b>
+      </div>
       
     </div>
   );
