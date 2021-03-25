@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import logo from "./toimistologo.png";
+import Kirjautumislomake from "./Kirjautumislomake";
 
 export default function Header({url}) {
 
@@ -19,7 +20,7 @@ export default function Header({url}) {
         {/* Kirjautuminen, rekisteröityminen, ostoskori */}
         <div className="d-flex flex-row-reverse row p-2 bg-light">
             <div className="pt-2 col-12 col-xl-4">
-            <a id="kirjautuminen" href="#">Kirjaudu sisään</a>&nbsp;/&nbsp;<a id="kirjautuminen" href="#">Rekisteröidy</a>
+            <a id="kirjautuminen" href="#">Kirjaudu sisään</a>&nbsp;/&nbsp;<a id="rekisteröityminen" href="#">Rekisteröidy</a>
             <a href="#"><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
             </div>
             
