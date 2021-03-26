@@ -98,3 +98,12 @@ div#tekijat > li {
   border: 1px solid #999;
   font-size: 20px;
 }
+
+/* Tuoteryhmä sivu */
+.tuote-kuva {
+  display: block;
+  max-height: inherit;
+  margin: auto;
+  height: auto;
+  width: auto;
+}

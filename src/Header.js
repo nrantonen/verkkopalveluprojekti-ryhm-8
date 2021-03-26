@@ -22,7 +22,7 @@ export default function Header({url}) {
             {/* Navbar */}
             {/*Logo ja otsikko*/}
             <nav className="justify-content-center navbar navbar-dark bg-dark">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="/">
                 <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>&nbsp;&nbsp;
                 Tepon Toimistotavarat
             </a>
