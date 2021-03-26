@@ -1,9 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import logo from "./toimistologo.png";
-import Kirjautumislomake from "./Kirjautumislomake";
+import Popup from './Popup';
+// import Kirjautumislomake from "./Kirjautumislomake";
+
+
+
 
 export default function Header({url}) {
+
+        const [isOpen, setIsOpen] = useState(false);
+       
+        const togglePopup = () => {
+          setIsOpen(!isOpen);
+        }  
+
 
 
     return (
@@ -20,8 +31,28 @@ export default function Header({url}) {
         {/* Kirjautuminen, rekisteröityminen, ostoskori */}
         <div className="d-flex flex-row-reverse row p-2 bg-light">
             <div className="pt-2 col-12 col-xl-4">
-            <a id="kirjautuminen" href="#">Kirjaudu sisään</a>&nbsp;/&nbsp;<a id="rekisteröityminen" href="#">Rekisteröidy</a>
-            <a href="#"><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
+                {/* Kirjaudu */}
+                <input
+                    type="button"
+                    value="Kirjaudu"
+                    onClick={togglePopup}
+                />
+                {isOpen && <Popup
+                content={<>
+                    <b>Kirjautuminen</b>
+                    <form>
+                        <input type="text" placeholder="Sähköpostiosoite" name="email" maxLength="30" required />
+                        <input type="password" placeholder="Salasana" name="salasana" maxLength="30" required />
+                    </form>
+                    <button>Kirjaudu sisään</button><br/>
+                    <a href="#">Unohditko salasanan?</a>
+                </>}
+                handleClose={togglePopup}
+                />}
+                &nbsp;/&nbsp;
+                {/* Rekisteröidy */}   
+                <a id="rekisteröityminen" href="#">Rekisteröidy</a>
+                <a href="#"><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
             </div>
             
         {/* Hakupalkki */}
