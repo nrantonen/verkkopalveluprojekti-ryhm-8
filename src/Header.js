@@ -1,9 +1,25 @@
-import React from 'react';
+import React, {Link, useEffect, useState} from 'react';
 import './App.css';
 import logo from "./toimistologo.png";
 
-export default function Header({url}) {
+const url = 'http://localhost/verkkopalveluprojekti/';
 
+export default function Header({url}) {
+    const [categories, setCategories] = useState([]);
+
+    useEffect(async() => {
+        try {
+            const response = await fetch(url + 'products/getcategories.php');
+            const json = await response.json();
+            if (response.ok) {
+                setCategories(json);
+            } else {
+                alert(json.error);
+            }
+        } catch(error) {
+            alert(error);
+        }
+    }, [])
 
     return (
         <header>
@@ -33,7 +49,38 @@ export default function Header({url}) {
         </div>
 
         {/* Kategoriat */}
-            <nav className="navbar navbar-expand-sm navbar-light bg-light col-12 col-xl-4 col-md">
+
+        <nav className="navbar navbar-expand-sm navbar-light bg-light col-12 col-xl-4 col-md">
+                <div className="container-fluid">
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav">
+                   {/* TÄMÄ */}
+                    {categories.map(category => (
+                        <li key={category.id}>
+                            <Link
+                            className="nav-item"
+                            to={{
+                                pathname: '/',
+                                state: {
+                                    id:category.id,
+                                    name:category.name
+                                }
+                            }}
+                            >{category.name}                            
+                            </Link>
+                        </li>  
+                    ))}
+                    </ul>
+                </div>
+                </div>
+            </nav>
+            </div>
+
+        {/* Kovakoodattu */}
+            {/* <nav className="navbar navbar-expand-sm navbar-light bg-light col-12 col-xl-4 col-md">
                 <div className="container-fluid">
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -53,7 +100,7 @@ export default function Header({url}) {
                 </div>
                 </div>
             </nav>
-            </div>
+            </div> */}
 
         
         </header>
