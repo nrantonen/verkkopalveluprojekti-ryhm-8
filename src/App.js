@@ -14,6 +14,7 @@ function App() {
       <Switch>
         <Route path="/" component={Etusivu} exact/>
         <Route path="/tuoteryhmäsivu" component={Ryhma} />
+        <Route path="/tuotesivu" component={Tuotesivu}/>
       </Switch>
         
       
