@@ -1,34 +1,47 @@
-import React, {Link, useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import logo from "./toimistologo.png";
 import Popup from './Popup';
 // import Kirjautumislomake from "./Kirjautumislomake";
 
-const url = 'http://localhost/verkkopalveluprojekti/';
 
 
-export default function Header({url}) {
-    const [categories, setCategories] = useState([]);
+const URL = 'http://localhost/verkkopalveluprojekti/products/';
 
-    useEffect(async() => {
-        try {
-            const response = await fetch(url + 'products/getcategories.php');
-            const json = await response.json();
-            if (response.ok) {
-                setCategories(json);
-            } else {
-                alert(json.error);
-            }
-        } catch(error) {
-            alert(error);
-        }
-    }, [])
+export default function Header() {
+
+    // Kirjautumislomake
         const [isOpen, setIsOpen] = useState(false);
-       
+
         const togglePopup = () => {
           setIsOpen(!isOpen);
         }  
 
+        
+    // Kategorioiden nouto    
+    const [categories, setCategories] = useState([]);
+    const [category, setCategory] = useState([]);
+    
+    useEffect(() => {
+    let status = 0;
+    fetch(URL + 'getcategories.php')
+    .then(res => {
+      status = parseInt(res.status);
+      return res.json();
+    })
+    .then(
+      (res) => {
+        if (status === 200) {
+          setCategories(res);
+        } else {
+          alert(res.error);
+        }
+        
+      }, (error) => {
+        alert("Häiriö järjestelmässä, yritä kohta uudelleen!");
+      }
+    )
+  }, [])
 
 
     return (
@@ -78,8 +91,7 @@ export default function Header({url}) {
             </span>
         </div>
 
-        {/* Kategoriat */}
-
+        {/* Tuoteryhmät */}
         <nav className="navbar navbar-expand-sm navbar-light bg-light col-12 col-xl-4 col-md">
                 <div className="container-fluid">
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,52 +99,19 @@ export default function Header({url}) {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
-                   {/* TÄMÄ */}
-                    {categories.map(category => (
-                        <li key={category.id}>
-                            <Link
-                            className="nav-item"
-                            to={{
-                                pathname: '/',
-                                state: {
-                                    id:category.id,
-                                    name:category.name
-                                }
-                            }}
-                            >{category.name}                            
-                            </Link>
-                        </li>  
-                    ))}
+                        {categories.map(category=> (
+                            <li key={category.trnro} className="nav-item tuoteryhmalinkki">
+                                <a className="nav-link" href="/tuoteryhmäsivu">{category.trnimi}</a>
+                            </li>  
+                        ))}
+                    
                     </ul>
                 </div>
                 </div>
             </nav>
-            </div>
+        </div>
 
-        {/* Kovakoodattu */}
-            {/* <nav className="navbar navbar-expand-sm navbar-light bg-light col-12 col-xl-4 col-md">
-                <div className="container-fluid">
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">TOIMISTOTARVIKKEET</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">HUONEKALUT</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">ELEKTRONIIKKA</a>
-                    </li>
-                    </ul>
-                </div>
-                </div>
-            </nav>
-            </div> */}
 
-        
         </header>
     );
       

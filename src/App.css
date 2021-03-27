@@ -3,6 +3,12 @@ article {
   padding: 20px;
 }
 
+/* Navbar */
+.tuoteryhmalinkki {
+  text-transform: uppercase;
+}
+
+
 /* Rekisteröitymis/kirjautumispainikkeet */
 #kirjautuminen, #rekisteröityminen {
   color: black !important;
