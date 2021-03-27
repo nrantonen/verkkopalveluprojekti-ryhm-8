@@ -4,12 +4,12 @@ article {
 }
 
 /* Rekisteröitymis/kirjautumispainikkeet */
-#kirjautuminen {
+#kirjautuminen, #rekisteröityminen {
   color: black !important;
   font-weight: bold !important;
   text-decoration: none;
 }
-#kirjautuminen:hover {
+#kirjautuminen:hover, #rekisteröityminen:hover {
   text-decoration: underline;
 }
 

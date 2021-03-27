@@ -1,7 +1,6 @@
 import React, {Link, useEffect, useState} from 'react';
 import './App.css';
 import logo from "./toimistologo.png";
-import Kirjautumislomake from "./Kirjautumislomake";
 
 const url = 'http://localhost/verkkopalveluprojekti/';
 
@@ -36,7 +35,7 @@ export default function Header({url}) {
         {/* Kirjautuminen, rekisteröityminen, ostoskori */}
         <div className="d-flex flex-row-reverse row p-2 bg-light">
             <div className="pt-2 col-12 col-xl-4">
-            <a id="kirjautuminen" href="#">Kirjaudu sisään</a>&nbsp;/&nbsp;<a id="rekisteröityminen" href="#">Rekisteröidy</a>
+            <a id="kirjautuminen" href="#">Kirjaudu sisään</a>&nbsp;/&nbsp;<a id="kirjautuminen" href="#">Rekisteröidy</a>
             <a href="#"><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
             </div>
             
@@ -89,7 +88,7 @@ export default function Header({url}) {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                     <li className="nav-item">
-                        <a className="nav-link" href="/tuoteryhmäsivu">TOIMISTOTARVIKKEET</a>
+                        <a className="nav-link" href="#">TOIMISTOTARVIKKEET</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="#">HUONEKALUT</a>
