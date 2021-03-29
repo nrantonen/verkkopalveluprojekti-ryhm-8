@@ -16,8 +16,7 @@ function App() {
         <Route path="/tuoteryhmäsivu" component={Ryhma} />
         <Route path="/tuotesivu" component={Tuotesivu}/>
       </Switch>
-        
-      
+  
       <Footer/>
     </main>
   );

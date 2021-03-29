@@ -113,3 +113,11 @@ div#tekijat > li {
   height: auto;
   width: auto;
 }
+#r1{
+  max-width: 300px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+#rekisteroidy{
+margin-top: 10px;
+}

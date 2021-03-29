@@ -4,8 +4,6 @@ import logo from "./toimistologo.png";
 import Popup from './Popup';
 // import Kirjautumislomake from "./Kirjautumislomake";
 
-
-
 const URL = 'http://localhost/verkkopalveluprojekti/products/';
 
 export default function Header() {
