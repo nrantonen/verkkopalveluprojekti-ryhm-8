@@ -92,9 +92,8 @@ div#tekijat > li {
 .close-icon {
   content: 'x';
   cursor: pointer;
-  position: fixed;
-  right: calc(15% - 30px);
-  top: calc(100vh - 85vh - 33px);
+
+  float: right;
   background: #ededed;
   width: 25px;
   height: 25px;
@@ -103,6 +102,11 @@ div#tekijat > li {
   text-align: center;
   border: 1px solid #999;
   font-size: 20px;
+}
+
+.ZIndex {
+  z-index: 1;
+  position:absolute;
 }
 
 /* Tuoteryhmä sivu */

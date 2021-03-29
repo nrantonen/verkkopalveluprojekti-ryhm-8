@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import logo from "./toimistologo.png";
 import Popup from './Popup';
-// import Kirjautumislomake from "./Kirjautumislomake";
 
 const URL = 'http://localhost/verkkopalveluprojekti/products/';
 
