@@ -56,11 +56,7 @@ export default function Header() {
         <div className="d-flex flex-row-reverse row p-2 bg-light">
             <div className="pt-2 col-12 col-xl-4">
                 {/* Kirjaudu */}
-                <input
-                    type="button"
-                    value="Kirjaudu"
-                    onClick={togglePopup}
-                />
+                <a id="kirjautuminen" href="#" onClick={togglePopup}>Kirjaudu</a>
                 {isOpen && <Popup
                 content={<>
                     <b>Kirjautuminen</b>
@@ -75,7 +71,7 @@ export default function Header() {
                 />}
                 &nbsp;/&nbsp;
                 {/* Rekisteröidy */}   
-                <a id="rekisteröityminen" href="/rekisteri">Rekisteröidy</a>
+                <a id="rekisteröityminen" href="#">Rekisteröidy</a>
                 <a href="#"><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
             </div>
             

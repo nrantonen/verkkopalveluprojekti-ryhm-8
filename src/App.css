@@ -92,7 +92,6 @@ div#tekijat > li {
 .close-icon {
   content: 'x';
   cursor: pointer;
-
   float: right;
   background: #ededed;
   width: 25px;
