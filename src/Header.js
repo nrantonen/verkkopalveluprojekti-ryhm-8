@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import logo from "./toimistologo.png";
 import Popup from './Popup';
@@ -6,15 +6,42 @@ import Popup from './Popup';
 
 
 
+const URL = 'http://localhost/verkkopalveluprojekti/products/';
 
 export default function Header() {
 
+    // Kirjautumislomake
         const [isOpen, setIsOpen] = useState(false);
-       
+
         const togglePopup = () => {
           setIsOpen(!isOpen);
         }  
 
+        
+    // Kategorioiden nouto    
+    const [categories, setCategories] = useState([]);
+    const [category, setCategory] = useState([]);
+    
+    useEffect(() => {
+    let status = 0;
+    fetch(URL + 'getcategories.php')
+    .then(res => {
+      status = parseInt(res.status);
+      return res.json();
+    })
+    .then(
+      (res) => {
+        if (status === 200) {
+          setCategories(res);
+        } else {
+          alert(res.error);
+        }
+        
+      }, (error) => {
+        alert("Häiriö järjestelmässä, yritä kohta uudelleen!");
+      }
+    )
+  }, [])
 
 
     return (
@@ -64,30 +91,27 @@ export default function Header() {
             </span>
         </div>
 
-        {/* Kategoriat */}
-            <nav className="navbar navbar-expand-sm navbar-light bg-light col-12 col-xl-4 col-md">
+        {/* Tuoteryhmät */}
+        <nav className="navbar navbar-expand-sm navbar-light bg-light col-12 col-xl-4 col-md">
                 <div className="container-fluid">
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <a className="nav-link" href="/tuoteryhmäsivu">TOIMISTOTARVIKKEET</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/tuoteryhmäsivu">HUONEKALUT</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/tuoteryhmäsivu">ELEKTRONIIKKA</a>
-                    </li>
+                        {categories.map(category=> (
+                            <li key={category.trnro} className="nav-item tuoteryhmalinkki">
+                                <a className="nav-link" href="/tuoteryhmäsivu">{category.trnimi}</a>
+                            </li>  
+                        ))}
+                    
                     </ul>
                 </div>
                 </div>
             </nav>
-            </div>
+        </div>
 
-        
+
         </header>
     );
       
