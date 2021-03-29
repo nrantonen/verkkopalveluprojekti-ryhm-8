@@ -2,12 +2,23 @@ import React from 'react';
 import './App.css';
 
 export default function tuoteryhma() {
+
     return (
-        <main className="row">
-            <div className="row-flex">
-                <div className="col any-1-1">
+        <main className="container">
+            <div className="row align-items-start">
+                <div className="col">
                     <a className="" href="/tuotesivu">
-                        <img className="tuote-kuva" src="Nitoja.png"></img>
+                        <img className="d-block mx-auto" width="200" src="Nitoja.png"></img>
+                    </a>
+                </div>
+                <div className="col">
+                    <a className="" href="/tuotesivu">
+                        <img className="d-block mx-auto" width="200" src="Nitoja.png"></img>
+                    </a>
+                </div>
+                <div className="col">
+                    <a className="" href="/tuotesivu">
+                        <img className="d-block mx-auto" width="200" src="Nitoja.png"></img>
                     </a>
                 </div>
             </div>

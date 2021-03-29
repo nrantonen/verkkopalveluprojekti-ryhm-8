@@ -1,7 +1,7 @@
-import react from 'react';
+import React from 'react';
 import './App.css';
 
-function rekisteri() {
+export default function rekisteri() {
   return (
     <section  className="rekisterilomake">
      
@@ -17,7 +17,7 @@ function rekisteri() {
     </div>
     <div class="row col-12">
       <div id="r1"  class="col-6">
-        <p>Sähöposti</p>
+        <p>Sähköposti</p>
         <input type="text" class="form-control" placeholder="sähköposti" aria-label="email"/>
       </div>
     </div>
@@ -27,7 +27,7 @@ function rekisteri() {
       <input type="text" class="form-control" placeholder="salasana" aria-label="password"/>
        </div>
        <div id="r1"  class="col-6">
-      <p>Krijoita salasana uudelleen.</p>
+      <p>Kirjoita salasana uudelleen.</p>
       <input type="text" class="form-control" placeholder="salasana" aria-label="password2"/>
       </div>
     </div>
@@ -35,7 +35,5 @@ function rekisteri() {
     <button id="rekisteroidy" type="button" class="btn btn-secondary">rekisteröidy</button>
     </div>
 </section>
-  )
+  );
 }
-
-export default rekisteri;
