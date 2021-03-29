@@ -6,6 +6,7 @@ import Etusivu from './etusivu';
 import Header from './Header';
 import Footer from './Footer';
 
+// const URL = 'http://localhost/toimistotarvike/';
 
 function App() {
   return (

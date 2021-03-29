@@ -7,7 +7,7 @@ import Popup from './Popup';
 
 
 
-export default function Header({url}) {
+export default function Header() {
 
         const [isOpen, setIsOpen] = useState(false);
        
@@ -76,10 +76,10 @@ export default function Header({url}) {
                         <a className="nav-link" href="/tuoteryhmäsivu">TOIMISTOTARVIKKEET</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">HUONEKALUT</a>
+                        <a className="nav-link" href="/tuoteryhmäsivu">HUONEKALUT</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">ELEKTRONIIKKA</a>
+                        <a className="nav-link" href="/tuoteryhmäsivu">ELEKTRONIIKKA</a>
                     </li>
                     </ul>
                 </div>
