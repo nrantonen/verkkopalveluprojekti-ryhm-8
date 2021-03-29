@@ -4,8 +4,6 @@ import logo from "./toimistologo.png";
 import Popup from './Popup';
 // import Kirjautumislomake from "./Kirjautumislomake";
 
-
-
 const URL = 'http://localhost/verkkopalveluprojekti/products/';
 
 export default function Header() {
@@ -78,7 +76,7 @@ export default function Header() {
                 />}
                 &nbsp;/&nbsp;
                 {/* Rekisteröidy */}   
-                <a id="rekisteröityminen" href="#">Rekisteröidy</a>
+                <a id="rekisteröityminen" href="/rekisteri">Rekisteröidy</a>
                 <a href="#"><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
             </div>
             
