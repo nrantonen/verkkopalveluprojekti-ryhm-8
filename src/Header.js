@@ -3,7 +3,7 @@ import './App.css';
 import logo from "./toimistologo.png";
 import Popup from './Popup';
 
-const URL = 'http://localhost/verkkopalveluprojekti/products/';
+const URL = 'http://localhost/verkkopalveluprojekti/';
 
 export default function Header() {
 
@@ -21,7 +21,7 @@ export default function Header() {
     
     useEffect(() => {
     let status = 0;
-    fetch(URL + 'getcategories.php')
+    fetch(URL + 'products/getcategories.php')
     .then(res => {
       status = parseInt(res.status);
       return res.json();
@@ -60,11 +60,11 @@ export default function Header() {
                 {isOpen && <Popup
                 content={<>
                     <b>Kirjautuminen</b>
-                    <form>
+                    <form action={URL + "login/login.php"} method="POST">
                         <input type="text" placeholder="Sähköpostiosoite" name="email" maxLength="30" required />
                         <input type="password" placeholder="Salasana" name="salasana" maxLength="30" required />
+                        <input type="submit" value="Kirjaudu sisään" /><br/>
                     </form>
-                    <button>Kirjaudu sisään</button><br/>
                     <a href="#">Unohditko salasanan?</a>
                 </>}
                 handleClose={togglePopup}
