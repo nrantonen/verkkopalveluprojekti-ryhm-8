@@ -123,3 +123,8 @@ div#tekijat > li {
 #rekisteroidy{
 margin-top: 10px;
 }
+
+/* Ostoskori */
+#ostoskori {
+  list-style: none;
+}
