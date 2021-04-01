@@ -3,7 +3,11 @@ import './App.css';
 import './SearchResults.css';
 import logo from "./toimistologo.png";
 import Popup from './Popup';
+<<<<<<< HEAD
 import Navbar from './Navbar';
+=======
+import Ostoskori from './Ostoskori';
+>>>>>>> fcc3500bd586849424313eb7363f3286978a8106
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
 
@@ -47,7 +51,8 @@ export default function Header() {
         const togglePopup = () => {
           setIsOpen(!isOpen);
         }  
-
+    const [cartShown, setCartShown] = useState(false);
+    const toggleCart = () => { setCartShown(!cartShown); }
         
     
    
@@ -83,7 +88,8 @@ export default function Header() {
                 &nbsp;/&nbsp;
                 {/* Rekisteröidy */}   
                 <a id="rekisteröityminen" href="#">Rekisteröidy</a>
-                <a href="#"><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
+                <a href="#" onClick={toggleCart}><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
+                {cartShown && <Ostoskori handleClose={toggleCart}/>}
             </div>
             
         {/* Hakupalkki KESKEN */}
