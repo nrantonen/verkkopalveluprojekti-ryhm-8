@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import logo from "./toimistologo.png";
 import Popup from './Popup';
+import Ostoskori from './Ostoskori';
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
 
@@ -13,7 +14,8 @@ export default function Header() {
         const togglePopup = () => {
           setIsOpen(!isOpen);
         }  
-
+    const [cartShown, setCartShown] = useState(false);
+    const toggleCart = () => { setCartShown(!cartShown); }
         
     // Kategorioiden nouto    
     const [categories, setCategories] = useState([]);
@@ -72,7 +74,8 @@ export default function Header() {
                 &nbsp;/&nbsp;
                 {/* Rekisteröidy */}   
                 <a id="rekisteröityminen" href="#">Rekisteröidy</a>
-                <a href="#"><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
+                <a href="#" onClick={toggleCart}><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
+                {cartShown && <Ostoskori handleClose={toggleCart}/>}
             </div>
             
         {/* Hakupalkki */}

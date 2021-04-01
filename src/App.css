@@ -126,5 +126,8 @@ margin-top: 10px;
 
 /* Ostoskori */
 #ostoskori {
-  list-style: none;
+  width: fit-content;
+}
+#ostoskori li a {
+  margin-right: 100px;
 }
