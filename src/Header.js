@@ -3,11 +3,8 @@ import './App.css';
 import './SearchResults.css';
 import logo from "./toimistologo.png";
 import Popup from './Popup';
-<<<<<<< HEAD
 import Navbar from './Navbar';
-=======
 import Ostoskori from './Ostoskori';
->>>>>>> fcc3500bd586849424313eb7363f3286978a8106
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
 
