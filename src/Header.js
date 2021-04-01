@@ -1,14 +1,45 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
+import './SearchResults.css';
 import logo from "./toimistologo.png";
 import Popup from './Popup';
 // import Kirjautumislomake from "./Kirjautumislomake";
 
-
-
-const URL = 'http://localhost/verkkopalveluprojekti/products/';
+const URL = 'http://localhost/verkkopalveluprojekti/';
 
 export default function Header() {
+
+    //Haku
+    const [results, setResults] = useState([]);
+    const [search, setSearch] = useState([]);
+
+    function searchProducts(e) {
+        e.preventDefault();
+        let status = 0;
+        fetch(URL + 'products/searchProducts.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                tuotenimi: search
+            })
+        })
+        .then(res => {
+            status = parseInt(res.status);
+            return res.json();
+        })
+        .then(
+            (res) => {
+                if (status === 200) {
+                    setResults(res);
+                } else {
+                    alert(res.error);
+                }
+            }, (error) => {
+                alert('Haussa sattui virhe.');
+            })}
 
     // Kirjautumislomake
         const [isOpen, setIsOpen] = useState(false);
@@ -20,11 +51,10 @@ export default function Header() {
         
     // Kategorioiden nouto    
     const [categories, setCategories] = useState([]);
-    const [category, setCategory] = useState([]);
-    
+
     useEffect(() => {
     let status = 0;
-    fetch(URL + 'getcategories.php')
+    fetch(URL + 'products/getcategories.php')
     .then(res => {
       status = parseInt(res.status);
       return res.json();
@@ -32,13 +62,13 @@ export default function Header() {
     .then(
       (res) => {
         if (status === 200) {
-          setCategories(res);
+            setCategories(res);
         } else {
           alert(res.error);
         }
         
       }, (error) => {
-        alert("Häiriö järjestelmässä, yritä kohta uudelleen!");
+        alert("Virhe tuoteryhmien noutamisessa.");
       }
     )
   }, [])
@@ -83,13 +113,17 @@ export default function Header() {
             </div>
             
         {/* Hakupalkki */}
-        <div className="input-group rounded col-12 col-xl-4 col-md px-4 py-2 mx-auto" id="haku">
-            <input type="search" className="form-control rounded" placeholder="Hae tuotteita..."
-            aria-describedby="search-addon" />
-            <span className="input-group-text border-0" id="tuotehaku">
-            <i className="fa fa-search"></i>
-            </span>
+        
+     <div className="input-group rounded col-12 col-xl-4 col-md px-4 py-2 mx-auto" id="haku">
+            <form onSubmit={searchProducts}>
+            <input type="text" className="form-control rounded" placeholder="Hae tuotteita..."
+            aria-describedby="search-addon" name="haku" id="haku" value={search} 
+            onChange = {e => setSearch(e.target.value)}/>
+            <button onClick="submit">
+            <i className="fa fa-search"></i></button>
+            </form>
         </div>
+        
 
         {/* Tuoteryhmät */}
         <nav className="navbar navbar-expand-sm navbar-light bg-light col-12 col-xl-4 col-md">
@@ -110,7 +144,24 @@ export default function Header() {
                 </div>
             </nav>
         </div>
-
+        <section id="hakulista" className="row">
+        {results.map(result => (
+                <div key={result.tuotenro} className="col-5 d-flex" id="tuotekpl">
+                    <div className="osa col-6" >
+                        <p> <a href="#" id="tuotenimi">{result.tuotenimi}</a> <span id="hinta">{result.hinta} €</span></p>
+                        <p> <a href="#" id="ryhmanimi">{result.trnimi}</a></p>
+                        <p id="tuotekuvaus">{result.kuvaus}</p>  
+                        <a href="#"><i id="ostoskori" className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
+                    </div>
+                    <div className="osa col-6">
+                        <a href="#">
+                            <img className="img-thumbnail img-fluid" id="tuotekuva" src={URL + "img/"+ result.kuva}></img>
+                        </a>
+                    </div>
+                </div>
+            
+          ))} </section> 
+        
 
         </header>
     );

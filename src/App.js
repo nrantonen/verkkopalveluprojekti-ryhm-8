@@ -5,6 +5,7 @@ import Ryhma from './tuoteryhmäsivu';
 import Etusivu from './etusivu';
 import Header from './Header';
 import Footer from './Footer';
+import Hakutulokset from './Hakutulokset';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" component={Etusivu} exact/>
         <Route path="/tuoteryhmäsivu" component={Ryhma} />
         <Route path="/tuotesivu" component={Tuotesivu}/>
+        <Route path="/hakutulokset" component={Hakutulokset}/>
       </Switch>
         
       
