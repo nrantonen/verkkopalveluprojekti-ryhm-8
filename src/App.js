@@ -5,8 +5,9 @@ import Ryhma from './tuoteryhmäsivu';
 import Etusivu from './etusivu';
 import Header from './Header';
 import Footer from './Footer';
-import Hakutulokset from './Hakutulokset';
+import Rekisteri from './rekisteri';
 
+// const URL = 'http://localhost/toimistotarvike/';
 
 function App() {
   return (
@@ -16,10 +17,9 @@ function App() {
         <Route path="/" component={Etusivu} exact/>
         <Route path="/tuoteryhmäsivu" component={Ryhma} />
         <Route path="/tuotesivu" component={Tuotesivu}/>
-        <Route path="/hakutulokset" component={Hakutulokset}/>
+        <Route path="/rekisteri" component={Rekisteri}/>
       </Switch>
-        
-      
+  
       <Footer/>
     </main>
   );

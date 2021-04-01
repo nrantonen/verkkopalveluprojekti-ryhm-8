@@ -3,7 +3,7 @@ import './App.css';
 import './SearchResults.css';
 import logo from "./toimistologo.png";
 import Popup from './Popup';
-// import Kirjautumislomake from "./Kirjautumislomake";
+import Navbar from './Navbar';
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
 
@@ -49,30 +49,8 @@ export default function Header() {
         }  
 
         
-    // Kategorioiden nouto    
-    const [categories, setCategories] = useState([]);
-
-    useEffect(() => {
-    let status = 0;
-    fetch(URL + 'products/getcategories.php')
-    .then(res => {
-      status = parseInt(res.status);
-      return res.json();
-    })
-    .then(
-      (res) => {
-        if (status === 200) {
-            setCategories(res);
-        } else {
-          alert(res.error);
-        }
-        
-      }, (error) => {
-        alert("Virhe tuoteryhmien noutamisessa.");
-      }
-    )
-  }, [])
-
+    
+   
 
     return (
         <header>
@@ -89,19 +67,15 @@ export default function Header() {
         <div className="d-flex flex-row-reverse row p-2 bg-light">
             <div className="pt-2 col-12 col-xl-4">
                 {/* Kirjaudu */}
-                <input
-                    type="button"
-                    value="Kirjaudu"
-                    onClick={togglePopup}
-                />
+                <a id="kirjautuminen" href="#" onClick={togglePopup}>Kirjaudu</a>
                 {isOpen && <Popup
                 content={<>
                     <b>Kirjautuminen</b>
-                    <form>
+                    <form action={URL + "login/login.php"} method="POST">
                         <input type="text" placeholder="Sähköpostiosoite" name="email" maxLength="30" required />
                         <input type="password" placeholder="Salasana" name="salasana" maxLength="30" required />
+                        <input type="submit" value="Kirjaudu sisään" /><br/>
                     </form>
-                    <button>Kirjaudu sisään</button><br/>
                     <a href="#">Unohditko salasanan?</a>
                 </>}
                 handleClose={togglePopup}
@@ -112,9 +86,9 @@ export default function Header() {
                 <a href="#"><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
             </div>
             
-        {/* Hakupalkki */}
+        {/* Hakupalkki KESKEN */}
         
-     <div className="input-group rounded col-12 col-xl-4 col-md px-4 py-2 mx-auto" id="haku">
+        <div className="input-group rounded col-12 col-xl-4 col-md px-4 py-2 mx-auto" id="haku">
             <form onSubmit={searchProducts}>
             <input type="text" className="form-control rounded" placeholder="Hae tuotteita..."
             aria-describedby="search-addon" name="haku" id="haku" value={search} 
@@ -124,26 +98,11 @@ export default function Header() {
             </form>
         </div>
         
-
         {/* Tuoteryhmät */}
-        <nav className="navbar navbar-expand-sm navbar-light bg-light col-12 col-xl-4 col-md">
-                <div className="container-fluid">
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
-                        {categories.map(category=> (
-                            <li key={category.trnro} className="nav-item tuoteryhmalinkki">
-                                <a className="nav-link" href="/tuoteryhmäsivu">{category.trnimi}</a>
-                            </li>  
-                        ))}
-                    
-                    </ul>
-                </div>
-                </div>
-            </nav>
+        <Navbar />
         </div>
+
+        {/* Hakutulokset KESKEN */}
         <section id="hakulista" className="row">
         {results.map(result => (
                 <div key={result.tuotenro} className="col-5 d-flex" id="tuotekpl">
