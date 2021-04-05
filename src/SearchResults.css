@@ -1,0 +1,59 @@
+#hakulista {
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 10px;
+}
+
+#tuotekuvaus {
+    font-style: italic;
+    border-style: none !important;
+}
+
+#tuotenimi {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+#tuotenimi:hover {
+    text-decoration: underline;
+    color: gray;
+}
+
+#ryhmanimi {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+    color: gray;
+    text-decoration: none;
+}
+
+#tuotekuva {
+    height: 200px;
+    display: inline-block;
+    background-color: white;
+}
+
+#hinta {
+    font-weight: bolder;
+    font-size: 23px;
+}
+
+.osa {
+    display: inline-block;
+
+}
+
+#tuotekpl {
+    background-color: lightgrey;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    display: inline-block;
+}
+
+#ostoskori {
+    font-size: 40px;
+}
