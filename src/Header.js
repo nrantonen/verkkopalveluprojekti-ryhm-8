@@ -18,29 +18,42 @@ export default function Header() {
         
     // Kategorioiden nouto    
     const [categories, setCategories] = useState([]);
-    const [category, setCategory] = useState([]);
-    
-    useEffect(() => {
-    let status = 0;
-    fetch(URL + 'getcategories.php')
-    .then(res => {
-      status = parseInt(res.status);
-      return res.json();
-    })
-    .then(
-      (res) => {
-        if (status === 200) {
-          setCategories(res);
-        } else {
-          alert(res.error);
-        }
-        
-      }, (error) => {
-        alert("Häiriö järjestelmässä, yritä kohta uudelleen!");
-      }
-    )
-  }, [])
 
+    /* useEffect(async() => {
+        try {
+            const response = await fetch(URL + 'getcategories.php');
+            const json = await response.json();
+            if (response.ok) {
+                setCategories(json);
+                setTuoteryhma(json[0]);
+            } else {
+                alert(json.error);
+            }
+        } catch (error) {
+            alert(error);
+        }
+    }, []) */
+    
+     useEffect(() => {
+        let status = 0;
+        fetch(URL + 'getcategories.php')
+        .then(res => {
+        status = parseInt(res.status);
+        return res.json();
+        })
+        .then(
+        (res) => {
+            if (status === 200) {
+            setCategories(res);
+            } else {
+            alert(res.error);
+            }
+            
+        }, (error) => {
+            alert("Häiriö järjestelmässä, yritä kohta uudelleen!");
+        }
+        )
+    }, [])
 
     return (
         <header>

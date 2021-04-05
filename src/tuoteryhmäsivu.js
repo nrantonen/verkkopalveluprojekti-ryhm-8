@@ -1,27 +1,31 @@
 import React from 'react';
 import './App.css';
+import {useState, useEffect} from 'react';
 
-export default function tuoteryhma() {
+export default function Tuoteryhma() {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        try {
+            const response = await fetch(url + 'getproducts.php' + category?.id);
+            const json = await response.json();
+            if (response.ok) {
+                setProducts(json);
+            } else {
+                alert(json.error);
+            }
+        } catch (error) {
+            alert(error);
+        }
+    }, [category])
 
     return (
-        <main className="container">
-            <div className="row align-items-start">
-                <div className="col">
-                    <a className="" href="/tuotesivu">
-                        <img className="d-block mx-auto" width="200" src="Nitoja.png"></img>
-                    </a>
+        <div>
+            {products.map(product => (
+                <div key={product.id}>
+                    <p>{product.name}</p>
                 </div>
-                <div className="col">
-                    <a className="" href="/tuotesivu">
-                        <img className="d-block mx-auto" width="200" src="Nitoja.png"></img>
-                    </a>
-                </div>
-                <div className="col">
-                    <a className="" href="/tuotesivu">
-                        <img className="d-block mx-auto" width="200" src="Nitoja.png"></img>
-                    </a>
-                </div>
-            </div>
-        </main>
+            ))}
+        </div>
     );
 }
