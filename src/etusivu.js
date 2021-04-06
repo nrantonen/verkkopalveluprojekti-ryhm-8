@@ -37,10 +37,13 @@ function Kuvapalkki() {
     return (
       <div id="tuotepalkki" className="carousel carousel-dark slide" data-bs-ride="carousel">
         <div className="carousel-inner">
-          {products.map(product => (
+          {products.map((product, i) => (
             
-            <div className="carousel-item active">
+            <div className={'carousel-item'+(i === 0 ? ' active' : '')}>
               <img src={product.image} className="d-block mx-auto" width="200" alt=""/>
+              <div className="carousel-caption">
+                <h4>{product.tuotenimi}</h4>
+              </div>
             </div>
           ))}
         </div>
