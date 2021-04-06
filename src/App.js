@@ -18,27 +18,29 @@ function App() {
 
   useEffect(() => {
     if (location.state!==undefined) {
-      setCategory({id: location.state.id,name: location.state.name});
+      setCategory({trnro: location.state.trnro,trnimi: location.state.trnimi});
     }
   }, [location.state])
 
   return (
-    <main>
-      <Header/>
-      <Navbar url={URL} setCategory={setCategory}/>
-      <Switch>
-        <Route path="/" component={Etusivu} exact/>
-        <Route path="/tuoteryhmäsivu" render={() => <Ryhma 
-          url={URL}
-          category={category}/>}
-          exact
-        />
-        <Route path="/tuotesivu" component={Tuotesivu}/>
-        <Route path="/rekisteri" component={Rekisteri}/>
-      </Switch>
-  
-      <Footer/>
-    </main>
+    <body>
+      <main>
+        <Header/>
+        <Navbar url={URL} setCategory={setCategory}/>
+        <Switch>
+          <Route path="/" component={Etusivu} exact/>
+          <Route path="/tuoteryhmäsivu" render={() => <Ryhma 
+            url={URL}
+            category={category}/>}
+            exact
+          />
+          <Route path="/tuotesivu" component={Tuotesivu}/>
+          <Route path="/rekisteri" component={Rekisteri}/>
+        </Switch>
+    
+        <Footer/>
+      </main>
+    </body>
   );
 }
 

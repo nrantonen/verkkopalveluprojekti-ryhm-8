@@ -3,7 +3,6 @@ import './App.css';
 import './SearchResults.css';
 import logo from "./toimistologo.png";
 import Popup from './Popup';
-import Navbar from './Navbar';
 import Ostoskori from './Ostoskori';
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
@@ -100,8 +99,6 @@ export default function Header() {
             <i className="fa fa-search"></i></button>
             </form>
         </div>
-        
-        {/* Tuoteryhmät */}
         
         </div>
 

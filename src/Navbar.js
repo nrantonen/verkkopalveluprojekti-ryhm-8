@@ -38,8 +38,8 @@ import {Link} from 'react-router-dom';
                                     to={{
                                         pathname: '/tuoteryhmäsivu',
                                         state: {
-                                            id: category.trnro,
-                                            name: category.trnimi
+                                            trnro: category.trnro,
+                                            trnimi: category.trnimi
                                         }
                                     }}
                                 >{category.trnimi}

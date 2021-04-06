@@ -107,14 +107,6 @@ div#tekijat > li {
   position:absolute;
 }
 
-/* Tuoteryhmä sivu */
-.tuote-kuva {
-  display: block;
-  max-height: inherit;
-  margin: auto;
-  height: auto;
-  width: auto;
-}
 #r1{
   max-width: 300px;
   margin-left: 20px;
@@ -130,4 +122,10 @@ margin-top: 10px;
 }
 #ostoskori li a {
   margin-right: 100px;
+}
+
+/* Tuoteryhmäsivu */
+.tuotepalkki {
+  margin-left: 20px;
+  background-color: bisque;
 }
