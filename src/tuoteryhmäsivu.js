@@ -2,12 +2,12 @@ import React from 'react';
 import './App.css';
 import {useState, useEffect} from 'react';
 
-export default function Tuoteryhma() {
+export default function Tuoteryhma({url,category}) {
     const [products, setProducts] = useState([]);
 
-    useEffect(() => {
+    useEffect(async() => {
         try {
-            const response = await fetch(url + 'getproducts.php' + category?.id);
+            const response = await fetch(url + 'products/getproducts.php/' + category?.id);
             const json = await response.json();
             if (response.ok) {
                 setProducts(json);
@@ -22,8 +22,8 @@ export default function Tuoteryhma() {
     return (
         <div>
             {products.map(product => (
-                <div key={product.id}>
-                    <p>{product.name}</p>
+                <div key={product.tuotenro}>
+                    <p>{product.tuotenimi}</p>
                 </div>
             ))}
         </div>

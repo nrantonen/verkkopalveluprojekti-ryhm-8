@@ -84,7 +84,7 @@ export default function Header() {
                 />}
                 &nbsp;/&nbsp;
                 {/* Rekisteröidy */}   
-                <a id="rekisteröityminen" href="#">Rekisteröidy</a>
+                <a id="rekisteröityminen" href="/rekisteri">Rekisteröidy</a>
                 <a href="#" onClick={toggleCart}><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
                 {cartShown && <Ostoskori handleClose={toggleCart}/>}
             </div>
@@ -102,7 +102,7 @@ export default function Header() {
         </div>
         
         {/* Tuoteryhmät */}
-        <Navbar />
+        
         </div>
 
         {/* Hakutulokset KESKEN */}

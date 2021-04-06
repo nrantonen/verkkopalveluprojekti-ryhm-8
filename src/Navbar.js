@@ -1,18 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
-    const URL = 'http://localhost/verkkopalveluprojekti/';    
+    //const URL = 'http://localhost/verkkopalveluprojekti/';    
     
-    export default function Navbar() {
+    export default function Navbar({url,setCategory}) {
     // Kategorioiden nouto    
     const [categories, setCategories] = useState([]);
 
     useEffect(async() => {
         try {
-            const response = await fetch(URL + 'products/getcategories.php');
+            const response = await fetch(url + 'products/getcategories.php');
             const json = await response.json();
             if (response.ok) {
                 setCategories(json);
+                setCategory(json[0]);
             } else {
                 alert(json.error);
             }
@@ -35,7 +36,7 @@ import {Link} from 'react-router-dom';
                                 <Link 
                                     className="nav-link" 
                                     to={{
-                                        pathname: '/',
+                                        pathname: '/tuoteryhmäsivu',
                                         state: {
                                             id: category.trnro,
                                             name: category.trnimi
