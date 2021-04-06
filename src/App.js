@@ -8,6 +8,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Rekisteri from './rekisteri';
 import Navbar from './Navbar';
+import Yllapito from './Yllapito';
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
 
@@ -36,6 +37,7 @@ function App() {
           />
           <Route path="/tuotesivu" component={Tuotesivu}/>
           <Route path="/rekisteri" component={Rekisteri}/>
+          <Route path="/Yllapito" component={Yllapito}/>
         </Switch>
     
         <Footer/>
