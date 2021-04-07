@@ -129,3 +129,10 @@ margin-top: 10px;
   margin-left: 20px;
   background-color: bisque;
 }
+
+/*Ylläpito-sivu*/
+
+.yll_section {
+  margin: 2em;
+  width: 50%;
+}
