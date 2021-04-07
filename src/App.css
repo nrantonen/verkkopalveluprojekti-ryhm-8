@@ -65,6 +65,11 @@ div#tekijat > li {
   list-style: none;
 }
 
+#yllapitolinkki {
+  color: white;
+}
+
+
 /* Popup style */
 .popup-box {
   position: relative;
@@ -132,7 +137,12 @@ margin-top: 10px;
 
 /*Ylläpito-sivu*/
 
-.yll_section {
-  margin: 2em;
-  width: 50%;
+.yll_loginform {
+  margin: auto;
+  width: 60%;
+  padding: 3em;
+}
+
+.yll_loginrivi {
+  padding-bottom: 20px;
 }
