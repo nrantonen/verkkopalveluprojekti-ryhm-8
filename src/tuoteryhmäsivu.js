@@ -25,7 +25,7 @@ export default function Tuoteryhma({url,category}) {
         <div className="container">
             <div className="row">
                 {products.map(product => (
-                    <div className="tuotepalkki col-2" key={product.tuotenro}>
+                    <div className="tuotediv col-2" key={product.tuotenro}>
                         <img src={product.image} width="200" alt=""></img>
                         <h3>{product.tuotenimi}</h3>
                         <p>{product.kuvaus}</p>

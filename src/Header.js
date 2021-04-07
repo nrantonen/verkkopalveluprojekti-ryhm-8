@@ -65,7 +65,7 @@ export default function Header() {
             </nav>
         
         {/* Kirjautuminen, rekisteröityminen, ostoskori */}
-        <div className="d-flex flex-row-reverse row p-2 bg-light">
+        <div className=" d-flex flex-row-reverse p-2 bg-light">
             <div className="pt-2 col-12 col-xl-4">
                 {/* Kirjaudu */}
                 <a id="kirjautuminen" href="#" onClick={togglePopup}>Kirjaudu</a>

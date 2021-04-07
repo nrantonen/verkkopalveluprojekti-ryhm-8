@@ -24,7 +24,7 @@ function App() {
 
   return (
     <body>
-      <main>
+      <main className="runko">
         <Header/>
         <Navbar url={URL} setCategory={setCategory}/>
         <Switch>
