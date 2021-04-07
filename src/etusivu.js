@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom';
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
 
@@ -40,10 +41,14 @@ function Kuvapalkki() {
           {products.map((product, i) => (
             
             <div className={'carousel-item'+(i === 0 ? ' active' : '')}>
-              <img src={product.image} className="d-block mx-auto" width="200" alt=""/>
-              <div className="carousel-caption">
-                <h4>{product.tuotenimi}</h4>
-              </div>
+              <Link to={{
+                pathname: '/tuotesivu/'+product.tuotenro
+              }}>
+                <img src={product.image} className="d-block mx-auto" width="200" alt=""/>
+                <div className="carousel-caption">
+                  <h4>{product.tuotenimi}</h4>
+                </div>
+              </Link>
             </div>
           ))}
         </div>

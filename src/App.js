@@ -34,7 +34,8 @@ function App() {
             category={category}/>}
             exact
           />
-          <Route path="/tuotesivu" component={Tuotesivu}/>
+          <Route path="/tuotesivu" render={() => <Tuotesivu url={URL}/>}
+          />
           <Route path="/rekisteri" component={Rekisteri}/>
         </Switch>
     
