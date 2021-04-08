@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 
+const URL = 'http://localhost/verkkopalveluprojekti/';
+
 export default function Yllapito() {
     return(
         <section className="yll_loginform row">
@@ -8,7 +10,7 @@ export default function Yllapito() {
                 <h5>Kirjaudu ylläpitäjänä</h5>
             </div>
             <div className="col-12">
-            <form action={URL + "#"} method="POST">
+            <form action={URL + "login/loginyllapitaja.php"} method="POST">
                 <div className="yll_loginrivi">
                     <label>Sähköpostiosoite:</label><br/>
                     <input type="text" placeholder="Sähköpostiosoite" name="yll_email" maxLength="30" required />
