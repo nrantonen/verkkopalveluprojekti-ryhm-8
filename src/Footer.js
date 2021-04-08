@@ -1,4 +1,7 @@
 import React from 'react';
+import './App.css';
+import {Link} from 'react-router-dom';
+
 
 export default function Footer() {
     return (
@@ -11,6 +14,7 @@ export default function Footer() {
               <li>Niko Rantonen</li>
               <li>Jukka Keränen</li>
           </div>
+          <Link to="/yllapito">Hallinnoi tuotteita</Link>
         </footer>
     );
 }

@@ -1,6 +1,9 @@
 /* Sisällön padding */
 article {
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 /* Navbar */
@@ -29,10 +32,9 @@ article {
 
 /* Haku */
 #haku {
-  max-width: 300px;
+  max-width: 350px;
   margin-left: 20px;
   margin-right: 20px;
-  float: center;
 }
 
 
@@ -130,4 +132,24 @@ margin-top: 10px;
 }
 #ostoskori li a {
   margin-right: 100px;
+}
+
+/* Ylläpitosivu */
+#tuotelista {
+  margin: 30px;
+}
+tr {
+  border-color: lightgrey;
+  border-style: solid;
+  border-width: 1px;
+}
+#poista_tuote {
+  color: red;
+  font-weight: bold;
+  text-decoration: none;
+}
+#poista_tuote:hover {
+  color: darkred;
+  font-weight: bold;
+  text-decoration: underline;
 }
