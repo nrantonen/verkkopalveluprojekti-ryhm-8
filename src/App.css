@@ -1,6 +1,9 @@
 /* Sisällön padding */
 article {
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 /* Navbar */
@@ -29,10 +32,9 @@ article {
 
 /* Haku */
 #haku {
-  max-width: 300px;
+  max-width: 350px;
   margin-left: 20px;
   margin-right: 20px;
-  float: center;
 }
 
 
@@ -129,6 +131,21 @@ margin-top: 10px;
   margin-right: 100px;
 }
 
+tr {
+  border-color: lightgrey;
+  border-style: solid;
+  border-width: 1px;
+}
+#poista_tuote {
+  color: red;
+  font-weight: bold;
+  text-decoration: none;
+}
+#poista_tuote:hover {
+  color: darkred;
+  font-weight: bold;
+  text-decoration: underline;
+}
 /* Tuoteryhmäsivu */
 .tuotepalkki {
   margin-left: 20px;
@@ -145,4 +162,8 @@ margin-top: 10px;
 
 .yll_loginrivi {
   padding-bottom: 20px;
+}
+
+#tuotelista {
+  margin: 30px;
 }

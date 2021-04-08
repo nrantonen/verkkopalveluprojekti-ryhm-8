@@ -1,45 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import './SearchResults.css';
 import logo from "./toimistologo.png";
 import Popup from './Popup';
 import Ostoskori from './Ostoskori';
+import {Link} from 'react-router-dom';
+import Navbar from './Navbar';
 
-const URL = 'http://localhost/verkkopalveluprojekti/';
 
-export default function Header() {
-
-    //Haku
-    const [results, setResults] = useState([]);
-    const [search, setSearch] = useState([]);
-
-    function searchProducts(e) {
-        e.preventDefault();
-        let status = 0;
-        fetch(URL + 'products/searchProducts.php', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                tuotenimi: search
-            })
-        })
-        .then(res => {
-            status = parseInt(res.status);
-            return res.json();
-        })
-        .then(
-            (res) => {
-                if (status === 200) {
-                    setResults(res);
-                } else {
-                    alert(res.error);
-                }
-            }, (error) => {
-                alert('Haussa sattui virhe.');
-            })}
+export default function Header({setCriteria, search, setSearch, URL, setCategory}) {
 
     // Kirjautumislomake
         const [isOpen, setIsOpen] = useState(false);
@@ -49,19 +18,16 @@ export default function Header() {
         }  
     const [cartShown, setCartShown] = useState(false);
     const toggleCart = () => { setCartShown(!cartShown); }
-        
-    
    
-
     return (
         <header>
             {/* Navbar */}
             {/*Logo ja otsikko*/}
             <nav className="justify-content-center navbar navbar-dark bg-dark">
-            <a className="navbar-brand" href="/">
+            <Link className="navbar-brand" to="/">
                 <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>&nbsp;&nbsp;
                 Tepon Toimistotavarat
-            </a>
+            </Link>
             </nav>
         
         {/* Kirjautuminen, rekisteröityminen, ostoskori */}
@@ -88,38 +54,27 @@ export default function Header() {
                 {cartShown && <Ostoskori handleClose={toggleCart}/>}
             </div>
             
-        {/* Hakupalkki KESKEN */}
+        {/* Hakupalkki */}
         
         <div className="input-group rounded col-12 col-xl-4 col-md px-4 py-2 mx-auto" id="haku">
-            <form onSubmit={searchProducts}>
-            <input type="text" className="form-control rounded" placeholder="Hae tuotteita..."
-            aria-describedby="search-addon" name="haku" id="haku" value={search} 
-            onChange = {e => setSearch(e.target.value)}/>
-            <button onClick="submit">
-            <i className="fa fa-search"></i></button>
-            </form>
-        </div>
-        
+            <div className="input-group">
+            <input type="text reset" className="form-control rounded-pill rounded" placeholder="Hae tuotteita..."
+            aria-describedby="search-addon" id="hakukentta" name="haku"
+            onChange = {e => setSearch(e.target.value)}/></div>
+            <div>
+            <Link onClick={setCriteria(search)} to="/hakutulokset" /* onClick={clearInput} */>
+            <i className="fa fa-search"></i></Link> 
+                    {/* Ilman välivaihetta [search, setSearch] hakusana jää kenttään, mutta kentän arvo on silti
+                     null eikä haku palauta mitään.
+                     ----> Välivaiheen avulla hakusana jää yhä kenttään toiselle sivulle siirryttäessä, mutta
+                    haku onnistuu. */}
+            </div>
         </div>
 
-        {/* Hakutulokset KESKEN */}
-        <section id="hakulista" className="row">
-        {results.map(result => (
-                <div key={result.tuotenro} className="col-5 d-flex" id="tuotekpl">
-                    <div className="osa col-6" >
-                        <p> <a href="#" id="tuotenimi">{result.tuotenimi}</a> <span id="hinta">{result.hinta} €</span></p>
-                        <p> <a href="#" id="ryhmanimi">{result.trnimi}</a></p>
-                        <p id="tuotekuvaus">{result.kuvaus}</p>  
-                        <a href="#"><i id="ostoskori" className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
-                    </div>
-                    <div className="osa col-6">
-                        <a href="#">
-                            <img className="img-thumbnail img-fluid" id="tuotekuva" src={URL + "img/"+ result.kuva}></img>
-                        </a>
-                    </div>
-                </div>
-            
-          ))} </section> 
+        {/* Tuoteryhmät */}
+        <Navbar url={URL} setCategory={setCategory}/>
+        </div>
+
         
 
         </header>
