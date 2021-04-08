@@ -1,22 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
 
-function Tuotesivu(props) {
+export default function Tuotesivu({url}) {
+  const [product, setProduct] = useState({});
+
+  let location = useLocation();
+
+  // Hae tuote
+  useEffect(async() => {
+    try {
+      const response = await fetch(url+'products/getProduct.php/'+location.pathname.slice(-1));
+      const json = await response.json();
+      if (response.ok) {
+        console.log(json);
+        setProduct(json[0]);
+      } else {
+        alert(json.error);
+      }
+    } catch (error) {
+      alert(error);
+    }
+  }, []);
+  
+
   return (
     <div className="container-fluid">
-      <h4>{props.nimi}</h4>
+      <h4>{product.tuotenimi}</h4>
       <div className="row">
         <div className="col">
-          <img src="/Nitoja.png" width="300" alt="" />
+          <img src={product.image} width="300" alt="" />
         </div>
         <div className="col">
-          <label for="kpl">Kappalemäärä:</label>
+          <label>Kappalemäärä:</label>
           <input id="tilauskpl" type="number" /><br/>
           <button>Lisää ostoskoriin</button>
         </div>
       </div>
       <div className="row">
-        <p className="col" id="tuotekuvaus">{props.kuvaus}</p>
-        <p className="col">Tekniset tiedot?</p>
+        <p id="tuotekuvaus">{product.kuvaus}</p>
       </div>
       <div className="row">
         <b>Tuotteen arvostelut:</b>
@@ -25,5 +46,3 @@ function Tuotesivu(props) {
     </div>
   );
 }
-
-export default Tuotesivu;

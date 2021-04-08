@@ -40,7 +40,7 @@ function Hakutulokset ({URL,search}) {
                     </div>
                     <div className="osa col-6">
                         <a href="#">
-                            <img className="img-thumbnail img-fluid" id="tuotekuva" src={URL + "img/"+ result.kuva}></img>
+                            <img className="img-thumbnail img-fluid" id="tuotekuva" src={URL + "img/"+ result.image}></img>
                         </a>
                     </div>
                 </div>

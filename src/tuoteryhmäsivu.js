@@ -1,27 +1,37 @@
 import React from 'react';
 import './App.css';
+import {useState, useEffect} from 'react';
 
-export default function tuoteryhma() {
+export default function Tuoteryhma({url,category}) {
+    const [products, setProducts] = useState([]);
+
+    // Hakee tuotteet
+    useEffect(async() => {
+        try {
+            //alert(category?.trnro);
+            const response = await fetch(url + 'products/getproducts.php/' + category?.trnro);
+            const json = await response.json();
+            if (response.ok) {
+                setProducts(json);
+            } else {
+                alert(json.error);
+            }
+        } catch (error) {
+            alert(error);
+        }
+    }, [category])
 
     return (
-        <main className="container">
-            <div className="row align-items-start">
-                <div className="col">
-                    <a className="" href="/tuotesivu">
-                        <img className="d-block mx-auto" width="200" src="Nitoja.png"></img>
-                    </a>
-                </div>
-                <div className="col">
-                    <a className="" href="/tuotesivu">
-                        <img className="d-block mx-auto" width="200" src="Nitoja.png"></img>
-                    </a>
-                </div>
-                <div className="col">
-                    <a className="" href="/tuotesivu">
-                        <img className="d-block mx-auto" width="200" src="Nitoja.png"></img>
-                    </a>
-                </div>
+        <div className="container">
+            <div className="row">
+                {products.map(product => (
+                    <div className="tuotepalkki col-2" key={product.tuotenro}>
+                        <img src={product.image} width="200" alt=""></img>
+                        <h3>{product.tuotenimi}</h3>
+                        <p>{product.kuvaus}</p>
+                    </div>
+                ))}
             </div>
-        </main>
+        </div>
     );
 }
