@@ -1,39 +1,52 @@
 import React from 'react';
 import './App.css';
+const URL = 'http://localhost/verkkopalveluprojekti/';
 
 export default function rekisteri() {
   return (
-    <section  className="rekisterilomake">
+    <form  action={URL + "sing in/rekisteri.php"} method="POST">
      
     <div class="row col-12">
       <div id="r1" class="col-6">
         <p>Etunimi</p>
-        <input  type="text" class="form-control" placeholder="etunimi" aria-label="First name"/>
+        <input name="etunimi" type="text" class="form-control" placeholder="etunimi" aria-label="First name" required/>
       </div>
       <div id="r1"  class="col-6">
         <p>Sukunimi</p>
-        <input  type="text" class="form-control" placeholder="sukunimi" aria-label="Last name"/>
+        <input name="sukunimi" type="text" class="form-control" placeholder="sukunimi" aria-label="Last name" required/>
       </div>
     </div>
     <div class="row col-12">
       <div id="r1"  class="col-6">
         <p>Sähköposti</p>
-        <input type="text" class="form-control" placeholder="sähköposti" aria-label="email"/>
+        <input name="email"type="email" class="form-control" placeholder="sähköposti" aria-label="email" required/>
       </div>
     </div>
+
+    <div class="row col-12">
+      <div id="r1" class="col-6">
+        <p>lähiosoite</p>
+        <input name="lahiosoite" type="text" class="form-control" placeholder="lähiosoite" aria-label="First name" required/>
+      </div>
+      <div id="r1"  class="col-6">
+        <p>postinro</p>
+        <input name="postinro" type="number" class="form-control" placeholder="postinumero" aria-label="Last name" required/>
+      </div>
+    </div>
+
       <div class="row col-12">
         <div id="r1"  class="col-6">
         <p>Salasana</p>
-      <input type="text" class="form-control" placeholder="salasana" aria-label="password"/>
+      <input name="salasana" type="password" class="form-control" name="salasana" placeholder="salasana" maxLength="30" aria-label="password" required/>
        </div>
        <div id="r1"  class="col-6">
       <p>Kirjoita salasana uudelleen.</p>
-      <input type="text" class="form-control" placeholder="salasana" aria-label="password2"/>
+      <input name="salasana2" type="password" class="form-control" name="salasana" placeholder="salasana" maxLength="30" aria-label="password2" required/>
       </div>
     </div>
     <div >
-    <button id="rekisteroidy" type="button" class="btn btn-secondary">rekisteröidy</button>
+    <button id="rekisteroidy" type="submit" class="btn btn-secondary">rekisteröidy</button>
     </div>
-</section>
+</form>
   );
 }
