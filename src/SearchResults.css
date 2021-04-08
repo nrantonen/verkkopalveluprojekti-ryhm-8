@@ -52,9 +52,17 @@
     display: inline-block; 
 }
 
-#ostoskori {
-    font-size: 40px;
-}
+/* #ostoskori {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 20px;
+    font-size: 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: gray;
+    background-color: white;
+    border-radius: 70px;
+  } */
 
 .fa-search {
     color: black;

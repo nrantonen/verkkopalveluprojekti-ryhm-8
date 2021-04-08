@@ -57,18 +57,20 @@ export default function Header({setCriteria, search, setSearch, URL, setCategory
         {/* Hakupalkki */}
         
         <div className="input-group rounded col-12 col-xl-4 col-md px-4 py-2 mx-auto" id="haku">
+                {/* hakukenttä */}
             <div className="input-group">
-            <input type="text reset" className="form-control rounded-pill rounded" placeholder="Hae tuotteita..."
-            aria-describedby="search-addon" id="hakukentta" name="haku"
-            onChange = {e => setSearch(e.target.value)}/></div>
-            <div>
-            <Link onClick={setCriteria(search)} to="/hakutulokset" /* onClick={clearInput} */>
-            <i className="fa fa-search"></i></Link> 
+                <input type="text reset" className="form-control rounded-pill rounded" placeholder="Hae tuotteita..."
+                aria-describedby="search-addon" name="haku"
+                onChange = {e => setSearch(e.target.value)}/>                
+                
+                {/* hakupainike */}
+                <Link id="hakupainike" onClick={setCriteria(search)} to="/hakutulokset">
+                <i id="kuvake" className="fa fa-search"></i></Link> 
+            </div>
                     {/* Ilman välivaihetta [search, setSearch] hakusana jää kenttään, mutta kentän arvo on silti
                      null eikä haku palauta mitään.
                      ----> Välivaiheen avulla hakusana jää yhä kenttään toiselle sivulle siirryttäessä, mutta
                     haku onnistuu. */}
-            </div>
         </div>
 
         {/* Tuoteryhmät */}
