@@ -29,7 +29,7 @@ export default function Tuoteryhma({url,category}) {
                     <div className="tuotediv col-2" key={product.tuotenro}>
                         <Link className="nav-link" 
                                     to={{
-                                        pathname: '/tuotesivu',
+                                        pathname: '/tuotesivu/' + product.tuotenro,
                                         state: {
                                             tuotenro: product.tuotenro,
                                             tuotenimi: product.tuotenimi
