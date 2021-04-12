@@ -29,7 +29,7 @@ export default function Tuotesivu({url}) {
       <h4>{product.tuotenimi}</h4>
       <div className="row">
         <div className="col">
-          <img src={product.image} width="300" alt="" />
+          <img src={url + 'img/'+product.image} width="300" alt="" />
         </div>
         <div className="col">
           <label>Kappalemäärä:</label>
