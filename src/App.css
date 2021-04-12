@@ -160,6 +160,16 @@ tr {
   font-weight: bold;
   text-decoration: underline;
 }
+#muokkaa_tuote {
+  color: green;
+  font-weight: bold;
+  text-decoration: none;
+}
+#muokkaa_tuote:hover {
+  color: darkgreen;
+  font-weight: bold;
+  text-decoration: underline;
+}
 /* Tuoteryhmäsivu */
 .tuotepalkki {
   margin-left: 20px;

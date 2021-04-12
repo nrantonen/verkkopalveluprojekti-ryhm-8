@@ -9,11 +9,16 @@ import Footer from './Footer';
 import Rekisteri from './rekisteri';
 import Hakutulokset from './Hakutulokset';
 import Yllapito from './Yllapito';
+import MuokkaaTuotteita from './MuokkaaTuotteita';
+import Tuotemuokkaus from './Tuotemuokkaus';
+
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
 
 function App() {
 
+  // Muokattava tuote
+  const [productToEdit,setProductToEdit] = useState('');
 
   // Hakupalkin toimintoja
   const [search,setSearch] = useState('');
@@ -49,7 +54,13 @@ function App() {
             exact
             />
             <Route path="/rekisteri" component={Rekisteri}/>
-          <Route path="/Yllapito" component={Yllapito}/>
+          <Route path="/Yllapito" component={Yllapito} url={URL}/>
+          <Route path="/MuokkaaTuotteita" render={() => <MuokkaaTuotteita 
+          url={URL}/>}
+          />
+          <Route path="/Tuotemuokkaus" render={() => <Tuotemuokkaus 
+          url={URL}/>}
+          />
         </Switch>
       </article>
       <Footer/>
