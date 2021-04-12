@@ -1,3 +1,10 @@
+/* Runko */
+main {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+
 /* Sisällön padding */
 article {
   padding-left: 20px;
@@ -171,9 +178,11 @@ tr {
   text-decoration: underline;
 }
 /* Tuoteryhmäsivu */
-.tuotepalkki {
+.tuotediv {
   margin-left: 20px;
-  background-color: bisque;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #cebeb1;;
 }
 
 /*Ylläpito-sivu*/

@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 
 export default function Tuoteryhma({url,category}) {
     const [products, setProducts] = useState([]);
@@ -25,10 +26,19 @@ export default function Tuoteryhma({url,category}) {
         <div className="container">
             <div className="row">
                 {products.map(product => (
-                    <div className="tuotepalkki col-2" key={product.tuotenro}>
-                        <img src={product.image} width="200" alt=""></img>
-                        <h3>{product.tuotenimi}</h3>
-                        <p>{product.kuvaus}</p>
+                    <div className="tuotediv col-2" key={product.tuotenro}>
+                        <Link className="nav-link" 
+                                    to={{
+                                        pathname: '/tuotesivu',
+                                        state: {
+                                            tuotenro: product.tuotenro,
+                                            tuotenimi: product.tuotenimi
+                                        }
+                                    }}>
+                            <img src={url + 'img/' + product.image} width="200" alt=""></img>
+                            <h3>{product.tuotenimi}</h3>
+                            <p>{product.kuvaus}</p>
+                        </Link>
                     </div>
                 ))}
             </div>
