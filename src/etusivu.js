@@ -40,7 +40,7 @@ function Kuvapalkki() {
         <div className="carousel-inner">
           {products.map((product, i) => (
             
-            <div className={'carousel-item'+(i === 0 ? ' active' : '')}>
+            <div key={i} className={'carousel-item'+(i === 0 ? ' active' : '')}>
               <Link to={{
                 pathname: '/tuotesivu/'+product.tuotenro
               }}>
