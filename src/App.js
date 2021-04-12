@@ -24,7 +24,6 @@ function App() {
   const [search,setSearch] = useState('');
   const [criteria, setCriteria] = useState(null)
   const [category, setCategory] = useState(null);
-  const [product, setProduct] = useState(null);
 
   let location = useLocation();
 
@@ -32,7 +31,6 @@ function App() {
     if (location.state!==undefined) {
       setCriteria({tuotenimi: location.state.tuotenimi});
       setCategory({trnro: location.state.trnro,trnimi: location.state.trnimi});
-      setProduct({tuotenro: location.state.tuotenro,tuotenimi: location.state.tuotenimi});
     }
   }, [location.state])
 
@@ -49,9 +47,7 @@ function App() {
             exact
           />
          <Route path="/tuotesivu" render={() => <Tuotesivu 
-            url={URL}
-            product={product}/>}
-            exact
+            url={URL}/>}
           />
           <Route path="/hakutulokset" render={() => <Hakutulokset
             URL = {URL}
