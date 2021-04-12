@@ -5,11 +5,12 @@ export default function Tuotesivu({url}) {
   const [product, setProduct] = useState({});
 
   let location = useLocation();
+  let productId = location.pathname.split('/');
 
   // Hae tuote
   useEffect(async() => {
     try {
-      const response = await fetch(url+'products/getProduct.php/'+location.pathname.slice(-1));
+      const response = await fetch(url+'products/getProduct.php/'+productId[2]);
       const json = await response.json();
       if (response.ok) {
         console.log(json);
