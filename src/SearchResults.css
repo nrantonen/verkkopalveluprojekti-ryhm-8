@@ -1,6 +1,4 @@
 #hakulista {
-    margin-left: 50px;
-    margin-right: 50px;
     padding: 10px;
 }
 
@@ -41,19 +39,36 @@
     font-size: 23px;
 }
 
-.osa {
+ .osa {
     display: inline-block;
 
 }
 
 #tuotekpl {
-    background-color: lightgrey;
+    background-color: rgb(211, 208, 208);
     margin-bottom: 20px;
     margin-right: 20px;
     padding: 20px;
-    display: inline-block;
+    display: inline-block; 
 }
 
-#ostoskori {
-    font-size: 40px;
+/* #ostoskori {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 20px;
+    font-size: 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: gray;
+    background-color: white;
+    border-radius: 70px;
+  } */
+
+.fa-search {
+    color: black;
 }
+.form-control::placeholder {
+    font-size: 0.95rem;
+    color: #aaa;
+    font-style: italic;
+  }

@@ -1,9 +1,12 @@
 import React from 'react';
+import './App.css';
+import {Link} from 'react-router-dom';
+
 
 export default function Footer() {
     return (
         <footer className="bg-dark row">
-            <div className="col-12 col-md-6">
+        <div className="col-12 col-md-6">
                 <h3>Tekijät:</h3>
                     <div id="tekijat">
                         <li>Enni Dahlström</li>
@@ -13,9 +16,9 @@ export default function Footer() {
                         <li>Jukka Keränen</li>
                     </div>
             </div>
-            <div className="col-12 col-md-6">
-                <a id="yllapitolinkki" href="/Yllapito">Ylläpito</a>
-            </div>
+          <div className="col-12 col-md-6">
+            <Link id="yllapitolinkki" to="/Yllapito">Ylläpito</Link>
+          </div>
         </footer>
     );
 }

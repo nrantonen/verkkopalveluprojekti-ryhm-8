@@ -5,11 +5,12 @@ export default function Tuotesivu({url}) {
   const [product, setProduct] = useState({});
 
   let location = useLocation();
+  let productId = location.pathname.split('/');
 
   // Hae tuote
   useEffect(async() => {
     try {
-      const response = await fetch(url+'products/getProduct.php/'+location.pathname.slice(-1));
+      const response = await fetch(url+'products/getProduct.php/'+productId[2]);
       const json = await response.json();
       if (response.ok) {
         console.log(json);
@@ -28,7 +29,7 @@ export default function Tuotesivu({url}) {
       <h4>{product.tuotenimi}</h4>
       <div className="row">
         <div className="col">
-          <img src={product.image} width="300" alt="" />
+          <img src={url + 'img/'+product.image} width="300" alt="" />
         </div>
         <div className="col">
           <label>Kappalemäärä:</label>
