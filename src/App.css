@@ -1,10 +1,5 @@
 /* Runko */
-body {
-  background-color: #7395AE;
-}
-
 main {
-  background-color: #B1A296;
   margin-left: 100px;
   margin-right: 100px;
 }
@@ -77,6 +72,11 @@ div#tekijat > li {
   list-style: none;
 }
 
+#yllapitolinkki {
+  color: white;
+}
+
+
 /* Popup style */
 .popup-box {
   position: relative;
@@ -141,5 +141,17 @@ margin-top: 10px;
   margin-left: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #cebeb1;
+  background-color: #cebeb1;;
+}
+
+/*Ylläpito-sivu*/
+
+.yll_loginform {
+  margin: auto;
+  width: 60%;
+  padding: 3em;
+}
+
+.yll_loginrivi {
+  padding-bottom: 20px;
 }

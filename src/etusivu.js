@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom';
+
+const URL = 'http://localhost/verkkopalveluprojekti/';
 
 export default function etusivu() {
     return (
@@ -16,18 +19,38 @@ export default function etusivu() {
 }
 
 function Kuvapalkki() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(async() => {
+    try {
+      const response = await fetch(URL + 'products/getproducts.php/3');
+      const json = await response.json();
+      if (response.ok) {
+        setProducts(json);
+      } else {
+        alert(json.error);
+      }
+    } catch (error) {
+      alert(error);
+    }
+  }, []);
+
     return (
       <div id="tuotepalkki" className="carousel carousel-dark slide" data-bs-ride="carousel">
         <div className="carousel-inner">
-          <div className="carousel-item active">
-            <img src="/Nitoja.png" className="d-block mx-auto" width="200" alt="..."/>
-          </div>
-          <div className="carousel-item">
-            <img src="/pöytälamppu.png" className="d-block mx-auto" width="200" alt="..."/>
-          </div>
-          <div className="carousel-item">
-            <img src="/lehtikotelo.png" className="d-block mx-auto" width="200" alt="..."/>
-          </div>
+          {products.map((product, i) => (
+            
+            <div className={'carousel-item'+(i === 0 ? ' active' : '')}>
+              <Link to={{
+                pathname: '/tuotesivu/'+product.tuotenro
+              }}>
+                <img src={product.image} className="d-block mx-auto" width="200" alt=""/>
+                <div className="carousel-caption">
+                  <h4>{product.tuotenimi}</h4>
+                </div>
+              </Link>
+            </div>
+          ))}
         </div>
         <button className="carousel-control-prev" type="button" data-bs-target="#tuotepalkki" data-bs-slide="prev">
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>
