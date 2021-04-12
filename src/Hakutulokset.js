@@ -12,9 +12,9 @@ function Hakutulokset ({URL,search}) {
                 if (search.length < 1) {
                     setFeedback("Rajaa hakutuloksia kirjoittamalla jotain hakukenttään.");
                 } else if (search.length > 0 && results.length > 0) {
-                    setFeedback("Hakusanalla "+search+ " löytyy "+results.length+" tuotetta")
+                    setFeedback("Hakusanalla "+ search + " löytyy "+results.length+" tuotetta:");
                 } else {
-                    setFeedback("Tuotteita ei löytynyt hakusanalla "+search+". Kokeile toista hakusanaa.")
+                    setFeedback("Tuotteita ei löytynyt hakusanalla "+search+". Kokeile toista hakusanaa.");
                 }
             } else {
                 alert(json.error);
@@ -27,18 +27,17 @@ function Hakutulokset ({URL,search}) {
 
     return (
         <section id="hakulista" className="row">
-            <h3>Tuotehaku</h3>
-            {/* <h2>Hakusanalla <i>{search}</i> löytyy {results.length} tuotetta</h2> */}
-            <h4>{feedback}</h4>
+            <h3 className="col-12">Tuotehaku</h3>
+            <h5 className="col-12">{feedback}</h5>
             {results.map(result => (
-                <div key={result.tuotenro} className="col-5 d-flex" id="tuotekpl">
-                    <div className="osa col-6" >
-                        <p> <a href="#" id="tuotenimi">{result.tuotenimi}</a> <span id="hinta">{result.hinta} €</span></p>
+                <div key={result.tuotenro} className="flex-row col-12 col-lg-5" id="tuotekpl">
+                <p className="col-12"> <a href="#" id="tuotenimi">{result.tuotenimi}</a> <span id="hinta">{result.hinta} €</span></p>
+                <div id ="tuotetiedot" className="osa col-12 col-sm-6" >
                         <p> <a href="#" id="ryhmanimi">{result.trnimi}</a></p>
-                        <p id="tuotekuvaus">{result.kuvaus}</p>  
-                        <a href="#"><i id="ostoskori" className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
+                        <p id="tuotekuvaus">{result.kuvaus}</p>
+
                     </div>
-                    <div className="osa col-6">
+                    <div className="osa col-12 col-sm-6 float-sm-right-center">
                         <a href="#">
                             <img className="img-thumbnail img-fluid" id="tuotekuva" src={URL + "img/"+ result.image}></img>
                         </a>

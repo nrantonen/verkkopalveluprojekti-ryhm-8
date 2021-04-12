@@ -37,6 +37,20 @@ article {
   margin-right: 20px;
 }
 
+#hakupainike {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 5px;
+  font-size: 20px;
+  text-shadow: 0 0 5px #000000;
+}
+#kuvake {
+  color: white;
+}
+#kuvake:hover {
+  color: #000;
+}
+
 
 /* Etusivun tuotepalkille reunaviivat */
 #tuotepalkki {
