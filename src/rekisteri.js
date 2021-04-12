@@ -4,8 +4,8 @@ const URL = 'http://localhost/verkkopalveluprojekti/';
 
 export default function rekisteri() {
   return (
-    <form  action={URL + "sing in/rekisteri.php"} method="POST">
-     
+    <form  action={URL + "register/rekisteri.php"} method="POST">
+      
     <div class="row col-12">
       <div id="r1" class="col-6">
         <p>Etunimi</p>
@@ -30,7 +30,7 @@ export default function rekisteri() {
       </div>
       <div id="r1"  class="col-6">
         <p>postinro</p>
-        <input name="postinro" type="number" class="form-control" placeholder="postinumero" aria-label="Last name" required/>
+        <input name="postinro" type="number" maxLength="6" minLength="6" class="form-control" placeholder="postinumero" aria-label="Last name" required/>
       </div>
     </div>
 
@@ -41,7 +41,7 @@ export default function rekisteri() {
        </div>
        <div id="r1"  class="col-6">
       <p>Kirjoita salasana uudelleen.</p>
-      <input name="salasana2" type="password" class="form-control" name="salasana" placeholder="salasana" maxLength="30" aria-label="password2" required/>
+      <input name="salasana2" type="password" class="form-control" name="salasana" placeholder="salasana" maxLength="30" aria-label="password2" />
       </div>
     </div>
     <div >
