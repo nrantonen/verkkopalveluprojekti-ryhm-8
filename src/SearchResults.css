@@ -17,7 +17,6 @@
 
 #tuotenimi:hover {
     text-decoration: underline;
-    color: gray;
 }
 
 #ryhmanimi {
@@ -27,11 +26,13 @@
     color: gray;
     text-decoration: none;
 }
+#ryhmanimi:hover {
+    text-decoration: underline;
+}
 
 #tuotekuva {
     height: 200px;
     display: inline-block;
-    background-color: white;
 }
 
 #hinta {

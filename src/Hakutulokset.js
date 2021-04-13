@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import {Link} from 'react-router-dom';
 
 function Hakutulokset ({URL,search}) {
     const [results, setResults] = useState([]);
@@ -31,11 +32,27 @@ function Hakutulokset ({URL,search}) {
             <h5 className="col-12">{feedback}</h5>
             {results.map(result => (
                 <div key={result.tuotenro} className="flex-row col-12 col-lg-5" id="tuotekpl">
-                <p className="col-12"> <a href="#" id="tuotenimi">{result.tuotenimi}</a> <span id="hinta">{result.hinta} €</span></p>
+                <p className="col-12"> 
+                <Link id="tuotenimi" 
+                    to={'/tuotesivu/' + result.tuotenro}>
+                        {result.tuotenimi}
+                </Link> 
+                    <span id="hinta">  {result.hinta} €</span></p>
                 <div id ="tuotetiedot" className="osa col-12 col-sm-6" >
-                        <p> <a href="#" id="ryhmanimi">{result.trnimi}</a></p>
-                        <p id="tuotekuvaus">{result.kuvaus}</p>
+                    <p>
+                        <Link 
+                            id="ryhmanimi"
+                            to={{
+                                pathname: '/tuoteryhmäsivu',
+                                state: {
+                                    trnro: result.trnro,
+                                    trnimi: result.trnimi
+                                }
+                            }}>{result.trnimi}
+                        </Link>
+                    </p>
 
+                    <p id="tuotekuvaus">{result.kuvaus}</p>  
                     </div>
                     <div className="osa col-12 col-sm-6 float-sm-right-center">
                         <a href="#">
