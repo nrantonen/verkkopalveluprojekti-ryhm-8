@@ -32,6 +32,7 @@ export default function Tuotesivu({url}) {
           <img src={url + 'img/'+product.image} width="300" alt="" />
         </div>
         <div className="col">
+          <h5>{product.hinta} €</h5>
           <label>Kappalemäärä:</label>
           <input id="tilauskpl" type="number" /><br/>
           <button>Lisää ostoskoriin</button>
