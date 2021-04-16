@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 
-export default function MuokkaaTuotteita({url, productToEdit, setProductToEdit}) {
+export default function MuokkaaTuotteita({url}) {
     const [products, setProducts] = useState([]);
  
     useEffect(async() => {
@@ -56,12 +56,12 @@ export default function MuokkaaTuotteita({url, productToEdit, setProductToEdit})
             <table id="tuotelista">
                 <thead>
                     <tr className="row">
-                        <th className="col">Tuotenro</th>
-                        <th className="col">Nimi</th>
-                        <th className="col">Hinta</th>
-                        <th className="col">Tuoteryhmä</th>
-                        <th className="col">Kuvaus</th>
-                        <th className="col"></th>
+                        <th className="col-1">Tuotenro</th>
+                        <th className="col-2">Nimi</th>
+                        <th className="col-2">Hinta</th>
+                        <th className="col-1">Tuoteryhmä</th>
+                        <th className="col-4">Kuvaus</th>
+                        <th className="col-2"></th>
                     </tr>
                     </thead> 
                     <tbody>

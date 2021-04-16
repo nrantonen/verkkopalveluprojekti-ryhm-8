@@ -17,9 +17,6 @@ const URL = 'http://localhost/verkkopalveluprojekti/';
 
 function App() {
 
-  // Muokattava tuote
-  const [productToEdit,setProductToEdit] = useState('');
-
   // Hakupalkin toimintoja
   const [search,setSearch] = useState('');
   const [criteria, setCriteria] = useState(null)
