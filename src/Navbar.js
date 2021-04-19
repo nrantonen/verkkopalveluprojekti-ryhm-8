@@ -27,7 +27,7 @@ import {Link} from 'react-router-dom';
         <nav className="navbar navbar-expand-sm navbar-light bg-light col-12 col-lg">
                 <div className="container-fluid">
                 <button className="navbar-toggler nav-item" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span>Tuoteryhmät <i class="fa fa-caret-down" aria-hidden="true"></i></span>
+                    <span>Tuoteryhmät <i className="fa fa-caret-down" aria-hidden="true"></i></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
