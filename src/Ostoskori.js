@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Ostoskori() {
+export default function Ostoskori({cart}) {
   return (
     <div id="ostoskori" className="box ZIndex">
       <p><b>Ostoskori</b></p>
@@ -9,7 +9,7 @@ export default function Ostoskori() {
         {/* Placeholder */}
         <Korituote />
       </ul>
-      <p><b>Summa: 999€</b></p>
+      <p><b>Summa: </b></p>
       <button>Muokkaa</button>
     </div>
   )

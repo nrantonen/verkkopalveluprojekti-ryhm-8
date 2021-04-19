@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 import Navbar from './Navbar';
 
 
-export default function Header({setCriteria, search, setSearch, URL, setCategory}) {
+export default function Header({setCriteria, search, setSearch, URL, setCategory, cart}) {
 
     // Kirjautumislomake
         const [isOpen, setIsOpen] = useState(false);
@@ -51,7 +51,7 @@ export default function Header({setCriteria, search, setSearch, URL, setCategory
                 {/* Rekisteröidy */}   
                 <a id="rekisteröityminen" href="/rekisteri">Rekisteröidy</a>
                 <a href="#" onClick={toggleCart}><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
-                {cartShown && <Ostoskori handleClose={toggleCart}/>}
+                {cartShown && <Ostoskori cart={cart} handleClose={toggleCart}/>}
             </div>
             
         {/* Hakupalkki */}

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router';
 
 export default function Tuotesivu({url}) {
   const [product, setProduct] = useState({});
+  const [cart, setCart] = useState([]);
 
   let location = useLocation();
   let productId = location.pathname.split('/');
@@ -13,7 +14,7 @@ export default function Tuotesivu({url}) {
       const response = await fetch(url+'products/getProduct.php/'+productId[2]);
       const json = await response.json();
       if (response.ok) {
-        console.log(json);
+        //console.log(json);
         setProduct(json[0]);
       } else {
         alert(json.error);
@@ -35,7 +36,7 @@ export default function Tuotesivu({url}) {
           <h5>{product.hinta} €</h5>
           <label>Kappalemäärä:</label>
           <input id="tilauskpl" type="number" /><br/>
-          <button>Lisää ostoskoriin</button>
+          <button onClick={e => addToCart(product)}>Lisää ostoskoriin</button>
         </div>
       </div>
       <div className="row">
@@ -47,4 +48,10 @@ export default function Tuotesivu({url}) {
       
     </div>
   );
+
+  function addToCart(product) {
+    const newCart = [...cart, product];
+    setCart(newCart);
+    localStorage.setItem('cart', JSON.stringify(newCart));
+  }
 }
