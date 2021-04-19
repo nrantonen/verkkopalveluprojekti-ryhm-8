@@ -31,8 +31,8 @@ export default function Header({setCriteria, search, setSearch, URL, setCategory
             </nav>
         
         {/* Kirjautuminen, rekisteröityminen, ostoskori */}
-        <div className=" d-flex flex-row-reverse p-2 bg-light">
-            <div className="pt-2 col-12 col-xl-4">
+        <div className="flex-row-reverse row m-1 p-2 bg-light">
+            <div className="pt-2 col-12 col-md col-lg">
                 {/* Kirjaudu */}
                 <a id="kirjautuminen" href="#" onClick={togglePopup}>Kirjaudu</a>
                 {isOpen && <Popup
@@ -55,24 +55,14 @@ export default function Header({setCriteria, search, setSearch, URL, setCategory
             </div>
             
         {/* Hakupalkki */}
-        
-        <div className="input-group rounded col-12 col-xl-4 col-md px-4 py-2 mx-auto" id="haku">
-                {/* hakukenttä */}
-            <div className="input-group">
-                <input type="text reset" className="form-control rounded-pill rounded" placeholder="Hae tuotteita..."
+            <div className="input-group form-inline col col-md col-lg px-4 py-2 mx-auto" id="haku">
+                <input type="search" className="form-control rounded-pill rounded" placeholder="Hae tuotteita..."
                 aria-describedby="search-addon" name="haku"
                 onChange = {e => setSearch(e.target.value)}/>                
-                
-                {/* hakupainike */}
                 <Link id="hakupainike" onClick={setCriteria(search)} to="/hakutulokset">
                 <i id="kuvake" className="fa fa-search"></i></Link> 
             </div>
-                    {/* Ilman välivaihetta [search, setSearch] hakusana jää kenttään, mutta kentän arvo on silti
-                     null eikä haku palauta mitään.
-                     ----> Välivaiheen avulla hakusana jää yhä kenttään toiselle sivulle siirryttäessä, mutta
-                    haku onnistuu. */}
-        </div>
-
+    
         {/* Tuoteryhmät */}
         <Navbar url={URL} setCategory={setCategory}/>
         </div>
