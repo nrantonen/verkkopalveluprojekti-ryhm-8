@@ -11,6 +11,7 @@ import Hakutulokset from './Hakutulokset';
 import Yllapito from './Yllapito';
 import MuokkaaTuotteita from './MuokkaaTuotteita';
 import Tuotemuokkaus from './Tuotemuokkaus';
+import Yll_etusivu from './Yll_etusivu';
 
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
@@ -19,7 +20,7 @@ function App() {
 
   // Hakupalkin toimintoja
   const [search,setSearch] = useState('');
-  const [criteria, setCriteria] = useState(null)
+  const [criteria, setCriteria] = useState(null);
   const [category, setCategory] = useState(null);
 
   let location = useLocation();
@@ -29,7 +30,13 @@ function App() {
       setCriteria({tuotenimi: location.state.tuotenimi});
       setCategory({trnro: location.state.trnro,trnimi: location.state.trnimi});
     }
-  }, [location.state])
+  }, [location.state]);
+
+
+  //Ylläpito login
+  const [yllapito,setYllapito] = useState(null);
+
+
 
   return (
 
@@ -53,13 +60,20 @@ function App() {
             exact
             />
             <Route path="/rekisteri" component={Rekisteri}/>
-          <Route path="/Yllapito" component={Yllapito} url={URL}/>
+          <Route path="/Yllapito" render={() =>
+            <Yllapito
+              setYllapito = {setYllapito}
+              URL={URL} />}
+          />
           <Route path="/MuokkaaTuotteita" render={() => <MuokkaaTuotteita 
           url={URL}/>}
           />
           <Route path="/Tuotemuokkaus" render={() => <Tuotemuokkaus 
           url={URL}/>}
           />
+          <Route path="/Yll_etusivu" exact render={() =>
+            <Yll_etusivu yllapito={yllapito} />
+            } />
         </Switch>
       </article>
       <Footer/>
