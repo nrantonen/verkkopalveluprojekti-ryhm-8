@@ -26,14 +26,14 @@ export default function Yllapito({setYllapito}) {
             },
             body: formData
         }
-
+        console.log(URL + 'login/loginyllapitaja.php');
         const response = await fetch(URL + 'login/loginyllapitaja.php',config);
         const json = await response.json();
 
         if (response.ok) {
             setYllapito(json);
             //Redirect sivulle
-            history.push('/');
+            history.push('/Yll_etusivu');
         } else {
             alert("Virhe kirjautumisessa.");
         }
