@@ -38,7 +38,7 @@ export default function Header({setCriteria, search, setSearch, URL, setCategory
                 {isOpen && <Popup
                 content={<>
                     <b>Kirjautuminen</b>
-                    <form action={URL + "login/login.php"} method="POST">
+                    <form action={URL + "login/loginasiakas.php"} method="POST">
                         <input type="text" placeholder="Sähköpostiosoite" name="email" maxLength="30" required />
                         <input type="password" placeholder="Salasana" name="salasana" maxLength="30" required />
                         <input type="submit" value="Kirjaudu sisään" /><br/>
