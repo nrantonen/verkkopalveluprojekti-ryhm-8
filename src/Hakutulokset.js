@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from "react";
 import {Link} from 'react-router-dom';
 
-function Hakutulokset ({URL,search}) {
+function Hakutulokset ({url,search}) {
     const [results, setResults] = useState([]);
     const [feedback, setFeedback] = useState('');
     useEffect(async() => {
         try {
-            const response = await fetch(URL + 'products/searchProducts.php/' + search);
+            const response = await fetch(url + 'products/searchProducts.php/' + search);
             const json = await response.json();
             if (response.ok) {
                 setResults(json);
@@ -56,7 +56,7 @@ function Hakutulokset ({URL,search}) {
                     </div>
                     <div className="osa col-12 col-sm-6 float-sm-right-center">
                         <a href="#">
-                            <img className="img-thumbnail img-fluid" id="tuotekuva" src={URL + "img/"+ result.image}></img>
+                            <img className="img-thumbnail img-fluid" id="tuotekuva" src={url + "img/"+ result.image}></img>
                         </a>
                     </div>
                 </div>

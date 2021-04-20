@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-
-     const url = 'http://localhost/verkkopalveluprojekti/';    
+ 
     
-    export default function Navbar({setCategory}) {
+    export default function Navbar({setCategory, url}) {
     // Kategorioiden nouto    
     const [categories, setCategories] = useState([]);
 

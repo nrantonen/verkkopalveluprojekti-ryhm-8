@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 import Navbar from './Navbar';
 import {useHistory} from 'react-router';
 
-export default function Header({setCriteria, search, setSearch, URL, setCategory, cart, setAsiakas}) {
+export default function Header({setCriteria, search, setSearch, url, setCategory, cart, setAsiakas}) {
 
     // Kirjautumislomake
         const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +39,7 @@ export default function Header({setCriteria, search, setSearch, URL, setCategory
             }
 
             try {
-                const response = await fetch(URL + 'login/loginasiakas.php',config);
+                const response = await fetch(url + 'login/loginasiakas.php',config);
                 const json = await response.json();
 
                 if (response.ok) {
@@ -103,7 +103,7 @@ export default function Header({setCriteria, search, setSearch, URL, setCategory
             </div>
     
         {/* Tuoteryhmät */}
-        <Navbar url={URL} setCategory={setCategory}/>
+        <Navbar url={url} setCategory={setCategory}/>
         </div>
 
         

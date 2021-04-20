@@ -3,8 +3,8 @@ import './App.css';
 import {Link} from 'react-router-dom';
 import {useHistory} from 'react-router';
 
-const URL = 'http://localhost/verkkopalveluprojekti/';
-export default function Yllapito({setYllapito}) {
+
+export default function Yllapito({setYllapito,url}) {
     const [yll_email, setYllEmail] = useState('matti.yllapitaja@kauppa.fi');
     const [yll_salasana, setYllSalasana] = useState('matti75v');
 
@@ -27,7 +27,7 @@ export default function Yllapito({setYllapito}) {
         }
 
         try {
-            const response = await fetch(URL + 'login/loginyllapitaja.php',config);
+            const response = await fetch(url + 'login/loginyllapitaja.php',config);
             const json = await response.json();
 
             if (response.ok) {
@@ -48,7 +48,6 @@ export default function Yllapito({setYllapito}) {
                 <h5>Kirjaudu ylläpitäjänä</h5>
             </div>
             <div className="col-12">
-            {/* <form action={URL + "login/loginyllapitaja.php"} method="POST"> */}
             <form onSubmit={login}>
                 <div className="yll_loginrivi">
                     <label>Sähköpostiosoite:</label><br/>

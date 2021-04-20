@@ -44,7 +44,7 @@ function App() {
   return (
 
     <>
-      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas} URL={URL}/>
+      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas}/>
       <article>
         <Switch>
           <Route path="/" component={Etusivu} exact render={() =>
@@ -59,7 +59,7 @@ function App() {
             url={URL}/>}
           />
           <Route path="/hakutulokset" render={() => <Hakutulokset
-            URL = {URL}
+            url = {URL}
             search = {search}
             setCriteria = {setCriteria}/>}
             exact
@@ -68,7 +68,7 @@ function App() {
           <Route path="/Yllapito" render={() =>
             <Yllapito
               setYllapito = {setYllapito}
-              URL={URL} />}
+              url={URL} />}
           />
           <Route path="/MuokkaaTuotteita" render={() => <MuokkaaTuotteita 
           url={URL}/>}
