@@ -36,15 +36,20 @@ function App() {
   //Ylläpito login
   const [yllapito,setYllapito] = useState(null);
 
+  //Asiakas login
+  const [asiakas,setAsiakas] = useState(null);
+
 
 
   return (
 
     <>
-      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory}/>
+      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas} URL={URL}/>
       <article>
         <Switch>
-          <Route path="/" component={Etusivu} exact/>
+          <Route path="/" component={Etusivu} exact render={() =>
+            <Etusivu asiakas={asiakas} /> }
+          /> 
           <Route path="/tuoteryhmäsivu" render={() => <Ryhma 
             url={URL}
             category={category}/>}

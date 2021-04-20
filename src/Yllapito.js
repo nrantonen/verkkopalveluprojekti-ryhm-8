@@ -2,7 +2,6 @@ import React,{useState} from 'react';
 import './App.css';
 import {Link} from 'react-router-dom';
 import {useHistory} from 'react-router';
-//import Yll_etusivu from './Yll_etusivu';
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
 export default function Yllapito({setYllapito}) {
@@ -26,18 +25,21 @@ export default function Yllapito({setYllapito}) {
             },
             body: formData
         }
-        console.log(URL + 'login/loginyllapitaja.php');
-        const response = await fetch(URL + 'login/loginyllapitaja.php',config);
-        const json = await response.json();
 
-        if (response.ok) {
-            setYllapito(json);
-            //Redirect sivulle
-            history.push('/Yll_etusivu');
-        } else {
-            alert("Virhe kirjautumisessa.");
+        try {
+            const response = await fetch(URL + 'login/loginyllapitaja.php',config);
+            const json = await response.json();
+
+            if (response.ok) {
+                setYllapito(json);
+                //Redirect sivulle
+                history.push('/Yll_etusivu');
+            } else {
+                alert("Virhe kirjautumisessa.");
+            }
+        } catch (error) {
+            alert(error);
         }
-
     }
 
     return(

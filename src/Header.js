@@ -6,9 +6,9 @@ import Popup from './Popup';
 import Ostoskori from './Ostoskori';
 import {Link} from 'react-router-dom';
 import Navbar from './Navbar';
+import {useHistory} from 'react-router';
 
-
-export default function Header({setCriteria, search, setSearch, URL, setCategory, cart}) {
+export default function Header({setCriteria, search, setSearch, URL, setCategory, cart, setAsiakas}) {
 
     // Kirjautumislomake
         const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +16,45 @@ export default function Header({setCriteria, search, setSearch, URL, setCategory
         const togglePopup = () => {
           setIsOpen(!isOpen);
         }  
+
+        const [email, setEmail] = useState('testi@testi.com');
+        const [salasana, setSalasana] = useState('test12');
+
+        let history = useHistory();
+
+        async function login(e) {
+            e.preventDefault();
+            const formData = new FormData();
+
+            formData.append('email',email);
+            formData.append('salasana',salasana);
+
+            const config = {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Accept' : 'application/json',
+                },
+                body: formData
+            }
+
+            try {
+                const response = await fetch(URL + 'login/loginasiakas.php',config);
+                const json = await response.json();
+
+                if (response.ok) {
+                    setAsiakas(json);
+                    //Redirect sivulle
+                    history.push('/');
+                } else {
+                    alert("Virhe kirjautumisessa.");
+                }
+            } catch (error) {
+                alert(error);
+            }
+        }
+
+
     const [cartShown, setCartShown] = useState(false);
     const toggleCart = () => { setCartShown(!cartShown); }
    
@@ -38,9 +77,9 @@ export default function Header({setCriteria, search, setSearch, URL, setCategory
                 {isOpen && <Popup
                 content={<>
                     <b>Kirjautuminen</b>
-                    <form action={URL + "login/loginasiakas.php"} method="POST">
-                        <input type="text" placeholder="Sähköpostiosoite" name="email" maxLength="30" required />
-                        <input type="password" placeholder="Salasana" name="salasana" maxLength="30" required />
+                    <form onSubmit={login}>
+                        <input type="text" placeholder="Sähköpostiosoite" name="email" value={email} onChange={e => setEmail(e.target.value)} maxLength="30" required />
+                        <input type="password" placeholder="Salasana" name="salasana" value={salasana} onChange={e => setSalasana(e.target.value)} maxLength="30" required />
                         <input type="submit" value="Kirjaudu sisään" /><br/>
                     </form>
                     <a href="#">Unohditko salasanan?</a>
