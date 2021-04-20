@@ -1,12 +1,16 @@
 import React,{useState} from 'react';
 import './App.css';
-import {Link} from 'react-router-dom';
-import {useHistory} from 'react-router';
+import {useHistory, Redirect} from 'react-router';
 
 
-export default function Yllapito({setYllapito,url}) {
+export default function Yllapito({setYllapito,url,yllapito}) {
+    /* if (yllapito !== null) {
+        return <Redirect to="/Yll_etusivu" />
+    } */
+
     const [yll_email, setYllEmail] = useState('matti.yllapitaja@kauppa.fi');
     const [yll_salasana, setYllSalasana] = useState('matti75v');
+
 
     let history = useHistory();
 
@@ -60,10 +64,6 @@ export default function Yllapito({setYllapito,url}) {
                 <div><input type="submit" value="Kirjaudu sisään" /></div>
             </form>
             </div>
-            <div>
-
-            <Link to="/MuokkaaTuotteita">Hallinnoi tuotteita</Link>
-        </div>
         </section>
     );
 }

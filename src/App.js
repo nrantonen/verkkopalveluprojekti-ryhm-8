@@ -12,6 +12,7 @@ import Yllapito from './Yllapito';
 import MuokkaaTuotteita from './MuokkaaTuotteita';
 import Tuotemuokkaus from './Tuotemuokkaus';
 import Yll_etusivu from './Yll_etusivu';
+import Yll_logout from './Yll_logout';
 
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
@@ -68,7 +69,8 @@ function App() {
           <Route path="/Yllapito" render={() =>
             <Yllapito
               setYllapito = {setYllapito}
-              url={URL} />}
+              url={URL}
+              yllapito={yllapito} />}
           />
           <Route path="/MuokkaaTuotteita" render={() => <MuokkaaTuotteita 
           url={URL}/>}
@@ -79,6 +81,10 @@ function App() {
           <Route path="/Yll_etusivu" exact render={() =>
             <Yll_etusivu yllapito={yllapito} />
             } />
+          <Route path="/yll_logout" render={() =>
+            <Yll_logout setYllapito={setYllapito}
+            url={URL} />
+          } />
         </Switch>
       </article>
       <Footer/>
