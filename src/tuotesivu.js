@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 
-export default function Tuotesivu({url}) {
+export default function Tuotesivu({url, addToCart}) {
   const [product, setProduct] = useState({});
-  const [cart, setCart] = useState([]);
 
   let location = useLocation();
   let productId = location.pathname.split('/');
@@ -48,10 +47,4 @@ export default function Tuotesivu({url}) {
       
     </div>
   );
-
-  function addToCart(product) {
-    const newCart = [...cart, product];
-    setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
-  }
 }
