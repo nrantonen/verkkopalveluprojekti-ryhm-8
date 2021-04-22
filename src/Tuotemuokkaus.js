@@ -24,12 +24,12 @@ export default function Tuotemuokkaus({url}) {
         alert(error);
       }
     } getProductToEdit();
-    }, [url, tuotenro]);
+    }, []);
 
     return (
         <section> 
           <h2>Muokkaa tuotteen #{product.tuotenro} tietoja</h2>
-        <form action={url + "products/editProduct.php"}method="post">                    
+        <form action={url + "products/editProduct.php"} method="post">                    
           <div className="d-flex row form-inline">
             <div className="col-12 col-md">
                 <div>
@@ -84,4 +84,3 @@ export default function Tuotemuokkaus({url}) {
     
     
 }
-

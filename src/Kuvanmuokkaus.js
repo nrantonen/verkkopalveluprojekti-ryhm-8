@@ -49,7 +49,7 @@ export default function Kuvanmuokkaus({url}) {
     return (
         <div className="row mb-5">
             <h3 className="col-12 text-md-center">Muokkaa tuotteen <b>{product.tuotenimi}</b> kuvaa</h3> 
-            <div className="col-sm-6 my-md-5 justify-content-md-end d-flex">
+            <div className="col-sm-6 my-md-5 justify-content-md-end d-flex ">
             {product.image != null ? (
               <div>
                 <h5 className="col-12">Nykyinen kuva: <i>{product.image}</i></h5>
