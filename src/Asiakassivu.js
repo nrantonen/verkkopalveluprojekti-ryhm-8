@@ -14,7 +14,7 @@ export default function Asiakassivu({asiakas}) {
             <div>
                 <Link to="#">Tilaukset</Link>
             </div>
-            <Link to="#">Kirjaudu ulos</Link>
+            <Link to="/Asiakaslogout">Kirjaudu ulos</Link>
         </div>
 
     )
