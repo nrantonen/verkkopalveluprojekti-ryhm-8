@@ -53,6 +53,9 @@ export default function MuokkaaTuotteita({url}) {
     return (
         <section>
         <div>
+          <Link to="/Yll_etusivu">Palaa ylläpitäjän etusivulle</Link>
+        </div>
+        <div>
             <table id="tuotelista">
                 <thead>
                     <tr className="row">

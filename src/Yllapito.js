@@ -1,12 +1,11 @@
 import React,{useState} from 'react';
 import './App.css';
-import {useHistory, Redirect} from 'react-router';
+import {useHistory} from 'react-router';
+import {Redirect} from 'react-router-dom';
 
 
 export default function Yllapito({setYllapito,url,yllapito}) {
-    /* if (yllapito !== null) {
-        return <Redirect to="/Yll_etusivu" />
-    } */
+
 
     const [yll_email, setYllEmail] = useState('matti.yllapitaja@kauppa.fi');
     const [yll_salasana, setYllSalasana] = useState('matti75v');
@@ -47,23 +46,36 @@ export default function Yllapito({setYllapito,url,yllapito}) {
     }
 
     return(
-        <section className="yll_loginform row">
-            <div className="col-12">
-                <h5>Kirjaudu ylläpitäjänä</h5>
-            </div>
-            <div className="col-12">
-            <form onSubmit={login}>
-                <div className="yll_loginrivi">
-                    <label>Sähköpostiosoite:</label><br/>
-                    <input type="text" placeholder="Sähköpostiosoite" name="yll_email" value={yll_email} onChange={e => setYllEmail(e.target.value)} maxLength="30" required />
-                </div>
-                <div className="yll_loginrivi">
-                    <label>Salasana:</label><br/>
-                    <input type="password" placeholder="Salasana" name="yll_salasana" value={yll_salasana} onChange={e => setYllSalasana(e.target.value)} maxLength="100" required />
-                </div>
-                <div><input type="submit" value="Kirjaudu sisään" /></div>
-            </form>
-            </div>
-        </section>
+        <>
+        {yllapito == null && 
+            <>
+                <section className="yll_loginform row">
+                    <div className="col-12">
+                        <h5>Kirjaudu ylläpitäjänä</h5>
+                    </div>
+                    <div className="col-12">
+
+                    <form onSubmit={login}>
+                        <div className="yll_loginrivi">
+                            <label>Sähköpostiosoite:</label><br/>
+                            <input type="text" placeholder="Sähköpostiosoite" name="yll_email" value={yll_email} onChange={e => setYllEmail(e.target.value)} maxLength="30" required />
+                        </div>
+                        <div className="yll_loginrivi">
+                            <label>Salasana:</label><br/>
+                            <input type="password" placeholder="Salasana" name="yll_salasana" value={yll_salasana} onChange={e => setYllSalasana(e.target.value)} maxLength="100" required />
+                        </div>
+                        <div><input type="submit" value="Kirjaudu sisään" /></div>
+                    </form>
+                    </div>
+                </section>
+            </>
+        }
+        {
+            yllapito != null &&
+            <>
+                <Redirect to="/Yll_etusivu" />
+            </>
+        }
+        </>
     );
 }

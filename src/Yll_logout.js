@@ -1,17 +1,17 @@
 import React,{useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
-export default function Yll_logout({setYllapito,url}) {
+export default function Yll_logout({setYllapito,url,yllapito}) {
     useEffect(() => {
-        async function logout() {
+        function logout() {
             const config = {
                 method: 'GET',
                 credentials: 'include'
             }
 
             try {
-                await fetch(url + 'login/logoutyllapitaja.php',config);
-                setYllapito(null)
+                fetch(url + 'login/logoutyllapitaja.php',config);
+                setYllapito(null);
             } catch (error) {
                 alert(error);
               }
@@ -20,8 +20,16 @@ export default function Yll_logout({setYllapito,url}) {
           }, [])
     return (
         <div>
-            <p>Ylläpitäjä kirjautunut ulos.</p>
-            <Link to="/">Mene etusivulle</Link>
+        {/* <p>Ylläpitäjä kirjautunut ulos.</p>
+            <Link to="/">Siirry etusivulle</Link> */}
+            <>
+            {
+            yllapito == null &&
+            <>
+                <Redirect to="/" />
+            </>
+        }
+        </>
         </div>
     )
 }

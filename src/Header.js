@@ -45,7 +45,7 @@ export default function Header({setCriteria, search, setSearch, url, setCategory
                 if (response.ok) {
                     setAsiakas(json);
                     //Redirect sivulle
-                    history.push('/');
+                    history.push('/Asiakas');
                 } else {
                     alert("Virhe kirjautumisessa.");
                 }
