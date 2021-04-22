@@ -14,6 +14,7 @@ import Tuotemuokkaus from './Tuotemuokkaus';
 import Yll_etusivu from './Yll_etusivu';
 import Yll_logout from './Yll_logout';
 import Asiakassivu from './Asiakassivu';
+import Asiakaslogout from './Asiakaslogout';
 
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
@@ -50,7 +51,7 @@ function App() {
   return (
 
     <>
-      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas} cart={cart}/>
+      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas} asiakas={asiakas} cart={cart}/>
       <article>
         <Switch>
           <Route path="/" component={Etusivu} exact render={() =>
@@ -90,11 +91,18 @@ function App() {
           />
           <Route path="/Yll_logout" render={() =>
             <Yll_logout setYllapito={setYllapito}
+            yllapito={yllapito}
             url={URL} />
           } />
           <Route path="/Asiakas" render={() =>
             <Asiakassivu asiakas={asiakas}
+            setAsiakas={setAsiakas}
             url={URL} />
+          } />
+          <Route path="/Asiakaslogout" render={() =>
+            <Asiakaslogout setAsiakas={setAsiakas}
+            asiakas={asiakas}
+            url={URL}/>
           } />
         </Switch>
       </article>

@@ -1,7 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link,Redirect } from 'react-router-dom';
 
-export default function Asiakassivu() {
+export default function Asiakassivu({asiakas}) {
+    if(asiakas === null) {
+        return <Redirect to="/" />
+    }
     return (
         <div>
             <h5>Tilinhallinta</h5>

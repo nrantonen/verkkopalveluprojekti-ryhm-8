@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 import Navbar from './Navbar';
 import {useHistory} from 'react-router';
 
-export default function Header({setCriteria, search, setSearch, url, setCategory, cart, setAsiakas}) {
+export default function Header({setCriteria, search, setSearch, url, setCategory, cart, setAsiakas, asiakas}) {
 
     // Kirjautumislomake
         const [isOpen, setIsOpen] = useState(false);
@@ -77,12 +77,38 @@ export default function Header({setCriteria, search, setSearch, url, setCategory
                 {isOpen && <Popup
                 content={<>
                     <b>Kirjautuminen</b>
-                    <form onSubmit={login}>
-                        <input type="text" placeholder="Sähköpostiosoite" name="email" value={email} onChange={e => setEmail(e.target.value)} maxLength="30" required />
-                        <input type="password" placeholder="Salasana" name="salasana" value={salasana} onChange={e => setSalasana(e.target.value)} maxLength="30" required />
-                        <input type="submit" value="Kirjaudu sisään" /><br/>
-                    </form>
-                    <a href="#">Unohditko salasanan?</a>
+                    <>
+                    {asiakas == null && 
+                        <>
+                            <form onSubmit={login}>
+                                <div>
+                                    <input type="text" placeholder="Sähköpostiosoite" name="email" value={email} onChange={e => setEmail(e.target.value)} maxLength="30" required />
+                                </div>
+                                <div>
+                                    <input type="password" placeholder="Salasana" name="salasana" value={salasana} onChange={e => setSalasana(e.target.value)} maxLength="30" required />
+                                </div>
+                                <div>
+                                    <input type="submit" value="Kirjaudu sisään" /><br/>
+                                </div>
+                            </form>
+                            <a href="#">Unohditko salasanan?</a>
+                    </>
+                    }
+                    {
+                        asiakas != null &&
+                        <>
+                            <div>
+                                <p>Olet kirjautunut.</p>
+                            </div>
+                            <div>
+                                <Link to="/Asiakas">Omalle sivulle</Link>
+                            </div>
+                            <div>
+                                <Link to="/Asiakaslogout">Kirjaudu ulos</Link>
+                            </div>
+                        </>
+                    }
+                    </>
                 </>}
                 handleClose={togglePopup}
                 />}

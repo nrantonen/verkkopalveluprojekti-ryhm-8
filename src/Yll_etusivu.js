@@ -13,7 +13,9 @@ export default function Yll_etusivu({yllapito}) {
         <div>
             <Link to="/Yll_logout">Kirjaudu ulos</Link>
             <h2>Ylläpidon etusivu</h2>
-            <Link to="/MuokkaaTuotteita"><h6>Hallinnoi tuotteita</h6></Link>
+            <div>
+                <Link to="/MuokkaaTuotteita"><h6>Hallinnoi tuotteita</h6></Link>
+            </div>
         </div>
     )
 }
