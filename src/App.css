@@ -159,16 +159,34 @@ tr {
   color: darkred;
   font-weight: bold;
   text-decoration: underline;
+  cursor: pointer;
 }
 #muokkaa_tuote {
-  color: green;
+  color: rgb(80, 128, 150);
   font-weight: bold;
   text-decoration: none;
 }
 #muokkaa_tuote:hover {
-  color: darkgreen;
+  color: rgb(32, 65, 80);
   font-weight: bold;
   text-decoration: underline;
+}
+#muokkaa_kuva {
+  color: rgb(48, 48, 48);
+  font-weight: bold;
+  text-decoration: none;
+}
+#muokkaa_kuva:hover {
+  color: black;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.tuotekuvan_muokkaus {
+  background: white;
+  border: lightgray;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 1px;
 }
 /* Tuoteryhmäsivu */
 .tuotediv {
@@ -190,7 +208,25 @@ tr {
   padding-bottom: 20px;
 }
 
-#tuotelista {
-  margin: 30px;
-  background-color: lightgoldenrodyellow;
+@media only screen and (max-width: 767.98px){
+  .fa-arrow-left {
+    display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+  .fa-arrow-up {
+  display: none;
+  }
+  
+}
+@media only screen and (max-width: 767px) {
+.otsikot {
+  display: none;
+  }
+}
+@media only screen and (min-width: 768px){
+ #tuoteryhma_selite {
+    display: none;
+  } 
 }
