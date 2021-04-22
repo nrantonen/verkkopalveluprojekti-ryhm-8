@@ -24,6 +24,7 @@ function App() {
   const [search,setSearch] = useState('');
   const [criteria, setCriteria] = useState(null);
   const [category, setCategory] = useState(null);
+  const [cart, setCart] = useState([]);
 
   let location = useLocation();
 
@@ -31,6 +32,9 @@ function App() {
     if (location.state!==undefined) {
       setCriteria({tuotenimi: location.state.tuotenimi});
       setCategory({trnro: location.state.trnro,trnimi: location.state.trnimi});
+    }
+    if('cart' in localStorage) {
+      setCart(JSON.parse(localStorage.getItem('cart')));
     }
   }, [location.state]);
 
@@ -46,7 +50,7 @@ function App() {
   return (
 
     <>
-      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas}/>
+      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas} cart={cart}/>
       <article>
         <Switch>
           <Route path="/" component={Etusivu} exact render={() =>
@@ -58,7 +62,7 @@ function App() {
             exact
           />
          <Route path="/tuotesivu" render={() => <Tuotesivu 
-            url={URL}/>}
+            url={URL} addToCart={addToCart}/>}
           />
           <Route path="/hakutulokset" render={() => <Hakutulokset
             url = {URL}
@@ -97,6 +101,12 @@ function App() {
       <Footer/>
     </>
   );
+
+  function addToCart(product) {
+    const newCart = [...cart, product];
+    setCart(newCart);
+    localStorage.setItem('cart', JSON.stringify(newCart));
+  }
 }
 
 export default App;

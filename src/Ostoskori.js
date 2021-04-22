@@ -6,8 +6,10 @@ export default function Ostoskori({cart}) {
       <p><b>Ostoskori</b></p>
       <hr />
       <ul>
-        {/* Placeholder */}
-        <Korituote />
+        {cart.map(product => (
+          <Korituote nimi={product.tuotenimi} hinta={product.hinta}/>
+        ))}
+        
       </ul>
       <p><b>Summa: </b></p>
       <button>Muokkaa</button>
@@ -18,9 +20,9 @@ export default function Ostoskori({cart}) {
 function Korituote(props) {
   return (
     <li>
-      <a href="#">Nitoja</a>
-      9 kpl x 
-      9 €
+      <a href="#">{props.nimi}</a>
+      1 kpl x 
+      {props.hinta} €
     </li>
   )
 }
