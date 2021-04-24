@@ -1,10 +1,9 @@
 import React from 'react';
 import './App.css';
-const URL = 'http://localhost/verkkopalveluprojekti/';
 
-export default function rekisteri() {
+export default function rekisteri({url}) {
   return (
-    <form  action={URL + "register/rekisteri.php"} method="POST">
+    <form  action={url + "register/rekisteri.php"} method="POST">
       
     <div class="row col-12">
       <div id="r1" class="col-6">

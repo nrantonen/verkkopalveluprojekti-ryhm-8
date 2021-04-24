@@ -1,13 +1,15 @@
 import React,{useState} from 'react';
 import './App.css';
-import {Link} from 'react-router-dom';
 import {useHistory} from 'react-router';
-//import Yll_etusivu from './Yll_etusivu';
+import {Redirect} from 'react-router-dom';
 
-const URL = 'http://localhost/verkkopalveluprojekti/';
-export default function Yllapito({setYllapito}) {
+
+export default function Yllapito({setYllapito,url,yllapito}) {
+
+
     const [yll_email, setYllEmail] = useState('matti.yllapitaja@kauppa.fi');
     const [yll_salasana, setYllSalasana] = useState('matti75v');
+
 
     let history = useHistory();
 
@@ -26,46 +28,54 @@ export default function Yllapito({setYllapito}) {
             },
             body: formData
         }
-        console.log(URL + 'login/loginyllapitaja.php');
-        const response = await fetch(URL + 'login/loginyllapitaja.php',config);
-        const json = await response.json();
 
-        if (response.ok) {
-            setYllapito(json);
-            //Redirect sivulle
-            history.push('/Yll_etusivu');
-        } else {
-            alert("Virhe kirjautumisessa.");
+        try {
+            const response = await fetch(url + 'login/loginyllapitaja.php',config);
+            const json = await response.json();
+
+            if (response.ok) {
+                setYllapito(json);
+                //Redirect sivulle
+                history.push('/Yll_etusivu');
+            } else {
+                alert("Virhe kirjautumisessa.");
+            }
+        } catch (error) {
+            alert(error);
         }
-
     }
 
     return(
-        <section className="yll_loginform row">
-            <div className="col-12">
-                <h5>Kirjaudu ylläpitäjänä</h5>
-            </div>
-            <div className="col-12">
-            {/* <form action={URL + "login/loginyllapitaja.php"} method="POST"> */}
-            <form onSubmit={login}>
-                <div className="yll_loginrivi">
-                    <label>Sähköpostiosoite:</label><br/>
-                    <input type="text" placeholder="Sähköpostiosoite" name="yll_email" value={yll_email} onChange={e => setYllEmail(e.target.value)} maxLength="30" required />
-                </div>
-                <div className="yll_loginrivi">
-                    <label>Salasana:</label><br/>
-                    <input type="password" placeholder="Salasana" name="yll_salasana" value={yll_salasana} onChange={e => setYllSalasana(e.target.value)} maxLength="100" required />
-                </div>
-                <div><input type="submit" value="Kirjaudu sisään"/></div>
-            </form>
-            </div>
-            <div>
+        <>
+        {yllapito == null && 
+            <>
+                <section className="yll_loginform row">
+                    <div className="col-12">
+                        <h5>Kirjaudu ylläpitäjänä</h5>
+                    </div>
+                    <div className="col-12">
 
-            <Link to="/MuokkaaTuotteita">Hallinnoi tuotteita</Link>
-        </div>
-            <div>
-                <Link to="/LisaaTuote">Lisaa tuotteita</Link>
-            </div>
-        </section>
+                    <form onSubmit={login}>
+                        <div className="yll_loginrivi">
+                            <label>Sähköpostiosoite:</label><br/>
+                            <input type="text" placeholder="Sähköpostiosoite" name="yll_email" value={yll_email} onChange={e => setYllEmail(e.target.value)} maxLength="30" required />
+                        </div>
+                        <div className="yll_loginrivi">
+                            <label>Salasana:</label><br/>
+                            <input type="password" placeholder="Salasana" name="yll_salasana" value={yll_salasana} onChange={e => setYllSalasana(e.target.value)} maxLength="100" required />
+                        </div>
+                        <div><input type="submit" value="Kirjaudu sisään" /></div>
+                    </form>
+                    </div>
+                </section>
+            </>
+        }
+        {
+            yllapito != null &&
+            <>
+                <Redirect to="/Yll_etusivu" />
+            </>
+        }
+        </>
     );
 }

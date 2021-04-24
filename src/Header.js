@@ -6,9 +6,9 @@ import Popup from './Popup';
 import Ostoskori from './Ostoskori';
 import {Link} from 'react-router-dom';
 import Navbar from './Navbar';
+import {useHistory} from 'react-router';
 
-
-export default function Header({setCriteria, search, setSearch, URL, setCategory, cart}) {
+export default function Header({setCriteria, search, setSearch, url, setCategory, cart, setAsiakas, asiakas}) {
 
     // Kirjautumislomake
         const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +16,45 @@ export default function Header({setCriteria, search, setSearch, URL, setCategory
         const togglePopup = () => {
           setIsOpen(!isOpen);
         }  
+
+        const [email, setEmail] = useState('testi@testi.com');
+        const [salasana, setSalasana] = useState('test12');
+
+        let history = useHistory();
+
+        async function login(e) {
+            e.preventDefault();
+            const formData = new FormData();
+
+            formData.append('email',email);
+            formData.append('salasana',salasana);
+
+            const config = {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Accept' : 'application/json',
+                },
+                body: formData
+            }
+
+            try {
+                const response = await fetch(url + 'login/loginasiakas.php',config);
+                const json = await response.json();
+
+                if (response.ok) {
+                    setAsiakas(json);
+                    //Redirect sivulle
+                    history.push('/Asiakas');
+                } else {
+                    alert("Virhe kirjautumisessa.");
+                }
+            } catch (error) {
+                alert(error);
+            }
+        }
+
+
     const [cartShown, setCartShown] = useState(false);
     const toggleCart = () => { setCartShown(!cartShown); }
    
@@ -31,19 +70,45 @@ export default function Header({setCriteria, search, setSearch, URL, setCategory
             </nav>
         
         {/* Kirjautuminen, rekisteröityminen, ostoskori */}
-        <div className=" d-flex flex-row-reverse p-2 bg-light">
-            <div className="pt-2 col-12 col-xl-4">
+        <div className="flex-row-reverse row m-1 p-2 bg-light">
+            <div className="pt-2 col-12 col-md col-lg">
                 {/* Kirjaudu */}
                 <a id="kirjautuminen" href="#" onClick={togglePopup}>Kirjaudu</a>
                 {isOpen && <Popup
                 content={<>
                     <b>Kirjautuminen</b>
-                    <form action={URL + "login/loginasiakas.php"} method="POST">
-                        <input type="text" placeholder="Sähköpostiosoite" name="email" maxLength="30" required />
-                        <input type="password" placeholder="Salasana" name="salasana" maxLength="30" required />
-                        <input type="submit" value="Kirjaudu sisään" /><br/>
-                    </form>
-                    <a href="#">Unohditko salasanan?</a>
+                    <>
+                    {asiakas == null && 
+                        <>
+                            <form onSubmit={login}>
+                                <div>
+                                    <input type="text" placeholder="Sähköpostiosoite" name="email" value={email} onChange={e => setEmail(e.target.value)} maxLength="30" required />
+                                </div>
+                                <div>
+                                    <input type="password" placeholder="Salasana" name="salasana" value={salasana} onChange={e => setSalasana(e.target.value)} maxLength="30" required />
+                                </div>
+                                <div>
+                                    <input type="submit" value="Kirjaudu sisään" /><br/>
+                                </div>
+                            </form>
+                            <a href="#">Unohditko salasanan?</a>
+                    </>
+                    }
+                    {
+                        asiakas != null &&
+                        <>
+                            <div>
+                                <p>Olet kirjautunut.</p>
+                            </div>
+                            <div>
+                                <Link to="/Asiakas">Omalle sivulle</Link>
+                            </div>
+                            <div>
+                                <Link to="/Asiakaslogout">Kirjaudu ulos</Link>
+                            </div>
+                        </>
+                    }
+                    </>
                 </>}
                 handleClose={togglePopup}
                 />}
@@ -55,26 +120,16 @@ export default function Header({setCriteria, search, setSearch, URL, setCategory
             </div>
             
         {/* Hakupalkki */}
-        
-        <div className="input-group rounded col-12 col-xl-4 col-md px-4 py-2 mx-auto" id="haku">
-                {/* hakukenttä */}
-            <div className="input-group">
-                <input type="text reset" className="form-control rounded-pill rounded" placeholder="Hae tuotteita..."
+            <div className="input-group form-inline col col-md col-lg px-4 py-2 mx-auto" id="haku">
+                <input type="search" className="form-control rounded-pill rounded" placeholder="Hae tuotteita..."
                 aria-describedby="search-addon" name="haku"
                 onChange = {e => setSearch(e.target.value)}/>                
-                
-                {/* hakupainike */}
                 <Link id="hakupainike" onClick={setCriteria(search)} to="/hakutulokset">
                 <i id="kuvake" className="fa fa-search"></i></Link> 
             </div>
-                    {/* Ilman välivaihetta [search, setSearch] hakusana jää kenttään, mutta kentän arvo on silti
-                     null eikä haku palauta mitään.
-                     ----> Välivaiheen avulla hakusana jää yhä kenttään toiselle sivulle siirryttäessä, mutta
-                    haku onnistuu. */}
-        </div>
-
+    
         {/* Tuoteryhmät */}
-        <Navbar url={URL} setCategory={setCategory}/>
+        <Navbar url={url} setCategory={setCategory}/>
         </div>
 
         

@@ -11,8 +11,12 @@ import Hakutulokset from './Hakutulokset';
 import Yllapito from './Yllapito';
 import MuokkaaTuotteita from './MuokkaaTuotteita';
 import Tuotemuokkaus from './Tuotemuokkaus';
+import Kuvanmuokkaus from './Kuvanmuokkaus';
 import Yll_etusivu from './Yll_etusivu';
 import LisaaTuote from './LisaaTuote';
+import Yll_logout from './Yll_logout';
+import Asiakassivu from './Asiakassivu';
+import Asiakaslogout from './Asiakaslogout';
 
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
@@ -23,6 +27,7 @@ function App() {
   const [search,setSearch] = useState('');
   const [criteria, setCriteria] = useState(null);
   const [category, setCategory] = useState(null);
+  const [cart, setCart] = useState([]);
 
   let location = useLocation();
 
@@ -31,31 +36,39 @@ function App() {
       setCriteria({tuotenimi: location.state.tuotenimi});
       setCategory({trnro: location.state.trnro,trnimi: location.state.trnimi});
     }
+    if('cart' in localStorage) {
+      setCart(JSON.parse(localStorage.getItem('cart')));
+    }
   }, [location.state]);
 
 
   //Ylläpito login
   const [yllapito,setYllapito] = useState(null);
 
+  //Asiakas login
+  const [asiakas,setAsiakas] = useState(null);
+
 
 
   return (
 
     <>
-      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory}/>
+      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas} asiakas={asiakas} cart={cart}/>
       <article>
         <Switch>
-          <Route path="/" component={Etusivu} exact/>
+          <Route path="/" component={Etusivu} exact render={() =>
+            <Etusivu asiakas={asiakas} /> }
+          /> 
           <Route path="/tuoteryhmäsivu" render={() => <Ryhma 
             url={URL}
             category={category}/>}
             exact
           />
          <Route path="/tuotesivu" render={() => <Tuotesivu 
-            url={URL}/>}
+            url={URL} addToCart={addToCart}/>}
           />
           <Route path="/hakutulokset" render={() => <Hakutulokset
-            URL = {URL}
+            url = {URL}
             search = {search}
             setCriteria = {setCriteria}/>}
             exact
@@ -64,7 +77,8 @@ function App() {
           <Route path="/Yllapito" render={() =>
             <Yllapito
               setYllapito = {setYllapito}
-              URL={URL} />}
+              url={URL}
+              yllapito={yllapito} />}
           />
           <Route path="/MuokkaaTuotteita" render={() => <MuokkaaTuotteita 
           url={URL}/>}
@@ -72,17 +86,43 @@ function App() {
           <Route path="/Tuotemuokkaus" render={() => <Tuotemuokkaus 
           url={URL}/>}
           />
-          <Route path="/Yll_etusivu" exact render={() =>
-            <Yll_etusivu yllapito={yllapito} />
-            } />
+           <Route path="/Kuvanmuokkaus" render={() => <Kuvanmuokkaus 
+          url={URL}/>}
+          />
           <Route path="/LisaaTuote" render={() => <LisaaTuote
             url={URL}/>} 
           />
+          <Route path="/Yll_etusivu" render={() =>
+            <Yll_etusivu yllapito={yllapito}
+            setYllapito = {setYllapito}
+            url={URL} /> }
+          />
+          <Route path="/Yll_logout" render={() =>
+            <Yll_logout setYllapito={setYllapito}
+            yllapito={yllapito}
+            url={URL} />
+          } />
+          <Route path="/Asiakas" render={() =>
+            <Asiakassivu asiakas={asiakas}
+            setAsiakas={setAsiakas}
+            url={URL} />
+          } />
+          <Route path="/Asiakaslogout" render={() =>
+            <Asiakaslogout setAsiakas={setAsiakas}
+            asiakas={asiakas}
+            url={URL}/>
+          } />
         </Switch>
       </article>
       <Footer/>
     </>
   );
+
+  function addToCart(product) {
+    const newCart = [...cart, product];
+    setCart(newCart);
+    localStorage.setItem('cart', JSON.stringify(newCart));
+  }
 }
 
 export default App;
