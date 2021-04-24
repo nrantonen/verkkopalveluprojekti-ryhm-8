@@ -11,6 +11,7 @@ import Hakutulokset from './Hakutulokset';
 import Yllapito from './Yllapito';
 import MuokkaaTuotteita from './MuokkaaTuotteita';
 import Tuotemuokkaus from './Tuotemuokkaus';
+import Kuvanmuokkaus from './Kuvanmuokkaus';
 import Yll_etusivu from './Yll_etusivu';
 import Yll_logout from './Yll_logout';
 import Asiakassivu from './Asiakassivu';
@@ -82,6 +83,9 @@ function App() {
           url={URL}/>}
           />
           <Route path="/Tuotemuokkaus" render={() => <Tuotemuokkaus 
+          url={URL}/>}
+          />
+           <Route path="/Kuvanmuokkaus" render={() => <Kuvanmuokkaus 
           url={URL}/>}
           />
           <Route path="/Yll_etusivu" render={() =>

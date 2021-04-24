@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import './App.css';
+
 
 
 export default function MuokkaaTuotteita({url}) {
     const [products, setProducts] = useState([]);
  
-    useEffect(async() => {
+    useEffect(() => {
+      async function productsToEdit() {
         try {
-            const response = await fetch(url + 'products/productsToEdit.php');
+            const response = await fetch(url + 'products/allProducts.php');
             const json = await response.json();
             if (response.ok) {
                 setProducts(json);
@@ -17,6 +20,7 @@ export default function MuokkaaTuotteita({url}) {
         } catch (error) {
             alert(error);
         }
+      } productsToEdit();
     }, [])
 
    
@@ -52,34 +56,43 @@ export default function MuokkaaTuotteita({url}) {
 
     return (
         <section>
-        <div>
+          <div>
           <Link to="/Yll_etusivu">Palaa ylläpitäjän etusivulle</Link>
-        </div>
-        <div>
-            <table id="tuotelista">
-                <thead>
+          </div>
+          <h3>Tuotteiden hallinnointi</h3>
+        <div className="p-md-3">
+            <table className="table table-striped">
+                <thead className="otsikot">
                     <tr className="row">
-                        <th className="col-1">Tuotenro</th>
-                        <th className="col-2">Nimi</th>
-                        <th className="col-2">Hinta</th>
-                        <th className="col-1">Tuoteryhmä</th>
-                        <th className="col-4">Kuvaus</th>
-                        <th className="col-2"></th>
+                        <th className="col-3 col-lg-1">Tuotenro</th>
+                        <th className="col-3 col-lg-2">Nimi</th>
+                        <th className="col-3 col-lg-1">Hinta</th>
+                        <th className="col-3 col-lg-2">Tuoteryhmä</th>
+                        <th className="col-12 col-lg-6">Kuvaus</th>
                     </tr>
                     </thead> 
                     <tbody>
                     {products.map(product => (   
                     <tr key={product.tuotenro} className="row">
-                    <td className="col-1">{product.tuotenro}</td>
-                    <td className="col-2">{product.tuotenimi}</td>
-                    <td className="col-2">{product.hinta}</td>
-                    <td className="col-1">{product.trnro}</td>
-                    <td className="col-4">{product.kuvaus}</td>
-                    <td className="col-1">
+                    <td className="col-12 col-md-3 col-lg-1"><b>#{product.tuotenro}</b></td>
+                    <td className="col-12 col-md-3 col-lg-2"><b>{product.tuotenimi}</b></td>
+                    <td className="col-12 col-md-3 col-lg-1">{product.hinta} €</td>
+                    <td className="col-12 col-md-3 col-lg-2"><span id="tuoteryhma_selite">Tuoteryhmä </span>{product.trnro}</td>
+                    <td className="col-12 col-md-9 col-lg-4">{product.kuvaus}</td>
+                    
+                    <td className="d-flex justify-content-md-end col-md-3 col-lg-2">
                         <Link id="muokkaa_tuote" to={{
-                            pathname: '/Tuotemuokkaus/' + product.tuotenro }}>Muokkaa
+                            pathname: '/Tuotemuokkaus/' + product.tuotenro }}>
+                              <i className="fa fa-arrow-up" aria-hidden="true"></i> 
+                              <i className="fa fa-arrow-left" aria-hidden="true"></i> 
+                            &nbsp;Muokkaa tuotetietoja
                         </Link></td>
-                    <td className="col-1"><a id="poista_tuote" href="#" onClick={() => deleteProduct(product.tuotenro)}>Poista</a></td>
+
+                    <td className="col-md-8 col-lg-5">
+                        <i><img className="tuotekuvan_muokkaus" src={url + 'img/'+product.image} width="30" alt=""/> {product.image}</i>
+                    </td>
+
+                    <td className="d-flex justify-content-md-end col-md-4 col-lg"><p id="poista_tuote" onClick={() => deleteProduct(product.tuotenro)}>Poista</p></td>
                     </tr>))}
                 </tbody>
             </table>
