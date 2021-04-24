@@ -88,6 +88,9 @@ function App() {
            <Route path="/Kuvanmuokkaus" render={() => <Kuvanmuokkaus 
           url={URL}/>}
           />
+          <Route path="/Yll_etusivu" exact render={() =>
+            <Yll_etusivu yllapito={yllapito} />
+            } />
           <Route path="/Yll_etusivu" render={() =>
             <Yll_etusivu yllapito={yllapito}
             setYllapito = {setYllapito}
