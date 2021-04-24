@@ -56,13 +56,16 @@ export default function Yllapito({setYllapito}) {
                     <label>Salasana:</label><br/>
                     <input type="password" placeholder="Salasana" name="yll_salasana" value={yll_salasana} onChange={e => setYllSalasana(e.target.value)} maxLength="100" required />
                 </div>
-                <div><input type="submit" value="Kirjaudu sisään" /></div>
+                <div><input type="submit" value="Kirjaudu sisään"/></div>
             </form>
             </div>
             <div>
 
             <Link to="/MuokkaaTuotteita">Hallinnoi tuotteita</Link>
         </div>
+            <div>
+                <Link to="/LisaaTuote">Lisaa tuotteita</Link>
+            </div>
         </section>
     );
 }

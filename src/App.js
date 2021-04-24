@@ -12,6 +12,7 @@ import Yllapito from './Yllapito';
 import MuokkaaTuotteita from './MuokkaaTuotteita';
 import Tuotemuokkaus from './Tuotemuokkaus';
 import Yll_etusivu from './Yll_etusivu';
+import LisaaTuote from './LisaaTuote';
 
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
@@ -74,6 +75,9 @@ function App() {
           <Route path="/Yll_etusivu" exact render={() =>
             <Yll_etusivu yllapito={yllapito} />
             } />
+          <Route path="/LisaaTuote" render={() => <LisaaTuote
+            url={URL}/>} 
+          />
         </Switch>
       </article>
       <Footer/>
