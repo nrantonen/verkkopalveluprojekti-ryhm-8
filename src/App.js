@@ -18,7 +18,6 @@ import Yll_logout from './Yll_logout';
 import Asiakassivu from './Asiakassivu';
 import Asiakaslogout from './Asiakaslogout';
 
-
 const URL = 'http://localhost/verkkopalveluprojekti/';
 
 function App() {
@@ -56,9 +55,10 @@ function App() {
       <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas} asiakas={asiakas} cart={cart}/>
       <article>
         <Switch>
-          <Route path="/" component={Etusivu} exact render={() =>
-            <Etusivu asiakas={asiakas} /> }
-          /> 
+          <Route path="/" render={() => <Etusivu 
+            url={URL}
+            asiakas={asiakas} /> }
+          />
           <Route path="/tuoteryhmäsivu" render={() => <Ryhma 
             url={URL}
             category={category}/>}
