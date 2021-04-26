@@ -119,9 +119,23 @@ function App() {
   );
 
   function addToCart(product) {
-    const newCart = [...cart, product];
-    setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
+    if(cart.some(item => item.tuotenro === product.tuotenro)) {
+      const existingProduct = cart.filter(item => item.tuotenro === product.tuotenro);
+      updateAmount(parseInt(existingProduct[0].amount) +1,product);
+    } else {
+      product["amount"] = 1;
+      const newCart = [...cart, product];
+      setCart(newCart);
+      localStorage.setItem('cart', JSON.stringify(newCart));
+    }
+  }
+
+  function updateAmount(amount, product) {
+    product.amount = amount;
+    const index = cart.findIndex((item => item.tuotenro === product.tuotenro));
+    const modifiedCart = Object.assign([...cart], {[index]: product});
+    setCart(modifiedCart);
+    localStorage.setItem('cart', JSON.stringify(modifiedCart));
   }
 }
 

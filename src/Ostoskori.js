@@ -7,7 +7,7 @@ export default function Ostoskori({cart}) {
       <hr />
       <ul>
         {cart.map(product => (
-          <Korituote nimi={product.tuotenimi} hinta={product.hinta}/>
+          <Korituote nimi={product.tuotenimi} hinta={product.hinta} kpl={product.amount}/>
         ))}
         
       </ul>
@@ -21,7 +21,7 @@ function Korituote(props) {
   return (
     <li>
       <a href="#">{props.nimi}</a>
-      1 kpl x 
+      {props.kpl} kpl x 
       {props.hinta} €
     </li>
   )
