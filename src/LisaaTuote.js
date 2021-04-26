@@ -26,10 +26,8 @@ export default function LisaaTuote({url}) {
                 body: formData
             }
         )
-        .then((res) => res.json())
-        .then((result) => {
-            console.log(result);
-        })
+        .then((res) => res.json()
+        )
     }
     
     return (
