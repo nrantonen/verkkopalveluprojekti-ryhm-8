@@ -13,6 +13,8 @@ import MuokkaaTuotteita from './MuokkaaTuotteita';
 import Tuotemuokkaus from './Tuotemuokkaus';
 import Yll_etusivu from './Yll_etusivu';
 import Yll_logout from './Yll_logout';
+import Palaute from './palaute';
+import Tuotepalautus from './tuotepalautus';
 
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
@@ -69,7 +71,10 @@ function App() {
             setCriteria = {setCriteria}/>}
             exact
             />
-            <Route path="/rekisteri" component={Rekisteri}/>
+            <Route path="/rekisteri" render = {() => <Rekisteri 
+            url = {URL}
+            /> }/>
+
           <Route path="/Yllapito" render={() =>
             <Yllapito
               setYllapito = {setYllapito}
@@ -89,6 +94,10 @@ function App() {
             <Yll_logout setYllapito={setYllapito}
             url={URL} />
           } />
+          <Route path="/Palaute" render={() =><Palaute 
+          url={URL}/>}/>
+            <Route path="/tuotepalautus" render={() =><Tuotepalautus 
+          url={URL}/>}/>
         </Switch>
       </article>
       <Footer/>
