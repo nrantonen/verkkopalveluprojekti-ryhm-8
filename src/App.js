@@ -11,7 +11,6 @@ import Hakutulokset from './Hakutulokset';
 import Yllapito from './Yllapito';
 import MuokkaaTuotteita from './MuokkaaTuotteita';
 import Tuotemuokkaus from './Tuotemuokkaus';
-import Kuvanmuokkaus from './Kuvanmuokkaus';
 import Yll_etusivu from './Yll_etusivu';
 import LisaaTuote from './LisaaTuote';
 import Yll_logout from './Yll_logout';
@@ -81,13 +80,10 @@ function App() {
               yllapito={yllapito} />}
           />
           <Route path="/MuokkaaTuotteita" render={() => <MuokkaaTuotteita 
-          url={URL}/>}
+          url={URL} yllapito={yllapito}/>}
           />
           <Route path="/Tuotemuokkaus" render={() => <Tuotemuokkaus 
-          url={URL}/>}
-          />
-           <Route path="/Kuvanmuokkaus" render={() => <Kuvanmuokkaus 
-          url={URL}/>}
+          url={URL} yllapito={yllapito}/>}
           />
           <Route path="/LisaaTuote" render={() => <LisaaTuote
             url={URL}/>} 
