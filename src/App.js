@@ -16,6 +16,7 @@ import LisaaTuote from './LisaaTuote';
 import Yll_logout from './Yll_logout';
 import Asiakassivu from './Asiakassivu';
 import Asiakaslogout from './Asiakaslogout';
+import Kassa from './Kassa';
 
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
@@ -107,6 +108,10 @@ function App() {
             <Asiakaslogout setAsiakas={setAsiakas}
             asiakas={asiakas}
             url={URL}/>
+          } />
+          <Route path="/Kassa" render={() =>
+            <Kassa asiakas={asiakas}
+            url={URL} cart={cart} />
           } />
         </Switch>
       </article>

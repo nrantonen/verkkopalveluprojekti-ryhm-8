@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default function Ostoskori({cart}) {
   return (
@@ -12,12 +13,12 @@ export default function Ostoskori({cart}) {
         
       </ul>
       <p><b>Summa: </b></p>
-      <button>Muokkaa</button>
+      <Link to='/Kassa'>Kassalle</Link>
     </div>
   )
 }
 
-function Korituote(props) {
+export function Korituote(props) {
   return (
     <li>
       <a href="#">{props.nimi}</a>

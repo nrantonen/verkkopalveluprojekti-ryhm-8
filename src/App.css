@@ -150,6 +150,7 @@ tr {
   border-style: solid;
   border-width: 1px;
 }
+/* Tuotteiden hallinnointi */
 #poista_tuote {
   color: red;
   font-weight: bold;
@@ -168,16 +169,6 @@ tr {
 }
 #muokkaa_tuote:hover {
   color: rgb(32, 65, 80);
-  font-weight: bold;
-  text-decoration: underline;
-}
-#muokkaa_kuva {
-  color: rgb(48, 48, 48);
-  font-weight: bold;
-  text-decoration: none;
-}
-#muokkaa_kuva:hover {
-  color: black;
   font-weight: bold;
   text-decoration: underline;
 }

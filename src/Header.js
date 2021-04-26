@@ -116,7 +116,7 @@ export default function Header({setCriteria, search, setSearch, url, setCategory
                 {/* Rekisteröidy */}   
                 <a id="rekisteröityminen" href="/rekisteri">Rekisteröidy</a>
                 <a href="#" onClick={toggleCart}><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
-                {cartShown && <Ostoskori cart={cart} handleClose={toggleCart}/>}
+                {cartShown && <Ostoskori cart={cart} asiakas={asiakas} handleClose={toggleCart}/>}
             </div>
             
         {/* Hakupalkki */}
