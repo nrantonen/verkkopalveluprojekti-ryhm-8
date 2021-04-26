@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link,Redirect} from 'react-router-dom';
 import './App.css';
 
 
 
-export default function MuokkaaTuotteita({url}) {
-    const [products, setProducts] = useState([]);
+export default function MuokkaaTuotteita({url, yllapito}) {
+  const [products, setProducts] = useState([]);
  
     useEffect(() => {
       async function productsToEdit() {
@@ -53,6 +53,11 @@ export default function MuokkaaTuotteita({url}) {
           }
         )
       }
+    
+      // Tämä sivu ei näy, jos ylläpitäjä ei ole kirjautunut
+    if(yllapito === null) {
+        return <Redirect to="/Yllapito" />
+    }
 
     return (
         <section>

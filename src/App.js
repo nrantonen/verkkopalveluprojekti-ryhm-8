@@ -81,10 +81,10 @@ function App() {
               yllapito={yllapito} />}
           />
           <Route path="/MuokkaaTuotteita" render={() => <MuokkaaTuotteita 
-          url={URL}/>}
+          url={URL} yllapito={yllapito}/>}
           />
           <Route path="/Tuotemuokkaus" render={() => <Tuotemuokkaus 
-          url={URL}/>}
+          url={URL} yllapito={yllapito}/>}
           />
            <Route path="/Kuvanmuokkaus" render={() => <Kuvanmuokkaus 
           url={URL}/>}
