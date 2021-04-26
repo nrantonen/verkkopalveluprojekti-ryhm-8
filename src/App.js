@@ -57,6 +57,7 @@ function App() {
           <Route path="/" render={() => <Etusivu 
             url={URL}
             asiakas={asiakas} /> }
+            exact
           />
           <Route path="/tuoteryhmäsivu" render={() => <Ryhma 
             url={URL}

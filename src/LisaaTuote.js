@@ -40,7 +40,7 @@ export default function LisaaTuote({url}) {
             <form onSubmit={save} id="LisaaTuote">
                 <div className="col-2">
                     <label>Tuotenimi</label>
-                    <input className="form-control" name="tuotenimi" maxlength="255" required id="tuotenimi" type="text"
+                    <input className="form-control" name="tuotenimi" maxlength="255" required type="text"
                         onChange={e => setTuotenimi(e.target.value)}></input>
                 </div>
                 <div className="col-2">
