@@ -11,7 +11,6 @@ import Hakutulokset from './Hakutulokset';
 import Yllapito from './Yllapito';
 import MuokkaaTuotteita from './MuokkaaTuotteita';
 import Tuotemuokkaus from './Tuotemuokkaus';
-import Kuvanmuokkaus from './Kuvanmuokkaus';
 import Yll_etusivu from './Yll_etusivu';
 import LisaaTuote from './LisaaTuote';
 import Yll_logout from './Yll_logout';
@@ -86,9 +85,6 @@ function App() {
           <Route path="/Tuotemuokkaus" render={() => <Tuotemuokkaus 
           url={URL} yllapito={yllapito}/>}
           />
-           <Route path="/Kuvanmuokkaus" render={() => <Kuvanmuokkaus 
-          url={URL}/>}
-          />
           <Route path="/LisaaTuote" render={() => <LisaaTuote
             url={URL}/>} 
           />
@@ -119,9 +115,23 @@ function App() {
   );
 
   function addToCart(product) {
-    const newCart = [...cart, product];
-    setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
+    if(cart.some(item => item.tuotenro === product.tuotenro)) {
+      const existingProduct = cart.filter(item => item.tuotenro === product.tuotenro);
+      updateAmount(parseInt(existingProduct[0].amount) +1,product);
+    } else {
+      product["amount"] = 1;
+      const newCart = [...cart, product];
+      setCart(newCart);
+      localStorage.setItem('cart', JSON.stringify(newCart));
+    }
+  }
+
+  function updateAmount(amount, product) {
+    product.amount = amount;
+    const index = cart.findIndex((item => item.tuotenro === product.tuotenro));
+    const modifiedCart = Object.assign([...cart], {[index]: product});
+    setCart(modifiedCart);
+    localStorage.setItem('cart', JSON.stringify(modifiedCart));
   }
 }
 

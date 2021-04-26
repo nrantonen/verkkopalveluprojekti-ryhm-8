@@ -49,22 +49,21 @@ export default function Yllapito({setYllapito,url,yllapito}) {
         <>
         {yllapito == null && 
             <>
-                <section className="yll_loginform row">
-                    <div className="col-12">
+                <section className="container yll_loginform">
+                    <div className="row">
                         <h5>Kirjaudu ylläpitäjänä</h5>
                     </div>
-                    <div className="col-12">
-
+                    <div className="row">
                     <form onSubmit={login}>
-                        <div className="yll_loginrivi">
+                        <div className="form-group col-md-6 col-lg-4">
                             <label>Sähköpostiosoite:</label><br/>
-                            <input type="text" placeholder="Sähköpostiosoite" name="yll_email" value={yll_email} onChange={e => setYllEmail(e.target.value)} maxLength="30" required />
+                            <input type="text" className="form-control" placeholder="Sähköpostiosoite" name="yll_email" value={yll_email} onChange={e => setYllEmail(e.target.value)} maxLength="30" required />
                         </div>
-                        <div className="yll_loginrivi">
+                        <div className="form-group col-md-6 col-lg-4 mt-3">
                             <label>Salasana:</label><br/>
-                            <input type="password" placeholder="Salasana" name="yll_salasana" value={yll_salasana} onChange={e => setYllSalasana(e.target.value)} maxLength="100" required />
+                            <input type="password" className="form-control" placeholder="Salasana" name="yll_salasana" value={yll_salasana} onChange={e => setYllSalasana(e.target.value)} maxLength="100" required />
                         </div>
-                        <div><input type="submit" value="Kirjaudu sisään" /></div>
+                        <div className="mt-3"><button type="submit" class="btn btn-primary">Kirjaudu sisään</button></div>
                     </form>
                     </div>
                 </section>

@@ -7,21 +7,29 @@ export default function Ostoskori({cart}) {
       <hr />
       <ul>
         {cart.map(product => (
-          <Korituote nimi={product.tuotenimi} hinta={product.hinta}/>
+          <Korituote nimi={product.tuotenimi} hinta={product.hinta} kpl={product.amount}/>
         ))}
         
       </ul>
-      <p><b>Summa: </b></p>
+      <p><b>Summa: {cartSum()} €</b></p>
       <button>Muokkaa</button>
     </div>
   )
+
+  function cartSum() {
+    let sum = 0;
+    for(let i = 0; i < cart.length; i++) {
+      sum += parseFloat(cart[i].hinta * cart[i].amount);
+    }
+    return sum;
+  }
 }
 
 function Korituote(props) {
   return (
     <li>
       <a href="#">{props.nimi}</a>
-      1 kpl x 
+      {props.kpl} kpl x 
       {props.hinta} €
     </li>
   )
