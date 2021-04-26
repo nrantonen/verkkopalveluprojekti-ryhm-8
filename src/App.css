@@ -108,25 +108,17 @@ div#tekijat > li {
   border: 1px solid #999;
   overflow: auto;
 }
- 
-/*.close-icon {
-  content: 'x';
-  cursor: pointer;
-  float: right;
-  background: #ededed;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  line-height: 20px;
-  text-align: center;
-  border: 1px solid #999;
-  font-size: 20px;
-} */
 
 .ZIndex {
   z-index: 100;
   position:absolute;
 }
+
+.login-form {
+  margin-bottom: 10px;
+}
+
+/* Rekisteröitymislomake*/
 
 #r1{
   max-width: 300px;
@@ -191,7 +183,6 @@ tr {
 
 .yll_loginform {
   margin: auto;
-  width: 60%;
   padding: 3em;
 }
 

@@ -12,7 +12,7 @@ export default function LisaaTuote({url}) {
         setFile(e.target.files[0])
     }
 
-    function save(e) {
+    async function save(e) {
         e.preventDefault();
         const formData = new FormData();
         formData.append('file',file);
@@ -20,33 +20,37 @@ export default function LisaaTuote({url}) {
         formData.append('hinta',hinta);
         formData.append('kuvaus',kuvaus);
         formData.append('trnro',trnro);
-        fetch (url + 'products/addProducts.php',
-            {
-                method: 'POST',
-                body: formData
-            }
-        )
-        .then((res) => res.json())
-        .then((result) => {
-            console.log(result);
-        })
-    }
+        try {
+            const response = await fetch (url + 'products/addProducts.php',
+              {
+                  method: 'POST',
+                  body: formData
+              }
+          );
+          if (response.ok) {
+            document.getElementById("LisaaTuote").reset();
+            setFile(null);
+          }
+          } catch(error) {
+            alert(error);
+          }
+        }
     
     return (
-            <form onSubmit={save}>
-                <div>
+            <form onSubmit={save} id="LisaaTuote">
+                <div className="col-2">
                     <label>Tuotenimi</label>
-                    <input name="tuotenimi" maxlength="255" required id="tuotenimi" type="text"
+                    <input className="form-control" name="tuotenimi" maxlength="255" required type="text"
                         onChange={e => setTuotenimi(e.target.value)}></input>
                 </div>
-                <div>
+                <div className="col-2">
                     <label>Hinta</label>
-                    <input name="hinta" required id="hinta" onChange={e => setHinta(e.target.value)}></input>
+                    <input className="form-control" name="hinta" required id="hinta" onChange={e => setHinta(e.target.value)}></input>
                 </div>
-                <div>
+                <div className="col-2">
                     {/* Selvitä miten saat kuvan lisättyä */}
                     <label>Kuva</label>
-                    <input type="file" name="file" onChange={handleChange}></input>
+                    <input className="form-control" type="file" name="file" onChange={handleChange}></input>
                 </div>
                 {file != null ? (
                     <>
@@ -58,16 +62,18 @@ export default function LisaaTuote({url}) {
                     <p>Tiedostoa ei ole valittu</p>
                 )
                 }
-                <div>
+                <div className="col-2">
                     <label>Kuvaus</label>
-                    <textarea name="kuvaus" maxlength="255" id="kuvaus" onChange={e => setKuvaus(e.target.value)}></textarea>
+                    <textarea className="form-control" name="kuvaus" maxlength="255" id="kuvaus" onChange={e => setKuvaus(e.target.value)}></textarea>
                 </div>
-                <div>
+                <div className="col-2">
                    {/* Tähän tuoteryhmä valinta jotenkin järkevämmin */}
                    <label>Tuoteryhmä</label>
-                   <input name="trnro" required id="trnro" onChange={e => setTrnro(e.target.value)}></input>
+                   <input className="form-control" name="trnro" required id="trnro" onChange={e => setTrnro(e.target.value)}></input>
                 </div>
-                <button type="submit">Lisää tuote</button>
+                <div className="col-2">
+                    <button className="form-control" type="submit">Lisää tuote</button>
+                </div>
             </form>
     );
 }
