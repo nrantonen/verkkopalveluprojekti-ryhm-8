@@ -11,10 +11,18 @@ export default function Ostoskori({cart}) {
         ))}
         
       </ul>
-      <p><b>Summa: </b></p>
+      <p><b>Summa: {cartSum()} €</b></p>
       <button>Muokkaa</button>
     </div>
   )
+
+  function cartSum() {
+    let sum = 0;
+    for(let i = 0; i < cart.length; i++) {
+      sum += parseFloat(cart[i].hinta * cart[i].amount);
+    }
+    return sum;
+  }
 }
 
 function Korituote(props) {
