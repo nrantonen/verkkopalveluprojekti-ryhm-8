@@ -1,8 +1,6 @@
 import React from 'react';
 import Kuvapalkki from './Kuvapalkki';
 
-const URL = 'http://localhost/verkkopalveluprojekti/';
-
 export default function etusivu({url}) {
     return (
         <article>
