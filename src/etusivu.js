@@ -44,7 +44,7 @@ function Kuvapalkki() {
               <Link to={{
                 pathname: '/tuotesivu/'+product.tuotenro
               }}>
-                <img src={product.image} className="d-block mx-auto" width="200" alt=""/>
+                <img src={URL + 'img/'+product.image} className="d-block mx-auto" width="200" alt=""/>
                 <div className="carousel-caption">
                   <h4>{product.tuotenimi}</h4>
                 </div>
