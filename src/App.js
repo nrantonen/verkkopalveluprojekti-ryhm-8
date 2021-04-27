@@ -12,11 +12,13 @@ import Yllapito from './Yllapito';
 import MuokkaaTuotteita from './MuokkaaTuotteita';
 import Tuotemuokkaus from './Tuotemuokkaus';
 import Yll_etusivu from './Yll_etusivu';
-import LisaaTuote from './LisaaTuote';
 import Yll_logout from './Yll_logout';
 import Asiakassivu from './Asiakassivu';
 import Asiakaslogout from './Asiakaslogout';
 import Kassa from './Kassa';
+import Palaute from './palaute';
+import Tuotepalautus from './tuotepalautus';
+
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
 
@@ -52,14 +54,12 @@ function App() {
   return (
 
     <>
-      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas} asiakas={asiakas} cart={cart}/>
+      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas} cart={cart}/>
       <article>
         <Switch>
-          <Route path="/" render={() => <Etusivu 
-            url={URL}
-            asiakas={asiakas} /> }
-            exact
-          />
+          <Route path="/" component={Etusivu} exact render={() =>
+            <Etusivu asiakas={asiakas} /> }
+          /> 
           <Route path="/tuoteryhmäsivu" render={() => <Ryhma 
             url={URL}
             category={category}/>}
@@ -74,7 +74,10 @@ function App() {
             setCriteria = {setCriteria}/>}
             exact
             />
-            <Route path="/rekisteri" component={Rekisteri}/>
+            <Route path="/rekisteri" render = {() => <Rekisteri 
+            url = {URL}
+            /> }/>
+
           <Route path="/Yllapito" render={() =>
             <Yllapito
               setYllapito = {setYllapito}
@@ -82,25 +85,19 @@ function App() {
               yllapito={yllapito} />}
           />
           <Route path="/MuokkaaTuotteita" render={() => <MuokkaaTuotteita 
-          url={URL} yllapito={yllapito}/>}
+          url={URL}/>}
           />
           <Route path="/Tuotemuokkaus" render={() => <Tuotemuokkaus 
-          url={URL} yllapito={yllapito}/>}
+          url={URL}/>}
           />
-          <Route path="/LisaaTuote" render={() => <LisaaTuote
-            url={URL}/>} 
-          />
-          <Route path="/Yll_etusivu" render={() =>
-            <Yll_etusivu yllapito={yllapito}
-            setYllapito = {setYllapito}
-            url={URL} /> }
-          />
-          <Route path="/Yll_logout" render={() =>
+          <Route path="/Yll_etusivu" exact render={() =>
+            <Yll_etusivu yllapito={yllapito} />
+            } />
+          <Route path="/yll_logout" render={() =>
             <Yll_logout setYllapito={setYllapito}
-            yllapito={yllapito}
             url={URL} />
           } />
-          <Route path="/Asiakas" render={() =>
+           <Route path="/Asiakas" render={() =>
             <Asiakassivu asiakas={asiakas}
             setAsiakas={setAsiakas}
             url={URL} />
@@ -115,12 +112,17 @@ function App() {
             url={URL} cart={cart} setCart={setCart} 
             removeFromCart={removeFromCart}/>
           } />
+          <Route path="/Palaute" render={() =><Palaute 
+          url={URL}/>}/>
+            <Route path="/tuotepalautus" render={() =><Tuotepalautus 
+          url={URL}/>}/>
         </Switch>
       </article>
       <Footer/>
     </>
   );
 
+  
   function addToCart(product) {
     if(cart.some(item => item.tuotenro === product.tuotenro)) {
       const existingProduct = cart.filter(item => item.tuotenro === product.tuotenro);
@@ -140,13 +142,13 @@ function App() {
     setCart(modifiedCart);
     localStorage.setItem('cart', JSON.stringify(modifiedCart));
   }
-
-  function removeFromCart(product) {
+  
+ function removeFromCart(product) {
     const itemsWithoutRemoved = cart.filter(item => item.tuotenro !== product.tuotenro);
     setCart(itemsWithoutRemoved);
     localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
   }
-
 }
 
 export default App;
+ 

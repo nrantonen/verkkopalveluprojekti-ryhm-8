@@ -60,7 +60,7 @@ export default function Kassa({url, cart, removeFromCart, asiakas}) {
             .then (
                 (res) => {
                     console.log(res);
-                    // tähän ostoskorin tyhjennys
+                    // tähän ostoskorin tyhjennys; for?
                     setFinished(true);
                 }, (error) => {
                     alert(error);
