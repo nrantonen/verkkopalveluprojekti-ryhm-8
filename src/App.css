@@ -98,35 +98,27 @@ div#tekijat > li {
  
 .box {
   position: relative;
-  width: 60%;
+  width: 100%;
   margin-top: 15px;
   height: auto;
-  max-height: 70vh;
+  max-height: 100%;
   background: #fff;
   border-radius: 4px;
   padding: 20px;
   border: 1px solid #999;
   overflow: auto;
 }
- 
-/*.close-icon {
-  content: 'x';
-  cursor: pointer;
-  float: right;
-  background: #ededed;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  line-height: 20px;
-  text-align: center;
-  border: 1px solid #999;
-  font-size: 20px;
-} */
 
 .ZIndex {
   z-index: 100;
   position:absolute;
 }
+
+.login-form {
+  margin-bottom: 10px;
+}
+
+/* Rekisteröitymislomake*/
 
 #r1{
   max-width: 300px;
@@ -159,16 +151,34 @@ tr {
   color: darkred;
   font-weight: bold;
   text-decoration: underline;
+  cursor: pointer;
 }
 #muokkaa_tuote {
-  color: green;
+  color: rgb(80, 128, 150);
   font-weight: bold;
   text-decoration: none;
 }
 #muokkaa_tuote:hover {
-  color: darkgreen;
+  color: rgb(32, 65, 80);
   font-weight: bold;
   text-decoration: underline;
+}
+#muokkaa_kuva {
+  color: rgb(48, 48, 48);
+  font-weight: bold;
+  text-decoration: none;
+}
+#muokkaa_kuva:hover {
+  color: black;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.tuotekuvan_muokkaus {
+  background: white;
+  border: lightgray;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 1px;
 }
 /* Tuoteryhmäsivu */
 .tuotediv {
@@ -182,7 +192,6 @@ tr {
 
 .yll_loginform {
   margin: auto;
-  width: 60%;
   padding: 3em;
 }
 
@@ -190,7 +199,25 @@ tr {
   padding-bottom: 20px;
 }
 
-#tuotelista {
-  margin: 30px;
-  background-color: lightgoldenrodyellow;
+@media only screen and (max-width: 767.98px){
+  .fa-arrow-left {
+    display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+  .fa-arrow-up {
+  display: none;
+  }
+  
+}
+@media only screen and (max-width: 767px) {
+.otsikot {
+  display: none;
+  }
+}
+@media only screen and (min-width: 768px){
+ #tuoteryhma_selite {
+    display: none;
+  } 
 }

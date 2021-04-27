@@ -55,9 +55,10 @@ function Hakutulokset ({url,search}) {
                     <p id="tuotekuvaus">{result.kuvaus}</p>  
                     </div>
                     <div className="osa col-12 col-sm-6 float-sm-right-center">
-                        <a href="#">
+                    <Link id="tuotenimi" 
+                        to={'/tuotesivu/' + result.tuotenro}>
                             <img className="img-thumbnail img-fluid" id="tuotekuva" src={url + "img/"+ result.image}></img>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             

@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react';
 import {Redirect} from 'react-router-dom';
 
-export default function Yll_logout({setYllapito,url,yllapito}) {
+export default function Asiakaslogout({url,setAsiakas,asiakas}) {
     useEffect(() => {
         function logout() {
             const config = {
@@ -10,8 +10,8 @@ export default function Yll_logout({setYllapito,url,yllapito}) {
             }
 
             try {
-                fetch(url + 'login/logoutyllapitaja.php',config);
-                setYllapito(null);
+                fetch(url + 'login/logoutasiakas.php',config);
+                setAsiakas(null);
             } catch (error) {
                 alert(error);
               }
@@ -20,11 +20,9 @@ export default function Yll_logout({setYllapito,url,yllapito}) {
           }, [])
     return (
         <div>
-        {/* <p>Ylläpitäjä kirjautunut ulos.</p>
-            <Link to="/">Siirry etusivulle</Link> */}
             <>
             {
-            yllapito == null &&
+            asiakas == null &&
             <>
                 <Redirect to="/" />
             </>
