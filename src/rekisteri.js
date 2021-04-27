@@ -4,14 +4,6 @@ import {useState, useEffect} from 'react';
 
 export default function Rekisteri({url}) {
     
-  handleSubmit = () => {
-    const { password1, password2 } = this.state;
-    // perform all neccassary validations
-    if (password1 !== password2) {
-        alert("Passwords don't match");
-    } else {
-        // make API call
-    }
   
   return (
     <form  onSubmit={url + "register/rekisteri.php"} method="POST">
@@ -55,14 +47,15 @@ export default function Rekisteri({url}) {
       <div className="row col-12">
         <div id="r1"  className="col-6">
         <p>Salasana</p>
-      <input name="salasana"  type="password" value={password1} className="form-control" name="salasana" placeholder="salasana" maxLength="30" aria-label="password" required/>
+        
+      <input name="salasana"  type="password"  className="form-control" name="salasana" placeholder="salasana" maxLength="30" aria-label="password" required/>
        </div>
       </div>
 
        <div className="row col-12">
        <div id="r1"  className="col-6">
       <p>Kirjoita salasana uudelleen.</p>
-      <input name="salasana2"  type="password" value={password2} className="form-control" name="salasana" placeholder="salasana" maxLength="30" aria-label="password2" required />
+      <input name="salasana2"  type="password"  className="form-control" name="salasana" placeholder="salasana" maxLength="30" aria-label="password2" required />
       </div>
       </div>
     
@@ -71,5 +64,4 @@ export default function Rekisteri({url}) {
     </div>
 </form>
   );
-}
 }
