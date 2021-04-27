@@ -112,7 +112,8 @@ function App() {
           } />
           <Route path="/Kassa" render={() =>
             <Kassa asiakas={asiakas}
-            url={URL} cart={cart} />
+            url={URL} cart={cart} setCart={setCart} 
+            removeFromCart={removeFromCart}/>
           } />
         </Switch>
       </article>
@@ -139,6 +140,13 @@ function App() {
     setCart(modifiedCart);
     localStorage.setItem('cart', JSON.stringify(modifiedCart));
   }
+
+  function removeFromCart(product) {
+    const itemsWithoutRemoved = cart.filter(item => item.tuotenro !== product.tuotenro);
+    setCart(itemsWithoutRemoved);
+    localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
+  }
+
 }
 
 export default App;

@@ -190,6 +190,7 @@ tr {
   padding-bottom: 20px;
 }
 
+/* Tuotteenhallinnointi-sivun skaalautuminen */
 @media only screen and (max-width: 767.98px){
   .fa-arrow-left {
     display: none;
@@ -211,4 +212,9 @@ tr {
  #tuoteryhma_selite {
     display: none;
   } 
+
+  #kirj_as_tilaustiedot {
+    list-style-type: none;
+    font-family: 'Courier New', Courier, monospace;
+  }
 }

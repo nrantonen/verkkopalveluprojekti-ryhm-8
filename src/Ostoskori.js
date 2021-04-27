@@ -8,7 +8,7 @@ export default function Ostoskori({cart}) {
       <hr />
       <ul>
         {cart.map(product => (
-          <Korituote nimi={product.tuotenimi} hinta={product.hinta} kpl={product.amount}/>
+          <Korituote tuotenro={product.tuotenro} nimi={product.tuotenimi} hinta={product.hinta} kpl={product.amount}/>
         ))}
         
       </ul>
@@ -26,7 +26,7 @@ export default function Ostoskori({cart}) {
   }
 }
 
-export function Korituote(props) {
+ function Korituote(props) {
   return (
     <li>
       <a href="#">{props.nimi}</a>
