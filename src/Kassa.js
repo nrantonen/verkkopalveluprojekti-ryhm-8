@@ -2,17 +2,7 @@ import React from 'react';
 import {useState,useEffect} from 'react';
 import './App.css';
 
-// Seuraavaksi tilaus, kun asiakas on kirjautunut sisään! 
-/* Minne laitetaan tämä? Reactilla tulee raja vastaan: Too many re-renders
-if (asiakas != null) {
-    setEtunimi(asiakas.etunimi);
-    setSukunimi(asiakas.sukunimi);
-    setEmail(asiakas.email);
-    setLahiosoite(asiakas.lahiosoite);
-    setPostinro(asiakas.postinro);
-} */
-
-export default function Kassa({url, cart, removeFromCart, asiakas}) {
+export default function Kassa({url, cart, setCart, removeFromCart, asiakas}) {
     const [etunimi, setEtunimi] = useState('');
     const [sukunimi, setSukunimi] = useState('');
     const [email, setEmail] = useState('');
@@ -32,26 +22,21 @@ export default function Kassa({url, cart, removeFromCart, asiakas}) {
 
       function order(e) {
         e.preventDefault();
-        if (asiakas != null) {
-            setEtunimi(asiakas.etunimi);
-            setSukunimi(asiakas.sukunimi);
-            setEmail(asiakas.email);
-            setLahiosoite(asiakas.lahiosoite);
-            setPostinro(asiakas.postinro);
-        }
         fetch(url + 'order/newOrder.php',{
             method: 'POST',
             header: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
+            credentials: 'same-origin',
             body: JSON.stringify({
                 etunimi: etunimi,
                 sukunimi: sukunimi,
                 email: email,
                 lahiosoite: lahiosoite,
                 postinro: postinro,
-                cart: cart
+                cart: cart,
+                user: asiakas
             })
         })
             .then (res => {
@@ -60,7 +45,7 @@ export default function Kassa({url, cart, removeFromCart, asiakas}) {
             .then (
                 (res) => {
                     console.log(res);
-                    // tähän ostoskorin tyhjennys; for?
+                    // tähän ostoskorin tyhjennys
                     setFinished(true);
                 }, (error) => {
                     alert(error);
@@ -73,7 +58,7 @@ export default function Kassa({url, cart, removeFromCart, asiakas}) {
       if (finished ===  false) {
           return (
               <section className="container">
-            <h5>Ostoskori</h5>
+            <h3>Ostoskori</h3>
             {cart.length > 0 ? ( 
             <> 
             <table className="row col-12">
@@ -84,7 +69,9 @@ export default function Kassa({url, cart, removeFromCart, asiakas}) {
                         <td className="col-3">{product.tuotenimi}</td>
                         <td className="col-3">{product.amount} x </td>
                         <td className="col-3">{product.hinta} €</td>
-                        <td className="col-3"><a onClick={() => removeFromCart(product)}>Poista</a></td>
+                        <td className="col-3">
+                            <a id="poista_tuote" onClick={() => removeFromCart(product)}><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        </td>
                     </tr>
                     )})}
                     <tr className="row">
@@ -98,7 +85,7 @@ export default function Kassa({url, cart, removeFromCart, asiakas}) {
             {/* Kun asiakas on kirjautuneena, asiakkaan tiedot tulostuvat automaattisesti */}
             {asiakas != null ?  (
                 <div className="row">
-                <h5 className="col-12">Olet kirjautunut sisään.</h5>
+                <h4 className="col-12"><i class="fa fa-user-circle" aria-hidden="true"></i>  Olet kirjautunut sisään.</h4>
                 
                 <ul className="col-6" id="kirj_as_tilaustiedot">
                     <li><b>Tilaustiedot:</b></li>
@@ -108,12 +95,12 @@ export default function Kassa({url, cart, removeFromCart, asiakas}) {
                     <li>Sähköposti: {asiakas.email}</li>
                 </ul>
                 <a className="col-3" href="#">Eivätkö tiedot pidä paikkaansa? Voit muokata tilitietojasi <b>asiakassivulla</b>.</a>
-                <br/><button onClick={order} className="btn btn-primary">Vahvista tilaus</button>
+                <br/><button onClick={order} className="btn btn-success">Vahvista tilaus</button>
                </div>
                 ) : (
                     // Tekstikentät ovat tyhjiä, kun asiakas ei ole kirjautunut sisään
                     <> 
-                    <h5>Täytä tilaustiedot</h5>
+                    <h4>Täytä tilaustiedot</h4>
                     <p>Et ole kirjautunut sisään.</p>
                     <form className="row" onSubmit={order}>
                         <div className="mb-3">
@@ -141,7 +128,7 @@ export default function Kassa({url, cart, removeFromCart, asiakas}) {
                             <input type="text" className="form-control"
                             onChange={e => setPostinro(e.target.value)} required/>
                         </div>
-                        <button type="submit" className="btn btn-primary">Vahvista tilaus</button>
+                        <button type="submit" className="btn btn-success">Vahvista tilaus</button>
                         </form>
                 </>
                 )} 
@@ -156,7 +143,10 @@ export default function Kassa({url, cart, removeFromCart, asiakas}) {
       } else {
         // kun tilaus on käsitelty ->
         return (
-        <h2>Kiitos tilauksestasi!</h2>
+            <>
+        <h2>Tilaus hyväksytty!</h2>
+        <h4><i class="fa fa-handshake-o" ></i> Kiitos, kun asioit meillä!</h4>
+        </>
     )   
       }
     

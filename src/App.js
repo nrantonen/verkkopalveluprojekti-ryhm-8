@@ -12,6 +12,7 @@ import Yllapito from './Yllapito';
 import MuokkaaTuotteita from './MuokkaaTuotteita';
 import Tuotemuokkaus from './Tuotemuokkaus';
 import Yll_etusivu from './Yll_etusivu';
+import LisaaTuote from './LisaaTuote';
 import Yll_logout from './Yll_logout';
 import Asiakassivu from './Asiakassivu';
 import Asiakaslogout from './Asiakaslogout';
@@ -54,12 +55,14 @@ function App() {
   return (
 
     <>
-      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas} cart={cart}/>
+      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas} asiakas={asiakas} cart={cart}/>
       <article>
         <Switch>
-          <Route path="/" component={Etusivu} exact render={() =>
-            <Etusivu asiakas={asiakas} /> }
-          /> 
+        <Route path="/" render={() => <Etusivu 
+            url={URL}
+            asiakas={asiakas} /> }
+            exact
+          />
           <Route path="/tuoteryhmäsivu" render={() => <Ryhma 
             url={URL}
             category={category}/>}
@@ -85,10 +88,13 @@ function App() {
               yllapito={yllapito} />}
           />
           <Route path="/MuokkaaTuotteita" render={() => <MuokkaaTuotteita 
-          url={URL}/>}
+          url={URL} yllapito={yllapito}/>}
           />
           <Route path="/Tuotemuokkaus" render={() => <Tuotemuokkaus 
-          url={URL}/>}
+          url={URL} yllapito={yllapito}/>}
+          />
+            <Route path="/LisaaTuote" render={() => <LisaaTuote
+            url={URL}/>} 
           />
           <Route path="/Yll_etusivu" exact render={() =>
             <Yll_etusivu yllapito={yllapito} />
@@ -97,7 +103,12 @@ function App() {
             <Yll_logout setYllapito={setYllapito}
             url={URL} />
           } />
-           <Route path="/Asiakas" render={() =>
+           <Route path="/Yll_logout" render={() =>
+            <Yll_logout setYllapito={setYllapito}
+            yllapito={yllapito}
+            url={URL} />
+          } />
+          <Route path="/Asiakas" render={() =>
             <Asiakassivu asiakas={asiakas}
             setAsiakas={setAsiakas}
             url={URL} />
@@ -142,7 +153,7 @@ function App() {
     setCart(modifiedCart);
     localStorage.setItem('cart', JSON.stringify(modifiedCart));
   }
-  
+
  function removeFromCart(product) {
     const itemsWithoutRemoved = cart.filter(item => item.tuotenro !== product.tuotenro);
     setCart(itemsWithoutRemoved);

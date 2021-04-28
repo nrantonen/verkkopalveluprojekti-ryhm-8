@@ -13,7 +13,7 @@ export default function Ostoskori({cart}) {
         
       </ul>
       <p><b>Summa: {cartSum()} €</b></p>
-      <Link to='/Kassa'>Kassalle</Link>
+      <Link className="btn btn-success" to='/Kassa'>Kassalle</Link>
     </div>
   )
 

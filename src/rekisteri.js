@@ -6,7 +6,7 @@ export default function Rekisteri({url}) {
     
   
   return (
-    <form  onSubmit={url + "register/rekisteri.php"} method="POST">
+    <form action={url + "register/rekisteri.php"} method="POST">
 
       
     <div className="row col-12">
@@ -60,7 +60,7 @@ export default function Rekisteri({url}) {
       </div>
     
     <div >
-    <button href="#" id="rekisteroidy" type="submit" className="btn btn-secondary">rekisteröidy</button>
+    <button id="rekisteroidy" type="submit" className="btn btn-secondary">rekisteröidy</button>
     </div>
 </form>
   );

@@ -10,8 +10,10 @@ export default function Tuotemuokkaus({url, yllapito}) {
     const [kuvaus,setKuvaus] = useState("");
     const [trnro,setTrnro] = useState([]);
     const [file, setFile] = useState(null);
+
     let location = useLocation();
     let tuotenro = location.pathname.split('/');
+    
     let history = useHistory();
 
     // haetaan muokattava tuote
