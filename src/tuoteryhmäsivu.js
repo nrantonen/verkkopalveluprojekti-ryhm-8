@@ -26,8 +26,8 @@ export default function Tuoteryhma({url,category}) {
         <div className="container">
             <div className="row">
                 {products.map(product => (
-                    <div className="tuotediv col-2" key={product.tuotenro}>
-                        <Link className="nav-link" 
+                    <div className="tuotediv col-xl-2 col-sm-4 col-6 bg-light border" key={product.tuotenro}>
+                        <Link className="linkki"
                                     to={{
                                         pathname: '/tuotesivu/' + product.tuotenro,
                                         state: {
