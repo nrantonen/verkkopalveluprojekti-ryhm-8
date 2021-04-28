@@ -122,7 +122,8 @@ function App() {
             <Kassa asiakas={asiakas}
             url={URL} cart={cart} setCart={setCart} 
             removeFromCart={removeFromCart}
-            updateAmount={updateAmount} />
+            updateAmount={updateAmount}
+            cartSum={cartSum} />
           } />
           <Route path="/Palaute" render={() =><Palaute 
           url={URL}/>}/>
@@ -160,7 +161,7 @@ function App() {
     for(let i = 0; i < cart.length; i++) {
       sum += parseFloat(cart[i].hinta * cart[i].amount);
     }
-    return sum;
+    return sum.toFixed(2);
   }
 
  function removeFromCart(product) {

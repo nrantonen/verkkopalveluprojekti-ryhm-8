@@ -2,20 +2,12 @@ import React from 'react';
 import {useState,useEffect} from 'react';
 import './App.css';
 
-export default function Kassa({url, cart, setCart, removeFromCart, updateAmount, asiakas}) {
+export default function Kassa({url, cart, setCart, removeFromCart, cartSum, updateAmount, asiakas}) {
     const [etunimi, setEtunimi] = useState('');
     const [sukunimi, setSukunimi] = useState('');
     const [email, setEmail] = useState('');
     const [lahiosoite, setLahiosoite] = useState('');
     const [postinro, setPostinro] = useState('');
-
-    function cartSum() {
-        let sum = 0;
-        for(let i = 0; i < cart.length; i++) {
-          sum += parseFloat(cart[i].hinta * cart[i].amount);
-        }
-        return sum;
-      }
 
       //onko tilausprosessi valmis:
       const [finished, setFinished] = useState(false);
