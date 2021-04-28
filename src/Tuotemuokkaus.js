@@ -10,11 +10,13 @@ export default function Tuotemuokkaus({url, yllapito}) {
     const [kuvaus,setKuvaus] = useState("");
     const [trnro,setTrnro] = useState([]);
     const [file, setFile] = useState(null);
+
     let location = useLocation();
     let tuotenro = location.pathname.split('/');
+    
     let history = useHistory();
 
-    // Hae tuote
+    // haetaan muokattava tuote
     useEffect(() => {
       async function getProductToEdit() {
       try {
@@ -41,6 +43,7 @@ export default function Tuotemuokkaus({url, yllapito}) {
       setFile(e.target.files[0]);
     }
 
+    // uusien tietojen tallennus
     async function save(e) {
         e.preventDefault();
         const formData = new FormData();
@@ -63,6 +66,7 @@ export default function Tuotemuokkaus({url, yllapito}) {
           alert(error);
         }
       }
+
       // Tämä sivu ei näy, jos ylläpitäjä ei ole kirjautunut
       if(yllapito === null) {
             return <Redirect to="/Yllapito" />

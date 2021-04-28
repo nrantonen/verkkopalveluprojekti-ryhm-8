@@ -17,7 +17,8 @@ export default function Footer() {
                     </div>
             </div>
           <div className="col-12 col-md-6">
-            <Link id="yllapitolinkki" to="/Yllapito">Ylläpito</Link>
+            <Link id="yllapitolinkki" to="/Yllapito">Ylläpito</Link> <br/>
+            <Link id="tuotepalautus" to="/Palaute">Tuotteiden palautus ja takuu</Link>
           </div>
         </footer>
     );

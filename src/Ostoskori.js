@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default function Ostoskori({cart}) {
   return (
@@ -7,12 +8,12 @@ export default function Ostoskori({cart}) {
       <hr />
       <ul>
         {cart.map(product => (
-          <Korituote nimi={product.tuotenimi} hinta={product.hinta} kpl={product.amount}/>
+          <Korituote tuotenro={product.tuotenro} nimi={product.tuotenimi} hinta={product.hinta} kpl={product.amount}/>
         ))}
         
       </ul>
       <p><b>Summa: {cartSum()} €</b></p>
-      <button>Muokkaa</button>
+      <Link className="btn btn-success" to='/Kassa'>Kassalle</Link>
     </div>
   )
 
@@ -25,7 +26,7 @@ export default function Ostoskori({cart}) {
   }
 }
 
-function Korituote(props) {
+ function Korituote(props) {
   return (
     <li>
       <a href="#">{props.nimi}</a>
