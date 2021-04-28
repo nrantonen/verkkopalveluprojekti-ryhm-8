@@ -43,7 +43,7 @@ export default function Asiakassivu({asiakas,url}) {
                 <Link to="/Asiakasmuokkaus">Muokkaa omia tietoja</Link>
             </div>
             <div>
-                <Link to="#">Tilaukset</Link>
+                <Link to="/Omattilaukset">Tilaukset</Link>
             </div>
             <Link to="/Asiakaslogout">Kirjaudu ulos</Link>
         </div>
