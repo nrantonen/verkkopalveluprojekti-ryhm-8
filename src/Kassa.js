@@ -2,20 +2,12 @@ import React from 'react';
 import {useState,useEffect} from 'react';
 import './App.css';
 
-export default function Kassa({url, cart, setCart, removeFromCart, asiakas}) {
+export default function Kassa({url, cart, setCart, removeFromCart, cartSum, updateAmount, asiakas}) {
     const [etunimi, setEtunimi] = useState('');
     const [sukunimi, setSukunimi] = useState('');
     const [email, setEmail] = useState('');
     const [lahiosoite, setLahiosoite] = useState('');
     const [postinro, setPostinro] = useState('');
-
-    function cartSum() {
-        let sum = 0;
-        for(let i = 0; i < cart.length; i++) {
-          sum += parseFloat(cart[i].hinta * cart[i].amount);
-        }
-        return sum;
-      }
 
       //onko tilausprosessi valmis:
       const [finished, setFinished] = useState(false);
@@ -63,11 +55,16 @@ export default function Kassa({url, cart, setCart, removeFromCart, asiakas}) {
             <> 
             <table className="row col-12">
                     <tbody className="row col-12">  
-            {cart.map((product) => {
+            {cart.map((product,index) => {
                 return(
                     <tr className="row" key={product.tuotenro}>
                         <td className="col-3">{product.tuotenimi}</td>
-                        <td className="col-3">{product.amount} x </td>
+                        <td className="col-3">
+                            <input type="number" 
+                            step="1" min="1" 
+                            onChange={e => changeAmount(e, product, index)}
+                            value={product.amount}/>
+                        </td>
                         <td className="col-3">{product.hinta} €</td>
                         <td className="col-3">
                             <a id="poista_tuote" onClick={() => removeFromCart(product)}><i class="fa fa-trash" aria-hidden="true"></i></a>
@@ -148,6 +145,10 @@ export default function Kassa({url, cart, setCart, removeFromCart, asiakas}) {
         <h4><i class="fa fa-handshake-o" ></i> Kiitos, kun asioit meillä!</h4>
         </>
     )   
-      }
+    }
     
+    function changeAmount(e, product, index) {
+        updateAmount(e.target.value,product);
+    }
+
 }

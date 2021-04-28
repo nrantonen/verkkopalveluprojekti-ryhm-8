@@ -121,7 +121,9 @@ function App() {
           <Route path="/Kassa" render={() =>
             <Kassa asiakas={asiakas}
             url={URL} cart={cart} setCart={setCart} 
-            removeFromCart={removeFromCart}/>
+            removeFromCart={removeFromCart}
+            updateAmount={updateAmount}
+            cartSum={cartSum} />
           } />
           <Route path="/Palaute" render={() =><Palaute 
           url={URL}/>}/>
@@ -154,11 +156,20 @@ function App() {
     localStorage.setItem('cart', JSON.stringify(modifiedCart));
   }
 
+  function cartSum() {
+    let sum = 0;
+    for(let i = 0; i < cart.length; i++) {
+      sum += parseFloat(cart[i].hinta * cart[i].amount);
+    }
+    return sum.toFixed(2);
+  }
+
  function removeFromCart(product) {
     const itemsWithoutRemoved = cart.filter(item => item.tuotenro !== product.tuotenro);
     setCart(itemsWithoutRemoved);
     localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
   }
+
 }
 
 export default App;
