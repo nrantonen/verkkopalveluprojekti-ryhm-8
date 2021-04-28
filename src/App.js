@@ -55,7 +55,9 @@ function App() {
   return (
 
     <>
-      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas} asiakas={asiakas} cart={cart}/>
+      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} 
+      setCategory={setCategory} setAsiakas={setAsiakas} asiakas={asiakas} 
+      cartSum={cartSum} cart={cart}/>
       <article>
         <Switch>
         <Route path="/" render={() => <Etusivu 
