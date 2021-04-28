@@ -16,6 +16,7 @@ import LisaaTuote from './LisaaTuote';
 import Yll_logout from './Yll_logout';
 import Asiakassivu from './Asiakassivu';
 import Asiakaslogout from './Asiakaslogout';
+import Asiakasmuokkaus from './Asiakasmuokkaus';
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
 
@@ -54,10 +55,9 @@ function App() {
       <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas} asiakas={asiakas} cart={cart}/>
       <article>
         <Switch>
-          <Route path="/" render={() => <Etusivu 
+          <Route path="/" exact render={() => <Etusivu 
             url={URL}
             asiakas={asiakas} /> }
-            exact
           />
           <Route path="/tuoteryhmäsivu" render={() => <Ryhma 
             url={URL}
@@ -109,6 +109,12 @@ function App() {
             asiakas={asiakas}
             url={URL}/>
           } />
+          <Route path="/Asiakasmuokkaus" render={() =>
+            <Asiakasmuokkaus setAsiakas={setAsiakas}
+            asiakas={asiakas}
+            url={URL}/>
+          } />
+
         </Switch>
       </article>
       <Footer/>
