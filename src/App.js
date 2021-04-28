@@ -20,6 +20,7 @@ import Asiakasmuokkaus from './Asiakasmuokkaus';
 import Kassa from './Kassa';
 import Palaute from './palaute';
 import Tuotepalautus from './tuotepalautus';
+import Kaikkitilaukset from './Kaikkitilaukset';
 
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
@@ -138,6 +139,11 @@ function App() {
           url={URL}/>}/>
             <Route path="/tuotepalautus" render={() =><Tuotepalautus 
           url={URL}/>}/>
+          <Route path="/Tilaukset" render={() =>
+            <Kaikkitilaukset 
+          url={URL}
+          yllapito={yllapito} />
+        } />
         </Switch>
       </article>
       <Footer/>
