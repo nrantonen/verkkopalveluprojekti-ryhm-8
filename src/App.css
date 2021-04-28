@@ -176,7 +176,13 @@ tr {
   margin-left: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #cebeb1;;
+}
+
+.linkki,
+.linkki:hover,
+.linkki:focus {
+  color: #000;
+  text-decoration: none;
 }
 
 /*Ylläpito-sivu*/

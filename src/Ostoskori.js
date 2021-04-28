@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-export default function Ostoskori({cart}) {
+export default function Ostoskori({cart, cartSum}) {
   return (
     <div id="ostoskori" className="box ZIndex">
       <p><b>Ostoskori</b></p>
@@ -17,13 +17,6 @@ export default function Ostoskori({cart}) {
     </div>
   )
 
-  function cartSum() {
-    let sum = 0;
-    for(let i = 0; i < cart.length; i++) {
-      sum += parseFloat(cart[i].hinta * cart[i].amount);
-    }
-    return sum;
-  }
 }
 
  function Korituote(props) {
