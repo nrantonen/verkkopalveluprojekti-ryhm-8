@@ -37,7 +37,7 @@ export default function Kaikkitilaukset({url,yllapito}) {
                     <tr className="row">
                         <th className="col-3 col-lg-1">Asiakasnro</th>
                         <th className="col-3 col-lg-2">Tilausnro</th>
-                        <th className="col-3 col-lg-4">Tuotenro ja tuote</th>
+                        <th className="col-3 col-lg-2">Tuotenro ja tuote</th>
                         <th className="col-3 col-lg-1">Määrä</th>
                         <th className="col-3 col-lg-1">Tila</th>
                         <th className="col-3 col-lg-1">Tilauspvm</th>
@@ -48,7 +48,7 @@ export default function Kaikkitilaukset({url,yllapito}) {
                     <tr key={tilaus.tilausnro} className="row">
                     <td className="col-3 col-md-3 col-lg-1"><b>{tilaus.asnro}</b></td>
                     <td className="col-3 col-md-3 col-lg-2"><b>{tilaus.tilausnro}</b></td>
-                    <td className="col-3 col-md-3 col-lg-4">{tilaus.tuotenro} - {tilaus.tuotenimi}</td>
+                    <td className="col-3 col-md-3 col-lg-2">{tilaus.tuotenro} - {tilaus.tuotenimi}</td>
                     <td className="col-3 col-md-3 col-lg-1">{tilaus.kpl}</td>
                     <td className="col-3 col-md-3 col-lg-1"><b>{tilaus.tila}</b></td>
                     <td className="col-3 col-md-3 col-lg-1"><b>{tilaus.tilauspvm}</b></td>

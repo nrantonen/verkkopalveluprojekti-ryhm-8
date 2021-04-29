@@ -28,7 +28,7 @@ export default function Omattilaukset({url,asiakas}) {
     return (
         <section>
           <div>
-          <Link to="/Yll_etusivu">Palaa ylläpitäjän etusivulle</Link>
+          <Link to="/Asiakas">Palaa omalle sivulle</Link>
           </div>
           <h3>Kaikki tilaukset</h3>
         <div className="p-md-3">
@@ -38,7 +38,7 @@ export default function Omattilaukset({url,asiakas}) {
                         <th className="col-3 col-lg-2">Tilausnro</th>
                         <th className="col-3 col-lg-4">Tuotenimi</th>
                         <th className="col-3 col-lg-1">Määrä</th>
-                        <th className="col-3 col-lg-1">Rivin summa</th>
+
                     </tr>
                     </thead> 
                     <tbody>
@@ -47,7 +47,7 @@ export default function Omattilaukset({url,asiakas}) {
                     <td className="col-3 col-md-3 col-lg-1"><b>{tilaus.tilausnro}</b></td>
                     <td className="col-3 col-md-3 col-lg-4">{tilaus.tuotenimi}</td>
                     <td className="col-3 col-md-3 col-lg-1">{tilaus.kpl}</td>
-                    <td className="col-3 col-md-3 col-lg-1"><b>{tilaus.Summa}</b></td>
+
 
                     </tr>))}
                 </tbody>
