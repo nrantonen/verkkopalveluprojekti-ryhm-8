@@ -17,8 +17,8 @@ export default function Header({setCriteria, search, setSearch, url, setCategory
           setIsOpen(!isOpen);
         }  
 
-        const [email, setEmail] = useState('testi@testi.com');
-        const [salasana, setSalasana] = useState('test12');
+        const [email, setEmail] = useState('post@post.com');
+        const [salasana, setSalasana] = useState('matti75v');
 
         let history = useHistory();
 

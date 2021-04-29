@@ -16,9 +16,12 @@ import LisaaTuote from './LisaaTuote';
 import Yll_logout from './Yll_logout';
 import Asiakassivu from './Asiakassivu';
 import Asiakaslogout from './Asiakaslogout';
+import Asiakasmuokkaus from './Asiakasmuokkaus';
 import Kassa from './Kassa';
 import Palaute from './palaute';
 import Tuotepalautus from './tuotepalautus';
+import Kaikkitilaukset from './Kaikkitilaukset';
+import Omattilaukset from './Asiakastilaukset';
 
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
@@ -62,7 +65,8 @@ function App() {
         <Switch>
         <Route path="/" render={() => <Etusivu 
             url={URL}
-            asiakas={asiakas} /> }
+            asiakas={asiakas} 
+            /> }
             exact
           />
           <Route path="/tuoteryhmäsivu" render={() => <Ryhma 
@@ -120,6 +124,11 @@ function App() {
             asiakas={asiakas}
             url={URL}/>
           } />
+          <Route path="/Asiakasmuokkaus" render={() =>
+            <Asiakasmuokkaus setAsiakas={setAsiakas}
+            asiakas={asiakas}
+            url={URL}/>
+          } />
           <Route path="/Kassa" render={() =>
             <Kassa asiakas={asiakas}
             url={URL} cart={cart} setCart={setCart} 
@@ -131,6 +140,16 @@ function App() {
           url={URL}/>}/>
             <Route path="/tuotepalautus" render={() =><Tuotepalautus 
           url={URL}/>}/>
+          <Route path="/Tilaukset" render={() =>
+            <Kaikkitilaukset 
+            url={URL}
+            yllapito={yllapito} />
+           } />
+          <Route path="/Omattilaukset" render={() =>
+            <Omattilaukset 
+            url={URL}
+            asiakas={asiakas} />
+          } />
         </Switch>
       </article>
       <Footer/>
