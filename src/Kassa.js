@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState,useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import './App.css';
 
 export default function Kassa({url, cart, removeFromCart, emptyCart, cartSum, updateAmount, asiakas}) {
@@ -108,9 +109,9 @@ export default function Kassa({url, cart, removeFromCart, emptyCart, cartSum, up
             
             {/* Kun asiakas on kirjautuneena, asiakkaan tiedot tulostuvat automaattisesti */}
             {asiakas != null ?  (
-                <div className="row">
+                <div className="row mt-3">
                 <h4 className="col-12"><i className="fa fa-user-circle" aria-hidden="true"></i>  Olet kirjautunut sisään.</h4>
-                
+                <small className="form-text text-muted">Lähetämme laskun ilmoittamaasi sähköpostiin.</small>
                 <ul className="col-6" id="kirj_as_tilaustiedot">
                     <li><b>Tilaustiedot:</b></li>
                     <li>Asiakasnumero {asiakas.asnro}</li>
@@ -118,9 +119,12 @@ export default function Kassa({url, cart, removeFromCart, emptyCart, cartSum, up
                     <li>Osoite: {asiakas.lahiosoite} {asiakas.postinro}</li>
                     <li>Sähköposti: {asiakas.email}</li>
                 </ul>
-                <a className="col-3" href="#">Eivätkö tiedot pidä paikkaansa? Voit muokata tilitietojasi <b>asiakassivulla</b>.</a>
-                <br/><button onClick={order} className="btn btn-success">Vahvista tilaus</button>
+                <Link to="/Asiakasmuokkaus" id="kassasta_asiakasmuokkaukseen" className="col-3">Eivätkö tiedot pidä paikkaansa? Voit muokata tilitietojasi <b>asiakassivulla</b>.</Link>
+                <br/>
+                <div className="row my-4">
+                    <button onClick={order} className="col-12 btn btn-success"><b>{cartSum()} €</b>&nbsp;- Vahvista tilaus</button>
                </div>
+            </div>
                 ) : (
                     // Tekstikentät ovat tyhjiä, kun asiakas ei ole kirjautunut sisään
                     <> 
@@ -153,13 +157,20 @@ export default function Kassa({url, cart, removeFromCart, emptyCart, cartSum, up
                             <input type="text" className="form-control"
                             onChange={e => setPostinro(e.target.value)} required/>
                         </div>
-                        <button type="submit" className="btn btn-success"><b>{cartSum()} €</b>&nbsp;- Vahvista tilaus</button>
-                        </form>
+                        <div className="row my-4">
+                            <button type="submit" className="col-12 btn btn-success"><b>{cartSum()} €</b>&nbsp;- Vahvista tilaus</button>
+                        </div>
+                    </form>
                 </>
                 )} 
       
             </> ) :( // kun kori on tyhjä
-                <p>Et ole lisännyt tuotteita ostoskoriin.</p>
+                <>
+                    <p>Et ole lisännyt tuotteita ostoskoriin.</p>
+                    <div className="row my-4">
+                        <Link className="col-4 btn btn-success" to="/Hakutulokset">Selaa tuotteita</Link>
+                    </div>
+                </> 
             )
             }
        
@@ -168,11 +179,11 @@ export default function Kassa({url, cart, removeFromCart, emptyCart, cartSum, up
       } else {
         // kun tilaus on käsitelty ->
         return (
-        <>
+        <section className="container">
             <h2><b>Kiitos!</b> Tilauksesi on vastaanotettu! <i className="fa fa-handshake-o" ></i></h2>
             <h4>Asiakasnumerosi on <b>{asnro}.</b><br/>Lähetämme laskun sähköpostiisi, kun tilauksesi on käsitelty.</h4>
 
-            <ul className="col-6" id="tilaus_yhteenveto">
+            <ul className="col-12 pt-2" id="tilaus_yhteenveto">
                 <li><h5>Tilauksen tiedot:</h5></li>
                 <li>Tilaaja: {etunimi} {sukunimi}</li>
                 <li>Toimitusosoite: {lahiosoite} {postinro}</li>
@@ -180,16 +191,26 @@ export default function Kassa({url, cart, removeFromCart, emptyCart, cartSum, up
             </ul>
 
 
+            <h5 className="pt-4">Tilaamasi tuotteet:</h5>
+            <table className="mb-5">
+                <tbody className="row">
             {kori.map((tuote,index) => {
                     return(
-                        <tr className="row" key={tuote.tuotenro}>
-                            <td className="col-3">{tuote.tuotenimi}</td>
-                            <td className="col-3">{tuote.amount}</td>
-                            <td className="col-3">{tuote.hinta} €</td>
-                            <td>{summa}</td>
+                        <tr className="row text-end col-12" key={tuote.tuotenro}>
+                            <td className="col-4">{tuote.tuotenimi}</td>
+                            <td className="col-4">{tuote.amount} x </td>
+                            <td className="col-4">{tuote.hinta} €</td>
+                            
                         </tr>
                         )})}
-        </>
+                         <tr className="row text-end col-12"><td><b>{summa} €</b></td></tr>
+                </tbody>
+            </table>
+            
+            <div className="row my-4">
+                <Link className="col-12 btn btn-success" to="/">Takaisin etusivulle</Link>
+            </div>
+        </section>
     )   
     }
     
