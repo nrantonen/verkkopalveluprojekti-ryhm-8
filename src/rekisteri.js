@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 
 export default function Rekisteri({url}) {
     const [etunimi, setEtunimi] = useState ("");
@@ -11,7 +12,7 @@ export default function Rekisteri({url}) {
     const [salasana, setSalasana] = useState("");
     const [salasana2, setSalasana2] = useState("");
     
-   
+   let history = useHistory();
    
     async function save(e) {
       e.preventDefault();
@@ -33,7 +34,12 @@ export default function Rekisteri({url}) {
                 body: formData
             }
         );
-
+            const json = await response.json();
+            if (response.ok) {
+              history.push('/');
+            } else {
+              alert("Virhe");
+            }
         } catch(error) {
           alert(error);
         }
