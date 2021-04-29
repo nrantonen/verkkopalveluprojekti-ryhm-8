@@ -2,7 +2,7 @@ import React from 'react';
 import {useState,useEffect} from 'react';
 import './App.css';
 
-export default function Kassa({url, cart, setCart, removeFromCart, cartSum, updateAmount, asiakas}) {
+export default function Kassa({url, cart, removeFromCart, emptyCart, cartSum, updateAmount, asiakas}) {
     const [etunimi, setEtunimi] = useState('');
     const [sukunimi, setSukunimi] = useState('');
     const [email, setEmail] = useState('');
@@ -37,7 +37,8 @@ export default function Kassa({url, cart, setCart, removeFromCart, cartSum, upda
             .then (
                 (res) => {
                     console.log(res);
-                    // tähän ostoskorin tyhjennys
+                    // tilaus on käsitelty -> ostoskori tyhjennetään
+                    emptyCart();
                     setFinished(true);
                 }, (error) => {
                     alert(error);
