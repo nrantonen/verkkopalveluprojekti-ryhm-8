@@ -125,7 +125,7 @@ function App() {
             url={URL} cart={cart} setCart={setCart} 
             removeFromCart={removeFromCart}
             updateAmount={updateAmount}
-            cartSum={cartSum} />
+            cartSum={cartSum} emptyCart={emptyCart} />
           } />
           <Route path="/Palaute" render={() =><Palaute 
           url={URL}/>}/>
@@ -166,12 +166,18 @@ function App() {
     return sum.toFixed(2);
   }
 
+  // poistaa tietyn tuotteen korista
  function removeFromCart(product) {
     const itemsWithoutRemoved = cart.filter(item => item.tuotenro !== product.tuotenro);
     setCart(itemsWithoutRemoved);
     localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
   }
 
+  // tyhjentää koko korin
+  function emptyCart() {
+    setCart([]);
+    localStorage.setItem('cart',JSON.stringify([]));
+  }
 }
 
 export default App;
