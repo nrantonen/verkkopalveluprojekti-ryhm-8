@@ -223,7 +223,12 @@ tr {
 .invisibleborder{
   border: none;
   font-weight: bolder;
+  font-size: larger;
 }
+.kplsumma {
+  text-transform: uppercase;
+}
+
 .kassalista td {
   padding: 5px;
 }

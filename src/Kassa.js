@@ -76,17 +76,17 @@ export default function Kassa({url, cart, removeFromCart, emptyCart, cartSum, up
             <table className="row kassalista col-12">
                 <thead>  
                     <tr className="row col-12 tilaus_otsikot invisibleborder">
-                        <th className="col-3">Tuote</th>
+                        <th className="col-5">Tuote</th>
                         <th className="col-3">Kpl</th>
                         <th className="col-3">Hinta</th>
-                        <th className="col-3"></th>
+                        <th className="col-1"></th>
                     </tr>
                 </thead>
             <tbody>
             {cart.map((product,index) => {
                 return(
                     <tr className="row" key={product.tuotenro}>
-                        <td className="col-3">{product.tuotenimi}</td>
+                        <td className="col-5">{product.tuotenimi}</td>
                         <td className="col-3">
                             <input type="number" id="kplmäärä"
                             step="1" min="1" 
@@ -94,13 +94,13 @@ export default function Kassa({url, cart, removeFromCart, emptyCart, cartSum, up
                             value={product.amount}/> <span id="tuote_x"> x </span>
                         </td>
                         <td className="col-3">{product.hinta} €</td>
-                        <td className="col-3">
+                        <td className="col-1">
                             <a id="poista_tuote" onClick={() => removeFromCart(product)}><i className="fa fa-trash" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                     )})}
-                    <tr className="row invisibleborder">
-                        <td className="col-6 text-end kplsumma">Summa: </td>
+                    <tr className="row invisibleborder kplsumma">
+                        <td className="col-8 text-end">= </td>
                         <td className="col">{cartSum()} €</td>
                     </tr>
                 </tbody>
@@ -112,14 +112,14 @@ export default function Kassa({url, cart, removeFromCart, emptyCart, cartSum, up
                 <div className="row mt-3">
                 <h4 className="col-12"><i className="fa fa-user-circle" aria-hidden="true"></i>  Olet kirjautunut sisään.</h4>
                 <small className="form-text text-muted">Lähetämme laskun ilmoittamaasi sähköpostiin.</small>
-                <ul className="col-6" id="kirj_as_tilaustiedot">
+                <ul className="col-12 col-sm-6" id="kirj_as_tilaustiedot">
                     <li><b>Tilaustiedot:</b></li>
                     <li>Asiakasnumero {asiakas.asnro}</li>
                     <li>Tilaaja: {asiakas.etunimi} {asiakas.sukunimi}</li>
                     <li>Osoite: {asiakas.lahiosoite} {asiakas.postinro}</li>
                     <li>Sähköposti: {asiakas.email}</li>
                 </ul>
-                <Link to="/Asiakasmuokkaus" id="kassasta_asiakasmuokkaukseen" className="col-3">Eivätkö tiedot pidä paikkaansa? Voit muokata tilitietojasi <b>asiakassivulla</b>.</Link>
+                <Link to="/Asiakasmuokkaus" id="kassasta_asiakasmuokkaukseen" className="col-12 col-sm-5">Eivätkö tiedot pidä paikkaansa? Voit muokata tilitietojasi <b>asiakassivulla</b>.</Link>
                 <br/>
                 <div className="row my-4">
                     <button onClick={order} className="col-12 btn btn-success"><b>{cartSum()} €</b>&nbsp;- Vahvista tilaus</button>
