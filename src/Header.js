@@ -88,7 +88,7 @@ export default function Header({setCriteria, search, setSearch, url, setCategory
                                     <input type="password" className="form-control" placeholder="Salasana" name="salasana" value={salasana} onChange={e => setSalasana(e.target.value)} maxLength="30" required />
                                 </div>
                                 <div className="login-form">
-                                    <button type="submit" class="btn btn-outline-success btn-sm">Kirjaudu sisään</button><br/>
+                                    <button type="submit" className="btn btn-outline-success btn-sm">Kirjaudu sisään</button><br/>
                                 </div>
                             </form>
                             <a href="#">Unohditko salasanan?</a>

@@ -81,7 +81,8 @@ div#tekijat > li {
   list-style: none;
 }
 
-#yllapitolinkki {
+#yllapitolinkki,
+#tuotepalautus {
   color: white;
 }
 

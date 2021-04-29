@@ -82,7 +82,7 @@ export default function Kassa({url, cart, setCart, removeFromCart, cartSum, upda
             {/* Kun asiakas on kirjautuneena, asiakkaan tiedot tulostuvat automaattisesti */}
             {asiakas != null ?  (
                 <div className="row">
-                <h4 className="col-12"><i class="fa fa-user-circle" aria-hidden="true"></i>  Olet kirjautunut sisään.</h4>
+                <h4 className="col-12"><i className="fa fa-user-circle" aria-hidden="true"></i>  Olet kirjautunut sisään.</h4>
                 
                 <ul className="col-6" id="kirj_as_tilaustiedot">
                     <li><b>Tilaustiedot:</b></li>
@@ -142,7 +142,7 @@ export default function Kassa({url, cart, setCart, removeFromCart, cartSum, upda
         return (
             <>
         <h2>Tilaus hyväksytty!</h2>
-        <h4><i class="fa fa-handshake-o" ></i> Kiitos, kun asioit meillä!</h4>
+        <h4><i className="fa fa-handshake-o" ></i> Kiitos, kun asioit meillä!</h4>
         </>
     )   
     }
