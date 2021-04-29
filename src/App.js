@@ -16,9 +16,12 @@ import LisaaTuote from './LisaaTuote';
 import Yll_logout from './Yll_logout';
 import Asiakassivu from './Asiakassivu';
 import Asiakaslogout from './Asiakaslogout';
+import Asiakasmuokkaus from './Asiakasmuokkaus';
 import Kassa from './Kassa';
 import Palaute from './palaute';
 import Tuotepalautus from './tuotepalautus';
+import Kaikkitilaukset from './Kaikkitilaukset';
+import Omattilaukset from './Asiakastilaukset';
 
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
@@ -55,12 +58,15 @@ function App() {
   return (
 
     <>
-      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} setCategory={setCategory} setAsiakas={setAsiakas} asiakas={asiakas} cart={cart}/>
+      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} 
+      setCategory={setCategory} setAsiakas={setAsiakas} asiakas={asiakas} 
+      cartSum={cartSum} cart={cart}/>
       <article>
         <Switch>
         <Route path="/" render={() => <Etusivu 
             url={URL}
-            asiakas={asiakas} /> }
+            asiakas={asiakas} 
+            /> }
             exact
           />
           <Route path="/tuoteryhmäsivu" render={() => <Ryhma 
@@ -118,17 +124,32 @@ function App() {
             asiakas={asiakas}
             url={URL}/>
           } />
+          <Route path="/Asiakasmuokkaus" render={() =>
+            <Asiakasmuokkaus setAsiakas={setAsiakas}
+            asiakas={asiakas}
+            url={URL}/>
+          } />
           <Route path="/Kassa" render={() =>
             <Kassa asiakas={asiakas}
             url={URL} cart={cart} setCart={setCart} 
             removeFromCart={removeFromCart}
             updateAmount={updateAmount}
-            cartSum={cartSum} />
+            cartSum={cartSum} emptyCart={emptyCart} />
           } />
           <Route path="/Palaute" render={() =><Palaute 
           url={URL}/>}/>
             <Route path="/tuotepalautus" render={() =><Tuotepalautus 
           url={URL}/>}/>
+          <Route path="/Tilaukset" render={() =>
+            <Kaikkitilaukset 
+            url={URL}
+            yllapito={yllapito} />
+           } />
+          <Route path="/Omattilaukset" render={() =>
+            <Omattilaukset 
+            url={URL}
+            asiakas={asiakas} />
+          } />
         </Switch>
       </article>
       <Footer/>
@@ -164,12 +185,18 @@ function App() {
     return sum.toFixed(2);
   }
 
+  // poistaa tietyn tuotteen korista
  function removeFromCart(product) {
     const itemsWithoutRemoved = cart.filter(item => item.tuotenro !== product.tuotenro);
     setCart(itemsWithoutRemoved);
     localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
   }
 
+  // tyhjentää koko korin
+  function emptyCart() {
+    setCart([]);
+    localStorage.setItem('cart',JSON.stringify([]));
+  }
 }
 
 export default App;
