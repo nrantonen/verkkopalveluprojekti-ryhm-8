@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 import Navbar from './Navbar';
 import {useHistory} from 'react-router';
 
-export default function Header({setCriteria, search, setSearch, url, setCategory, cart, cartSum, setAsiakas, asiakas}) {
+export default function Header({setSearch, url, setCategory, cart, cartSum, setAsiakas, asiakas}) {
 
     // Kirjautumislomake
         const [isOpen, setIsOpen] = useState(false);
@@ -124,7 +124,7 @@ export default function Header({setCriteria, search, setSearch, url, setCategory
                 <input type="search" className="form-control rounded-pill rounded" placeholder="Hae tuotteita..."
                 aria-describedby="search-addon" name="haku"
                 onChange = {e => setSearch(e.target.value)}/>                
-                <Link id="hakupainike" onClick={setCriteria(search)} to="/hakutulokset">
+                <Link id="hakupainike" to="/hakutulokset">
                 <i id="kuvake" className="fa fa-search"></i></Link> 
             </div>
     
