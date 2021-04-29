@@ -84,7 +84,9 @@ div#tekijat > li {
 #yllapitolinkki {
   color: white;
 }
-
+#tuotepalautus {
+  color: white;
+}
 
 /* Popup style */
 .popup-box {
