@@ -30,7 +30,6 @@ function App() {
 
   // Hakupalkin toimintoja
   const [search,setSearch] = useState('');
-  const [criteria, setCriteria] = useState(null);
   const [category, setCategory] = useState(null);
   const [cart, setCart] = useState([]);
 
@@ -38,7 +37,6 @@ function App() {
 
   useEffect(() => {
     if (location.state!==undefined) {
-      setCriteria({tuotenimi: location.state.tuotenimi});
       setCategory({trnro: location.state.trnro,trnimi: location.state.trnimi});
     }
     if('cart' in localStorage) {
@@ -58,7 +56,7 @@ function App() {
   return (
 
     <>
-      <Header setCriteria={setCriteria} search={search} setSearch={setSearch} url={URL} 
+      <Header search={search} setSearch={setSearch} url={URL} 
       setCategory={setCategory} setAsiakas={setAsiakas} asiakas={asiakas} 
       cartSum={cartSum} cart={cart}/>
       <article>
@@ -79,8 +77,7 @@ function App() {
           />
           <Route path="/hakutulokset" render={() => <Hakutulokset
             url = {URL}
-            search = {search}
-            setCriteria = {setCriteria}/>}
+            search = {search}/>}
             exact
             />
             <Route path="/rekisteri" render = {() => <Rekisteri 
