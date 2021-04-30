@@ -7,8 +7,9 @@ export default function Tuoteryhma({url,category}) {
     const [products, setProducts] = useState([]);
 
     // Hakee tuotteet
-    useEffect(async() => {
-        try {
+    useEffect(() => {
+        async function getproducts() {
+            try {
             //alert(category?.trnro);
             const response = await fetch(url + 'products/getproducts.php/' + category?.trnro);
             const json = await response.json();
@@ -20,6 +21,8 @@ export default function Tuoteryhma({url,category}) {
         } catch (error) {
             alert(error);
         }
+    }
+    getproducts();
     }, [category])
 
     return (

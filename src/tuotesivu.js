@@ -8,8 +8,9 @@ export default function Tuotesivu({url, addToCart}) {
   let productId = location.pathname.split('/');
 
   // Hae tuote
-  useEffect(async() => {
-    try {
+  useEffect(() => {
+    async function getproduct() {
+      try {
       const response = await fetch(url+'products/getProduct.php/'+productId[2]);
       const json = await response.json();
       if (response.ok) {
@@ -21,6 +22,8 @@ export default function Tuotesivu({url, addToCart}) {
     } catch (error) {
       alert(error);
     }
+  }
+  getproduct();
   }, []);
   
 

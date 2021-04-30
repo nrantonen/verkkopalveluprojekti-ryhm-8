@@ -4,8 +4,9 @@ import {Link} from 'react-router-dom';
 function Hakutulokset ({url,search}) {
     const [results, setResults] = useState([]);
     const [feedback, setFeedback] = useState('');
-    useEffect(async() => {
-        try {
+    useEffect(() => {
+       async function searchProducts () {
+           try {
             const response = await fetch(url + 'products/searchProducts.php/' + search);
             const json = await response.json();
             if (response.ok) {
@@ -23,6 +24,8 @@ function Hakutulokset ({url,search}) {
         } catch (error) {
             alert(error);
         }
+    }
+    searchProducts();
     }, [search, results.length]) // Uusi haku aina kun hakusana muuttuu
 
 

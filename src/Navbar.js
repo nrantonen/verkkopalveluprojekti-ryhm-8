@@ -6,7 +6,8 @@ import {Link} from 'react-router-dom';
     // Kategorioiden nouto    
     const [categories, setCategories] = useState([]);
 
-    useEffect(async() => {
+    useEffect(() => {
+        async function getcategories() {
         try {
             const response = await fetch(url + 'products/getcategories.php');
             const json = await response.json();
@@ -19,6 +20,8 @@ import {Link} from 'react-router-dom';
         } catch (error) {
             alert(error);
         }
+    }
+    getcategories();
     }, [])
 
 

@@ -4,8 +4,9 @@ import {Link} from 'react-router-dom';
 export default function Kuvapalkki({url}) {
     const [products, setProducts] = useState([]);
   
-    useEffect(async() => {
-      try {
+    useEffect(() => {
+      async function getproducts () {
+        try {
         const response = await fetch(url + 'products/getproducts.php/3');
         const json = await response.json();
         if (response.ok) {
@@ -16,6 +17,8 @@ export default function Kuvapalkki({url}) {
       } catch (error) {
         alert(error);
       }
+    }
+    getproducts();
     }, []);
   
       return (
