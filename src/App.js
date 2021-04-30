@@ -52,7 +52,6 @@ function App() {
   const [asiakas,setAsiakas] = useState(null);
 
 
-
   return (
 
     <>

@@ -27,11 +27,12 @@ export default function Asiakassivu({asiakas,url}) {
         return <Redirect to="/" />
     }
 
+
     return (
         <div>
             <h5>Tilinhallinta</h5>
             <div>
-                <h8><b>Asiakastiedot</b></h8>
+                <p><b>Asiakastiedot</b></p>
                 <div>
                     <p>Asiakasnumero: {asiakas.asnro}</p>
                     <p>Nimi: {asiakas.etunimi} {asiakas.sukunimi}</p>
