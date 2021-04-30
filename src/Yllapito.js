@@ -63,7 +63,7 @@ export default function Yllapito({setYllapito,url,yllapito}) {
                             <label>Salasana:</label><br/>
                             <input type="password" className="form-control" placeholder="Salasana" name="yll_salasana" value={yll_salasana} onChange={e => setYllSalasana(e.target.value)} maxLength="100" required />
                         </div>
-                        <div className="mt-3"><button type="submit" class="btn btn-primary">Kirjaudu sisään</button></div>
+                        <div className="mt-3"><button type="submit" className="btn btn-primary">Kirjaudu sisään</button></div>
                     </form>
                     </div>
                 </section>

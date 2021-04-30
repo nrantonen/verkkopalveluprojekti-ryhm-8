@@ -40,7 +40,7 @@ export default function LisaaTuote({url}) {
             <form onSubmit={save} id="LisaaTuote">
                 <div className="col-2">
                     <label>Tuotenimi</label>
-                    <input className="form-control" name="tuotenimi" maxlength="255" required type="text"
+                    <input className="form-control" name="tuotenimi" maxLength="255" required type="text"
                         onChange={e => setTuotenimi(e.target.value)}></input>
                 </div>
                 <div className="col-2">
@@ -64,7 +64,7 @@ export default function LisaaTuote({url}) {
                 }
                 <div className="col-2">
                     <label>Kuvaus</label>
-                    <textarea className="form-control" name="kuvaus" maxlength="255" id="kuvaus" onChange={e => setKuvaus(e.target.value)}></textarea>
+                    <textarea className="form-control" name="kuvaus" maxLength="255" id="kuvaus" onChange={e => setKuvaus(e.target.value)}></textarea>
                 </div>
                 <div className="col-2">
                    {/* Tähän tuoteryhmä valinta jotenkin järkevämmin */}
