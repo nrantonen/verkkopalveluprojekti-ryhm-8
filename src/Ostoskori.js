@@ -13,7 +13,14 @@ export default function Ostoskori({cart, cartSum}) {
         
       </ul>
       <p><b>Summa: {cartSum()} €</b></p>
-      <Link className="btn btn-success" to='/Kassa'>Kassalle</Link>
+      {cart.length > 0 ?  (
+                    <>
+                    <Link className="btn btn-success" to='/Kassa'>Kassalle</Link>
+                    </>
+                ) : (
+                      <b>Ostoskorisi on tyhjä.</b>
+                )}
+      
     </div>
   )
 
