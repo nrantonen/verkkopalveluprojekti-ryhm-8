@@ -8,7 +8,7 @@ export default function Omattilaukset({url,asiakas}) {
     useEffect(() => {
         async function tilaukset() {
           try {
-              const response = await fetch(url + 'asiakas/asiakkaantilaukset.php');
+              const response = await fetch(url + 'asiakas/asiakkaantilaukset.php/' + asiakas?.asnro);
               const json = await response.json();
               if (response.ok) {
                   setTilaukset(json);
@@ -42,7 +42,7 @@ export default function Omattilaukset({url,asiakas}) {
                     </tr>
                     </thead> 
                     <tbody>
-                    {tilaukset.map(tilaus => (   
+                    {tilaukset.map(tilaus => (
                     <tr key={tilaus.tilausnro} className="row">
                     <td className="col-3 col-md-3 col-lg-1"><b>{tilaus.tilausnro}</b></td>
                     <td className="col-3 col-md-3 col-lg-4">{tilaus.tuotenimi}</td>
