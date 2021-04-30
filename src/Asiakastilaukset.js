@@ -35,9 +35,9 @@ export default function Omattilaukset({url,asiakas}) {
             <table className="table table-striped">
                 <thead className="otsikot">
                     <tr className="row">
-                        <th className="col-3 col-lg-2">Tilausnro</th>
-                        <th className="col-3 col-lg-4">Tuotenimi</th>
-                        <th className="col-3 col-lg-1">Määrä</th>
+                        <th className="col-3 col-md-3 col-lg-1">Tilausnro</th>
+                        <th className="col-3 col-md-3 col-lg-4">Tuotenimi</th>
+                        <th className="col-3 col-md-3 col-lg-1">Määrä</th>
 
                     </tr>
                     </thead> 
