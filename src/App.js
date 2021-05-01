@@ -22,7 +22,7 @@ import Palaute from './palaute';
 import Tuotepalautus from './tuotepalautus';
 import Kaikkitilaukset from './Kaikkitilaukset';
 import Omattilaukset from './Asiakastilaukset';
-
+import LisaaTuoteryhma from './LisaaTuoteryhma';
 
 const URL = 'http://localhost/verkkopalveluprojekti/';
 
@@ -96,6 +96,9 @@ function App() {
           url={URL} yllapito={yllapito}/>}
           />
             <Route path="/LisaaTuote" render={() => <LisaaTuote
+            url={URL}/>} 
+          />
+          <Route path="/LisaaTuoteryhma" render={() => <LisaaTuoteryhma
             url={URL}/>} 
           />
           <Route path="/Yll_etusivu" exact render={() =>
