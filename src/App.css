@@ -127,9 +127,13 @@ div#tekijat > li {
   max-width: 300px;
   margin-left: 20px;
   margin-right: 20px;
+  margin-top: 20px;
+ 
 }
+
 #rekisteroidy{
 margin-top: 10px;
+margin-left: 20px;
 }
 
 /* Ostoskori */
@@ -188,7 +192,7 @@ tr {
   text-decoration: none;
 }
 
-/*Ylläpito-sivu*/
+/*Ylläpito login + etusivu -sivu*/
 
 .yll_loginform {
   margin: auto;
@@ -197,6 +201,10 @@ tr {
 
 .yll_loginrivi {
   padding-bottom: 20px;
+}
+
+.yll_link {
+  margin-bottom: 10px;
 }
 
 /* Kassasivu */
