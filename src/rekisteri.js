@@ -34,7 +34,7 @@ export default function Rekisteri({url}) {
                 body: formData
             }
         );
-            const json = await response.json();
+
             if (response.ok) {
               history.push('/');
             } else {
