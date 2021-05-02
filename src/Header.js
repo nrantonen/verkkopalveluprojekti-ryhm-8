@@ -73,7 +73,7 @@ export default function Header({setSearch, url, setCategory, cart, cartSum, setA
         <div className="flex-row-reverse row m-1 p-2 bg-light">
             <div className="pt-2 col-12 col-md col-lg">
                 {/* Kirjaudu */}
-                <a id="kirjautuminen" href="#" onClick={togglePopup}>Kirjaudu</a>
+                <a id="kirjautuminen" href="#" onClick={togglePopup}>Asiakastili</a>
                 {isOpen && <Popup
                 content={<>
                     <b>Kirjautuminen</b>
@@ -91,7 +91,10 @@ export default function Header({setSearch, url, setCategory, cart, cartSum, setA
                                     <button type="submit" className="btn btn-outline-success btn-sm">Kirjaudu sisään</button><br/>
                                 </div>
                             </form>
-                            <a href="#">Unohditko salasanan?</a>
+                            <a href="#">Unohditko salasanan?</a> 
+                            <br/>
+                            {/* Rekisteröidy */}  
+                            <Link id="rekisteröityminen" to="/rekisteri">Rekisteröidy</Link>
                     </>
                     }
                     {
@@ -112,9 +115,9 @@ export default function Header({setSearch, url, setCategory, cart, cartSum, setA
                 </>}
                 handleClose={togglePopup}
                 />}
-                &nbsp;/&nbsp;
-                {/* Rekisteröidy */}   
-                <Link id="rekisteröityminen" to="/rekisteri">Rekisteröidy</Link>
+                &nbsp;&nbsp;
+                 
+               
                 <a href="#" onClick={toggleCart}><i className="fa fa-shopping-cart px-3" alt="ostoskori" aria-hidden="true"></i></a>
                 {cartShown && <Ostoskori cartSum={cartSum} cart={cart} asiakas={asiakas} handleClose={toggleCart}/>}
             </div>
