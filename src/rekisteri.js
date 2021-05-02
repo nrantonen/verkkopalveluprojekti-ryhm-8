@@ -36,6 +36,7 @@ export default function Rekisteri({url}) {
         );
 
             if (response.ok) {
+              alert("Käyttäjätili luotu");
               history.push('/');
             } else {
               alert("Virhe");
