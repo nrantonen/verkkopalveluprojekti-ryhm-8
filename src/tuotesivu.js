@@ -3,6 +3,7 @@ import { useLocation } from 'react-router';
 
 export default function Tuotesivu({url, addToCart}) {
   const [product, setProduct] = useState({});
+  const [kpl, setKpl] = useState(1);
 
   let location = useLocation();
   let productId = location.pathname.split('/');
@@ -37,8 +38,8 @@ export default function Tuotesivu({url, addToCart}) {
         <div className="col">
           <h5>{product.hinta} €</h5>
           <label>Kappalemäärä:</label>
-          <input id="tilauskpl" type="number" /><br/>
-          <button onClick={e => addToCart(product)}>Lisää ostoskoriin</button>
+          <input type="number" value={kpl} onChange={e => setKpl(e.target.value)} /><br/>
+          <button onClick={e => addToCart(product, kpl)}>Lisää ostoskoriin</button>
         </div>
       </div>
       <div className="row">

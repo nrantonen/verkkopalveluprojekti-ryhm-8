@@ -156,10 +156,10 @@ function App() {
   );
 
   
-  function addToCart(product) {
+  function addToCart(product, kpl) {
     if(cart.some(item => item.tuotenro === product.tuotenro)) {
       const existingProduct = cart.filter(item => item.tuotenro === product.tuotenro);
-      updateAmount(parseInt(existingProduct[0].amount) +1,product);
+      updateAmount(parseInt(existingProduct[0].amount)+1+(kpl-1),product);
     } else {
       product["amount"] = 1;
       const newCart = [...cart, product];
