@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import './SearchResults.css';
-import logo from "./toimistologo.png";
+import logo from "./logo.png";
 import Popup from './Popup';
 import Ostoskori from './Ostoskori';
 import {Link} from 'react-router-dom';
@@ -63,8 +63,8 @@ export default function Header({setSearch, url, setCategory, cart, cartSum, setA
             {/* Navbar */}
             {/*Logo ja otsikko*/}
             <nav className="justify-content-center navbar navbar-dark bg-dark">
-            <Link className="navbar-brand" to="/">
-                <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>&nbsp;&nbsp;
+            <Link className="navbar-brand fs-2 fw-bold" to="/">
+                <img src={logo} width="70" height="70" className="d-inline-block align-middle" alt=""/>&nbsp;&nbsp;
                 Tepon Toimistotavarat
             </Link>
             </nav>
