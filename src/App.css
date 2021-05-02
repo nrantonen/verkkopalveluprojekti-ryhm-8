@@ -188,7 +188,7 @@ tr {
   text-decoration: none;
 }
 
-/*Ylläpito-sivu*/
+/*Ylläpito login + etusivu -sivu*/
 
 .yll_loginform {
   margin: auto;
@@ -197,6 +197,10 @@ tr {
 
 .yll_loginrivi {
   padding-bottom: 20px;
+}
+
+.yll_link {
+  margin-bottom: 10px;
 }
 
 /* Kassasivu */
