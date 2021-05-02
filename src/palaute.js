@@ -7,17 +7,17 @@ export default function Palaute({url}) {
     <form >
       <div>
         <div>
-          <h2>tutteiden palautus</h2>
+          <h2>Tuotteiden palautus</h2>
           <hr></hr>
-          <p>Mahdollistamme tuotteiden palautuksen ja vaihtamisen: </p>
+          <p>Mahdollistamme tuotteiden palautuksen ja vaihtamisen kun: </p>
           <ul>
-            <li>tuote on viallinen</li>
-            <li>Tuote on vauriotunut</li>
-            <li>Tuote ei vastannut oletuksia ja palautus aikaa on jäljellä</li>
+            <li>Tuote on viallinen.</li>
+            <li>Tuote on vaurioitunut.</li>
+            <li>Tuote ei vastannut oletuksia ja palautus aikaa on jäljellä.</li>
           </ul>
           <p>
-            Tuotteilla on x määräaika. Emme ota tai korvaa tuotteia joissa ei ole takuuta jäljellä.<br/>
-            Palatetun tuotteen mukana pitää olla kuitti mukana.<br/>
+            Tuotteilla on 32 päivän määräaika. Emme ota tai korvaa tuotteita, joissa ei ole takuuta jäljellä.<br/>
+            Palautetun tuotteen mukana pitää olla kuitti mukana.<br/>
             Palautuksen voit tehdä postitse,<br/>
             Postin pakettiautomaatilla ja Matkahuollon kautta.<br/>
             Mikäli palautat tuotteen postitse, voit kirjata sen palautetuksi jo etukäteen OmaPostissa.<br/>

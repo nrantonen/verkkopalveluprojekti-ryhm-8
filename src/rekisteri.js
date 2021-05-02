@@ -102,6 +102,8 @@ export default function Rekisteri({url}) {
        <div id="r1"  className="col-6">
       <p>Kirjoita salasana uudelleen.</p>
       <input name="salasana2"  onChange={e => setSalasana2(e.target.value)} type="password"  className="form-control" name="salasana" placeholder="salasana" maxLength="30" aria-label="password2" required />
+            <input className="form-check-input" type="checkbox"  id="flexCheckDefault"/>
+            <label className="form-check-label" for="flexCheckDefault">Haluaan uuden tuotteen </label>
       </div>
       </div>
     
